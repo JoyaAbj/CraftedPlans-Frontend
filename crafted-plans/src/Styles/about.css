@@ -1,0 +1,41 @@
+.about{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 50px;
+    margin: 2%;
+}
+.imgs-about{
+    background-image: url('about.png');
+    width: 624px;
+    border-radius: 10px;
+}
+
+.image-about{
+    width: 460px;
+    height: auto;
+    margin: 50px;
+}
+.text-about{
+    display: flex;
+    flex-direction: column;
+
+}
+.title-about{
+    color: #917B9F;
+    font-size: 55px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 0;
+}
+.parag-about{
+    color: #000;
+    text-align: justify;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 500;
+    /* width: 50%; */
+    line-height: 152%; 
+    margin: 0;
+}
