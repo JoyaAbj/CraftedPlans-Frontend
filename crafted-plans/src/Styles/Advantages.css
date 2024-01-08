@@ -1,0 +1,13 @@
+.cont-home{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #F2E6E8;
+}
+.advantages-home{
+    color: #1B294E;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: normal;
+}
