@@ -1,0 +1,33 @@
+.gallery-container-home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.gallery-home {
+    display: grid;
+    grid-template-columns: 0.75fr 1fr 1.5fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+      "long-picture-home top-left-home top-right-home"
+      "long-picture-home bottom-left-home bottom-left-home"; 
+  
+    gap: 15px; 
+    
+  }
+  
+  .long-picture-home {
+    grid-area: long-picture-home; 
+  }
+  
+  .top-left-home {
+    grid-area: top-left-home;
+  }
+  
+  .top-right-home {
+    grid-area: top-right-home;
+  }
+  
+  .bottom-left-home {
+    grid-area: bottom-left-home;
+  }
+  
