@@ -3,14 +3,14 @@
     justify-content: center;
     align-items: start;
     gap: 50px;
-    margin: 2%;
+    margin: 3%;
 }
 .imgs-about{
-    background-image: url('about.png');
+    background-image: url('about-bg.png');
     width: 624px;
     border-radius: 10px;
+    background-size: cover;
 }
-
 .image-about{
     width: 460px;
     height: auto;
@@ -38,4 +38,40 @@
     /* width: 50%; */
     line-height: 152%; 
     margin: 0;
+}
+
+/*Tablet*/
+@media screen and (min-width:767px) and (max-width:1023px){
+    .about{
+        flex-direction: column-reverse;
+    }
+    .text-about{
+        justify-content: center;
+        align-items: center;
+    }
+    .imgs-about{
+        margin: 0 auto;
+    }
+ }
+
+ /*Phone*/
+@media (max-width: 766px){
+    .about{
+        flex-direction: column-reverse;
+    }
+    .text-about{
+        justify-content: center;
+        align-items: center;
+    }
+    .parag-about{
+        font-size: 25px;
+    }
+    .image-about{
+        width: 200px;
+    }
+    .imgs-about{
+        width: 300px;
+        margin: 0 auto;
+    }
+ 
 }
