@@ -1,0 +1,83 @@
+.HomeBanner-container{
+    background-image: url(banner-bg.png);
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
+    margin: 20px;
+    border-radius: 10px;
+}
+.banner-icon{
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    /* top: 50%; Adjust the vertical position as needed */
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.HomeBanner-title-btn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+.text-banner{
+   color: #432C45;
+   font-style: italic;
+   font-size: 50px;
+}
+.btn-banner{
+    border: none;
+    border-radius: 10px;
+    background: #917B9F;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.30);
+    height: 45px;
+    width: fit-content;
+    color: #FFF;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0.5%;
+}
+.btn-banner:hover{
+    border: 1px solid #917B9F;
+    background: #F0EBF4;
+    color: #917B9F;
+}
+
+ /*Tablet*/
+ @media screen and (min-width:767px) and (max-width:1023px){
+    .HomeBanner-container{
+        height: 30vh;
+    }
+    .HomeBanner-title-btn{
+        height: 30vh;
+    }
+
+ }
+
+ /*Phone*/
+@media (max-width: 766px){
+    .HomeBanner-container{
+        height: 30vh;
+    }
+    .HomeBanner-title-btn{
+        height: 30vh;
+    }
+    .text-banner{
+        font-size: 25px;
+    }
+    .btn-banner{
+        font-size: 18px;
+        padding: 6px;
+        height: 30px;
+    }
+    .banner-icon{
+        height: 80px;
+        right: 10px;
+    }
+}

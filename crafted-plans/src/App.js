@@ -8,6 +8,7 @@ import ProductsHomePage from './HomePage/ProductsHomePage';
 import Advantages from './HomePage/Advantages';
 import Gallery from './HomePage/Gallery';
 import About from './HomePage/About';
+import Banner from './HomePage/Banner';
 
 function App() {
   return (
