@@ -49,9 +49,12 @@
  @media screen and (min-width:767px) and (max-width:1023px){
     .products-home{
         flex-direction: column;
-        /* gap: 10px; */
     }
  }
 
  /*Phone*/
-@media (max-width: 766px){}
+@media (max-width: 766px){
+    .products-home{
+        flex-direction: column;
+    }
+}
