@@ -11,3 +11,11 @@
     font-weight: 500;
     line-height: normal;
 }
+ /*Phone*/
+ @media (max-width: 766px){
+    .advantages-home{
+        font-size: 15px;
+        margin: 5px;
+    }
+  
+}
