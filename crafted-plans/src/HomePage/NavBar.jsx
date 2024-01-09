@@ -20,6 +20,8 @@ const NavBar = () => {
         alt="logo" 
         className="logo-crafted-plans-navbar"
         />
+      </div>
+      <div className="cart-login">
         <img 
         src="/Images/vector.png" 
         alt="login" 

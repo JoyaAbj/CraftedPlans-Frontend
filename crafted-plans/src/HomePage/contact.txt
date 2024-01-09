@@ -1,0 +1,120 @@
+import React from 'react';
+import NavBar from './NavBar';
+import Footer from './Footer';
+import '../Styles/contact.css';
+
+const Contact = () => {
+  return (
+    <div>
+        <NavBar/>
+        <div className="form-contatct">
+          <h1 className="title-contact">Send Us a Message</h1>
+          <div className="form-text-contact">
+            <div className="form-contact-page">
+              <div className="first-row-contact">
+                <div className="label-input-contact">
+              <label htmlFor="fullname">Full Name</label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullname"
+                value= 'fullName'
+                // onChange={handleInputChange}
+                required
+              />
+                </div>
+                <div className="label-input-contact">
+                <label htmlFor="phonenumber">Phone Number</label>
+              <input
+                type="text"
+                id="phonenumber"
+                name="phonenumber"
+                value= 'phonenumber'
+                // onChange={handleInputChange}
+                required
+              />
+                </div>
+              </div>
+                <div className="label-input-contact">
+              <label htmlFor="email">Email</label>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                value= 'email'
+                // onChange={handleInputChange}
+                required
+              />
+                </div>
+                <div className="label-input-contact">
+              <label htmlFor="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                value="message"
+                // onChange={handleInputChange}
+                rows="4"
+                cols="50"
+              ></textarea>
+                </div>
+                <div className="left-contact">
+                  <h2 className="craft-your-plans">
+                    Craft Your Plans
+                  </h2>
+                  <p className="more-info-contact">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mi purus, feugiat non lectus in, tincidunt convallis dui. 
+                  </p>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <Footer/>
+    </div>
+  )
+}
+
+export default Contact
+
+/*css*/
+.form-contact{
+    
+}
+.title-contact{
+    color: #000;
+    font-size: 55px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.form-text-contact{}
+.form-contact-page{}
+.first-row-contact{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+}
+.label-input-contact{}
+
+.left-contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.craft-your-plans{
+    color: #000;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.more-info-contact{
+    color: #000;
+    text-align: justify;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

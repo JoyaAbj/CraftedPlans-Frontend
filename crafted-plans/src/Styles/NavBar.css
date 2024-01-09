@@ -18,10 +18,11 @@
     justify-content: center;
     align-items: center;
 }
-.login-navbar{
+.cart-login{
     display: flex;
-    align-items: end;
+    justify-content: flex-end;
 }
+
 .navlinks-navbar{
     display: flex;
     justify-content: space-evenly;

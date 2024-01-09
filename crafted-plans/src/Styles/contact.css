@@ -1,0 +1,118 @@
+.form-title-contact{
+    display: flex;
+    gap: 7px;
+}
+.regular-title-contact{
+    color: #000;
+    font-size: 55px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.italic-title-contact{
+    color: #917B9F;
+    font-size: 55px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: normal;
+}
+.form-container-contact{
+    border-radius: 10px;
+    background: #F2E6E8;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.left-form-contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.name-phone-contact{
+    display: flex;
+}
+.full-name-contact{
+    display: flex;
+    flex-direction: column;
+}
+.label-contact{
+    color: #000;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.input-contact{
+    border-radius: 10px;
+    border: 1px solid #000;
+    height: 45px;
+
+}
+
+
+.right-text-contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
+}
+.title-right-side{
+    display: flex;
+    gap: 7px;
+}
+.craft-your{
+    color: #000;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.plans{
+    color: #1B294E;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: normal;
+}
+.text-contact{
+    color: #000;
+    text-align: justify;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.extra-info-contact{
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    background: #F2E6E8;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin: 20px;
+}
+.block-contact{
+    border-radius: 10px;
+    border: 1px solid #000;
+    margin: 10px;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.contact-icon{
+    width: 51px;
+    height: 51px;
+
+}
+.info-contact{
+    color: #000;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
