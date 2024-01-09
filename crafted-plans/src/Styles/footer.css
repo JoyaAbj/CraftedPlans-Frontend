@@ -4,6 +4,11 @@
     justify-content: space-evenly;
     align-items: center;
 }
+.menu-logo-footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 .menu-footer{
     display: flex;
     flex-direction: column;
@@ -40,6 +45,9 @@
     align-items: center;
     list-style: none;
     gap: 10px;
+}
+.social-links{
+    padding: 0;
 }
 .social-icons{
     height: 25px;
