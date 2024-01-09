@@ -8,13 +8,14 @@ import ProductsHomePage from './HomePage/ProductsHomePage';
 import Advantages from './HomePage/Advantages';
 import Gallery from './HomePage/Gallery';
 import About from './HomePage/About';
+import Banner from './HomePage/Banner';
 
 function App() {
   return (
    <div>
     <Router>
       <Routes>
-      <Route path="/" element={ <> <Footer/> </>} />
+      <Route path="/" element={ <> <Banner/> </>} />
       <Route path="/contact" element={ <> <Contact/> </>} />
 
       </Routes>
