@@ -9,13 +9,14 @@ import Advantages from './HomePage/Advantages';
 import Gallery from './HomePage/Gallery';
 import About from './HomePage/About';
 import Banner from './HomePage/Banner';
+import './Styles/style.css';
 
 function App() {
   return (
    <div>
     <Router>
       <Routes>
-      <Route path="/" element={ <> <NavBar/><Header/><ProductsHomePage/><About/><Banner/><Gallery/><Advantages/><Footer/> </>} />
+      <Route path="/" element={ <> <NavBar/><ProductsHomePage/><About/><Banner/><Advantages/> </>} />
       <Route path="/contact" element={ <> <Contact/> </>} />
 
       </Routes>
