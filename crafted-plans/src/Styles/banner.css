@@ -48,3 +48,36 @@
     background: #F0EBF4;
     color: #917B9F;
 }
+
+ /*Tablet*/
+ @media screen and (min-width:767px) and (max-width:1023px){
+    .HomeBanner-container{
+        height: 30vh;
+    }
+    .HomeBanner-title-btn{
+        height: 30vh;
+    }
+
+ }
+
+ /*Phone*/
+@media (max-width: 766px){
+    .HomeBanner-container{
+        height: 30vh;
+    }
+    .HomeBanner-title-btn{
+        height: 30vh;
+    }
+    .text-banner{
+        font-size: 25px;
+    }
+    .btn-banner{
+        font-size: 18px;
+        padding: 6px;
+        height: 30px;
+    }
+    .banner-icon{
+        height: 80px;
+        right: 10px;
+    }
+}
