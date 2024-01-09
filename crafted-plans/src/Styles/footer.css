@@ -53,6 +53,12 @@
 }
 .copyright-footer{
     color: white;
+    background: #917B9F;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
 }
 
  /*Tablet*/
