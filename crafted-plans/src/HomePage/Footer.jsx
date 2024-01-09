@@ -6,6 +6,7 @@ const Footer = () => {
   return (
     <div>
         <div className="footer">
+      <div className="menu-logo-footer">
       <div className="menu-footer">
       <ul className="navlinks-footer">
           <li className='menu-items-footer'> <Link to='/contact' className='menu-links-footer'>Contact</Link></li>
@@ -16,6 +17,7 @@ const Footer = () => {
       </div>
       <div className="logo-footer">
         <img src="/Images/logo2.png" alt="logo" />
+      </div>
       </div>
       <div className="social-footer">
         <ul className="social-links">
