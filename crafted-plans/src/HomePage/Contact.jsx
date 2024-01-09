@@ -2,11 +2,12 @@ import React from 'react';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import '../Styles/contact.css';
+import FAQ from './FAQ';
 
 const Contact = () => {
   return (
     <div>
-        <NavBar/>
+        {/* <NavBar/> */}
         <div className='form-title-contact'>
         <h2 className="regular-title-contact">
           Send Us a 
@@ -108,9 +109,10 @@ const Contact = () => {
             </p>
           </div>
         </div>
+        <FAQ/>
         
 
-        <Footer/>
+        {/* <Footer/> */}
     </div>
   )
 }
