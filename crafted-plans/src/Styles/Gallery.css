@@ -2,16 +2,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 10px
+
+
 }
 .gallery-home {
     display: grid;
-    grid-template-columns: 0.75fr 1fr 1.5fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     grid-template-areas:
       "long-picture-home top-left-home top-right-home"
       "long-picture-home bottom-left-home bottom-left-home"; 
-  
-    gap: 15px; 
+    gap: 5px;
+    place-items: center; 
+
     
   }
   
@@ -30,4 +34,49 @@
   .bottom-left-home {
     grid-area: bottom-left-home;
   }
+
+  /*Tablet*/
+ @media screen and (min-width:767px) and (max-width:1023px){
+  .gallery-home {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .long-picture-home,
+  .top-left-home,
+  .top-right-home,
+  .bottom-left-home {
+    width: 100%;
+  }
+
+  .long-picture-home,
+  .top-left-home,
+  .top-right-home{
+    display: none; 
+  }
+
+ }
+
+/*Phone*/
+@media (max-width: 766px){
+  .gallery-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .long-picture-home,
+  .top-left-home,
+  .top-right-home,
+  .bottom-left-home {
+    width: 400px;
+    margin: 10px;
+  }
+
+  .top-left-home,
+  .top-right-home,
+  .bottom-left-home{
+    display: none; 
+  }
+}
   
