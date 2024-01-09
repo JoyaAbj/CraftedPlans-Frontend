@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 const Banner = () => {
   return (
     <div>
+        <div className="banner-icon">
+            <img src="/Images/banner-icon.png" alt="banner" />
+        </div>
       <div className="HomeBanner-container">
     <div className="HomeBanner-title-btn">
         <h1 className="text-banner">Your Ideal Planner, <br/>Your Unique Story.</h1>

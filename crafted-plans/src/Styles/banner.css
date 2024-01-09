@@ -6,6 +6,15 @@
     margin: 20px;
     border-radius: 10px;
 }
+.banner-icon{
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    /* top: 50%; Adjust the vertical position as needed */
+    right: 0;
+    transform: translateY(-50%);
+}
+
 .HomeBanner-title-btn{
     display: flex;
     flex-direction: column;
