@@ -126,22 +126,24 @@
 /*FAQ*/
 .faq-wrapper{
     display: flex;
-    height: 100vh;
-    justify-content: center;
+    height: 30vh;
+    justify-content: start;
     align-items: center;
+    margin: 0 20px;
+    padding-top: 20px;
 }
 .accordion-faq{
-    width: 500px;
+    width: 100%;
 }
 .item-faq{
-
+    padding-bottom: 20px;
 }
 .faq-title{
     display: flex;
     justify-content: space-between;
     color: #000;
     text-align: justify;
-    font-size: 15px;
+    font-size: 25px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -155,7 +157,7 @@
 .faq-content{
     color: #000;
     text-align: justify;
-    font-size: 12px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -169,3 +171,4 @@
     max-height: 9999px;
     transition: all 0.5s cubic-bezier(1,0,1,0);
 }
+

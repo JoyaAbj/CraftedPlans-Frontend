@@ -10,19 +10,29 @@ const FAQ = () => {
         setSelected(i);
     }
   return (
+    <div>
+        <div className='form-title-contact'>
+        <h2 className="regular-title-contact">
+          Frequently Asked
+        </h2>
+        <h2 className="italic-title-contact">
+          Questions
+        </h2>
+        </div>
     <div className='faq-wrapper'>
       <div className="accordion-faq">
         {data.map((item, i) => (
           <div className="item-faq" key={i}>
             <div className="faq-title" onClick={() => toggle(i)}>
               <h2>{item.question}</h2>
-              <span>{selected === i ? '-' : '+'}</span>
+              <span>{selected === i ? '▲' : '▼'}</span>
             </div>
             <div className='faq-line'></div>
             <div className={selected === i ? 'faq-content show' : 'faq-content'}>{item.answer}</div>
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 };
