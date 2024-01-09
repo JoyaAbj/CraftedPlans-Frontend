@@ -7,7 +7,7 @@ const ProductsHomePage = () => {
     <div>
      <div className="products-home">
       <div className="product-H">
-        <div className="line-home"></div>
+        {/* <div className="line-home"></div> */}
         <img src="/Images/image 1.png" alt="planner" className="product-img-home" />
         <h4 className="product-name-home">Planners</h4>
         <Link to='/planners' className='product-link-home'>Build Now</Link>
