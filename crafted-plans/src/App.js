@@ -11,6 +11,8 @@ import About from './HomePage/About';
 import Banner from './HomePage/Banner';
 import NotePads from './HomePage/NotePads';
 import NotepadProduct from './HomePage/NotepadProduct';
+import Accessories from './HomePage/Accessories';
+import ProductAccessories from './HomePage/ProductAccessories';
 import './Styles/style.css';
 
 function App() {
@@ -18,12 +20,12 @@ function App() {
    <div>
     <Router>
       <Routes>
-      <Route path="/" element={ <> <NavBar/><ProductsHomePage/><About/><Banner/><Advantages/> </>} />
+      <Route path="/" element={ <> <NavBar/><ProductsHomePage/><About/><Banner/><Gallery/><Advantages/> </>} />
       <Route path="/contact" element={ <> <Contact/> </>} />
       <Route path="/notepads" element={ <> <NotePads/> </>} />
       <Route path="/notepadProduct" element={ <> <NotepadProduct/> </>} />
-
-
+      <Route path="/accessories" element={ <> <Accessories/> </>} />
+      <Route path="/productAccessories" element={ <> <ProductAccessories/> </>} />
 
       </Routes>
     </Router>
