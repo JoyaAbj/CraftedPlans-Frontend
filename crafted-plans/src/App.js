@@ -9,6 +9,8 @@ import Advantages from './HomePage/Advantages';
 import Gallery from './HomePage/Gallery';
 import About from './HomePage/About';
 import Banner from './HomePage/Banner';
+import Accessories from './HomePage/Accessories';
+import ProductAccessories from './HomePage/ProductAccessories';
 import './Styles/style.css';
 
 function App() {
@@ -18,6 +20,10 @@ function App() {
       <Routes>
       <Route path="/" element={ <> <NavBar/><ProductsHomePage/><About/><Banner/><Advantages/> </>} />
       <Route path="/contact" element={ <> <Contact/> </>} />
+
+
+      <Route path="/accessories" element={ <> <Accessories/> </>} />
+      <Route path="/productAccessories" element={ <> <ProductAccessories/> </>} />
 
       </Routes>
     </Router>
