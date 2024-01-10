@@ -19,12 +19,14 @@ const NotePads = () => {
     {notepad.map ((product, i) =>(
     <div className="product-card-notepads" key={i}>
         <div className="image-notepad">
+            <Link to='/notepadProduct'>
             <img 
             src={product.image} 
             alt="product" 
             className="img-note"
             // onClick={() => handleProductClick(i)} 
             />
+            </Link>
         </div>
         <p className="name-notepad">
             {product.productName}
