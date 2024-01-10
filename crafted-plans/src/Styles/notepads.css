@@ -1,0 +1,60 @@
+.link-notepads{
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   margin: 0 105px;
+}
+.linking-notepads{
+    text-decoration: none;
+    color: #917B9F;
+    font-size: 25px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+}
+.price-cart-notepad{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.notepad-card{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    margin: 0 20px;
+}
+.image-notepad{
+    border-radius: 10px;
+    background: #FAFAFA;
+    box-shadow: 8px 9px 4px -1px rgba(0, 0, 0, 0.25);
+}
+.image-notepad{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.img-note{
+    border-radius: 10px;
+    cursor: pointer;
+}
+.name-notepad{
+    color: #000;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+}
+.price-notepad{
+    color: #A890AD;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+}
+.cart-notepad{
+    cursor: pointer;
+}

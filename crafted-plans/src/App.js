@@ -9,6 +9,7 @@ import Advantages from './HomePage/Advantages';
 import Gallery from './HomePage/Gallery';
 import About from './HomePage/About';
 import Banner from './HomePage/Banner';
+import NotePads from './HomePage/NotePads';
 import './Styles/style.css';
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
       <Routes>
       <Route path="/" element={ <> <NavBar/><ProductsHomePage/><About/><Banner/><Advantages/> </>} />
       <Route path="/contact" element={ <> <Contact/> </>} />
+      <Route path="/notepads" element={ <> <NotePads/> </>} />
+
 
       </Routes>
     </Router>
