@@ -14,18 +14,20 @@ import NotepadProduct from './HomePage/NotepadProduct';
 import Accessories from './HomePage/Accessories';
 import ProductAccessories from './HomePage/ProductAccessories';
 import './Styles/style.css';
+import PageNotFound from './HomePage/PageNotFound';
 
 function App() {
   return (
    <div>
     <Router>
       <Routes>
-      <Route path="/" element={ <> <NavBar/><ProductsHomePage/><About/><Banner/><Gallery/><Advantages/> </>} />
+      <Route path="/" element={ <> <NavBar/><Header/><ProductsHomePage/><About/><Banner/><Gallery/><Advantages/> </>} />
       <Route path="/contact" element={ <> <Contact/> </>} />
       <Route path="/notepads" element={ <> <NotePads/> </>} />
       <Route path="/notepadProduct" element={ <> <NotepadProduct/> </>} />
       <Route path="/accessories" element={ <> <Accessories/> </>} />
       <Route path="/productAccessories" element={ <> <ProductAccessories/> </>} />
+      <Route path="*" element={<PageNotFound />} />
 
       </Routes>
     </Router>

@@ -1,0 +1,45 @@
+.not-found-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    background: #E1E1E1;
+
+  }
+ 
+  
+  .car-svg-not-found {
+    animation: driveInCircle 8s linear infinite; /* 'infinite' makes the animation loop */
+    height: 20vh;
+  }
+  
+  .flex-title-not-found {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 3;
+  }
+  
+  .title-text-not-found {
+    font-size: 2.5rem;
+    color: #917B9F;
+  }
+  
+  .subTitle-not-found {
+    font-size: 1rem;
+  }
+  
+  .btn-not {
+    color: #ffff;
+    text-decoration: none;
+    padding: 13px 20px;
+    background: #917B9F;
+    border-radius: 20px;
+  }
+  
+  .btn-not:hover {
+    background: #ffff;
+    color: #917B9F;
+    border: 1px solid #917B9F;
+  }
