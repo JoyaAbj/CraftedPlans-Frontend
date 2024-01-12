@@ -6,7 +6,25 @@
     margin: 30px;
     padding: 10px;
 }
-
+.link-topBar{
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.link-topBar:hover{
+    border-bottom: 5px solid #917B9F;
+}
+.active1{
+    border-bottom: 5px solid #917B9F;
+}.inactive-icon {
+    opacity: 0.5;
+}
+.inactive {
+    opacity: 0.5; /* 50% opacity for inactive links and icons */
+}
 .one-cover{
     width: fit-content;
     display: flex;

@@ -33,65 +33,94 @@ function App() {
       <NavBar/>
       <div className="sidebar">
       <div className="one-cover">
-          <img src="/TopBar/cover.png" alt="" className="cover-png" />
+          <img src="/TopBar/cover.png" alt="" 
+            className={`cover-png ${visibleCover ? '' : 'inactive-icon'}`} 
+            />
         {visibleCover &&
         <div className="icons-top-bar"></div>
         }
-        <a href="#" className='active' onClick={() => handleSidebarClick('cover')}>
+        <a href="#" 
+        className={`link-topBar ${visibleCover ? 'active1' : ''}`}
+        onClick={() => handleSidebarClick('cover')}>
           Cover
         </a>
         </div>
         <div className="one-cover">
-          <img src="/TopBar/Information.png" alt="" className="cover-png" />
+          <img src="/TopBar/Information.png" alt="" 
+            className={`cover-png ${visibleInformation ? '' : 'inactive-icon'}`} 
+            />
         {visibleInformation &&
         <div className="icons-top-bar"></div>
         }
-        <a href="#"  onClick={() => handleSidebarClick('information')}>
+        <a href="#"  
+        className={`link-topBar ${visibleInformation ? 'active1' : ''}`} 
+        onClick={() => handleSidebarClick('information')}>
           Information
         </a>
         </div>
+        
         <div className="one-cover">
-        <img src="/TopBar/cover.png" alt="" className="cover-png" />
-        {visibleEvents &&
-        <div className="icons-top-bar"></div>
-        }
-        <a href="#" onClick={() => handleSidebarClick('events')}>
-          Events
-        </a>
-        </div>
-        <div className="one-cover">
-        <img src="/TopBar/cover.png" alt="" className="cover-png" />
+        <img src="/TopBar/cover.png" alt="" 
+          className={`cover-png ${visibleDates ? '' : 'inactive-icon'}`} 
+          />
         {visibleDates &&
         <div className="icons-top-bar"></div>
         }
-        <a href="#" onClick={() => handleSidebarClick('dates')}>
+        <a href="#" 
+         className={`link-topBar ${visibleDates ? 'active1' : ''}`}
+         onClick={() => handleSidebarClick('dates')}>
           Dates
         </a>
         </div>
         <div className="one-cover">
-        <img src="/TopBar/cover.png" alt="" className="cover-png" />
+        <img src="/TopBar/cover.png" alt="" 
+          className={`cover-png ${visibleEvents ? '' : 'inactive-icon'}`} 
+          />
+        {visibleEvents &&
+        <div className="icons-top-bar"></div>
+        }
+        <a href="#" 
+         className={`link-topBar ${visibleEvents ? 'active1' : ''}`}
+         onClick={() => handleSidebarClick('events')}>
+          Events
+        </a>
+        </div>
+        <div className="one-cover">
+        <img src="/TopBar/cover.png" alt="" 
+        className={`cover-png ${visiblePages ? '' : 'inactive-icon'}`} 
+       />
         {visiblePages && 
         <div className="icons-top-bar"></div>
         }
-        <a href="#" onClick={() => handleSidebarClick('pages')}>
+        <a href="#" 
+         className={`link-topBar ${visiblePages ? 'active1' : ''}`}
+         onClick={() => handleSidebarClick('pages')}>
           Pages
         </a>
         </div>
         <div className="one-cover">
-        <img src="/TopBar/cover.png" alt="" className="cover-png" />
+        <img src="/TopBar/cover.png" alt="" 
+        className={`cover-png ${visibleAddOns ? '' : 'inactive-icon'}`} 
+        />
         {visibleAddOns && 
         <div className="icons-top-bar"></div>
         }
-        <a href="#" onClick={() => handleSidebarClick('addOns')}>
+        <a href="#" 
+         className={`link-topBar ${visibleAddOns ? 'active1' : ''}`}
+         onClick={() => handleSidebarClick('addOns')}>
           Add Ons
         </a>
         </div>
         <div className="one-cover">
-        <img src="/TopBar/cover.png" alt="" className="cover-png" />
+        <img src="/TopBar/cover.png" alt="" 
+        className={`cover-png ${visibleReview ? '' : 'inactive-icon'}`}  
+        />
         {visibleReview && 
         <div className="icons-top-bar"></div>
         }
-        <a href="#" onClick={() => handleSidebarClick('review')}>
+        <a href="#" 
+         className={`link-topBar ${visibleReview ? 'active1' : ''}`}
+         onClick={() => handleSidebarClick('review')}>
           Review
         </a>
         </div>
