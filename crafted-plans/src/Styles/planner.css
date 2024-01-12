@@ -23,7 +23,7 @@
     opacity: 0.5;
 }
 .inactive {
-    opacity: 0.5; /* 50% opacity for inactive links and icons */
+    opacity: 0.5; 
 }
 .one-cover{
     width: fit-content;
@@ -102,4 +102,52 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+}
+
+/*Information*/
+.information-information{
+    border-radius: 10px 10px 0px 0px;
+    background: #F2E6E8;
+}
+.page-information{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 50%;
+    margin: 0 auto;
+    gap: 20px;
+}
+.title-information{
+    color: #000;
+    text-align: center;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.text-information{
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.form-information{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+   
+}
+.input-information{
+    border-radius: 10px;
+    border: 2px solid #000;
+    padding: 10px;
+    width: 450px;
 }
