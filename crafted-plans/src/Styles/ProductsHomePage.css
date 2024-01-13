@@ -1,9 +1,8 @@
 .products-home{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px;
-    margin: 10px;
+    margin: 10px 40px;
     padding-top: 30px;
 }
 .product-H{
@@ -48,8 +47,11 @@
 
  /*Tablet*/
  @media screen and (min-width:767px) and (max-width:1023px){
+    .product-img-home{
+        width: 230px;
+    }
     .products-home{
-        flex-direction: column;
+        margin: 10px 20px;
     }
  }
 
@@ -57,5 +59,8 @@
 @media (max-width: 766px){
     .products-home{
         flex-direction: column;
+    }
+    .product-H{
+        padding-bottom: 12px;
     }
 }
