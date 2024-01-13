@@ -1,6 +1,7 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import '../Styles/Hero.css'
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -13,9 +14,9 @@ const Hero = () => {
       alt="First slide"
     />
     <Carousel.Caption>
-      <button
+      <Link to ='/planners'
       className='hero-button'>
-        Create Yours Now!</button>
+        Create Yours Now!</Link>
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
@@ -26,9 +27,9 @@ const Hero = () => {
     />
 
     <Carousel.Caption>
-    <button 
+    <Link to ='/planners'
         className='hero-button'>
-            Organise Your Life</button>
+            Organise Your Life</Link>
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
@@ -39,9 +40,9 @@ const Hero = () => {
     />
 
     <Carousel.Caption>
-    <button
+    <Link to ='/planners'
         className='hero-button'>
-        Unlock Your Potential </button>
+        Unlock Your Potential </Link>
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>

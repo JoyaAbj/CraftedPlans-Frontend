@@ -1,5 +1,5 @@
 .hero-container{
-    margin: 20px 30px;
+    margin: 20px 40px;
 }
 .hero-button{
     border-radius: 10px;
@@ -12,8 +12,8 @@
     line-height: normal;
     border: none;
     padding-bottom: 7px;
-
-
+    padding: 1%;
+    text-decoration: none;
 }
 .hero-button:hover{
     background: none;

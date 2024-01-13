@@ -29,18 +29,20 @@ const NavBar = () => {
             className={clicked
              ? 'fas fa-times' : 'fas fa-bars'}></i>
           </div>
+        <Link to='/login'>
         <img 
         src="/Images/vector1.png" 
         alt="login" 
         className="login-navbar" 
         />
+        </Link>
       </div>
       </div>
       <div className="menu-navbar">
         <nav className='navigation-bar-navbar'>
           
           <ul id="navlinks-navbar" className={clicked ? "#navlinks-navbar active" : "#navlinks-navbar"}> 
-          <li className='menu-items-navabar'> <Link to='/' className='menu-links-navabar active'>Home</Link></li>
+          <li className='menu-items-navabar'> <Link to='/' className={clicked ? 'menu-links-navabar active' : 'menu-links-navabar'}>Home</Link></li>
           <li className='menu-items-navabar'> <Link to='/planners' className='menu-links-navabar'>Planners</Link></li>
           <li className='menu-items-navabar'> <Link to='/notepads' className='menu-links-navabar'>NotePads</Link></li>
           <li className='menu-items-navabar'> <Link to='/accessories' className='menu-links-navabar'>Accessories</Link></li>

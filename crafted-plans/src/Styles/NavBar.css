@@ -45,8 +45,15 @@
     font-weight: 500;
     line-height: normal;
 }
-.menu-items-navabar .menu-links-navabar:hover,
- .menu-links-navabar:active{
+.menu-items-navabar .active,
+.menu-items-navabar .menu-links-navabar:hover {
+    color: #917B9F;
+    font-style: italic;
+}
+
+
+#navlinks-navbar.active {
+    /* Apply styles for the active state */
     color: #917B9F;
     font-style: italic;
 }

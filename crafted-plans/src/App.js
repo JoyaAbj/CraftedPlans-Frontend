@@ -18,6 +18,7 @@ import ProductAccessories from './HomePage/ProductAccessories';
 import PageNotFound from './HomePage/PageNotFound';
 import TopBar from './Planner/TopBar';
 import './Styles/style.css';
+import Login from './HomePage/Login';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <Route path="/notepadProduct" element={ <> <NotepadProduct/> </>} />
       <Route path="/accessories" element={ <> <Accessories/> </>} />
       <Route path="/productAccessories" element={ <> <ProductAccessories/> </>} />
+      <Route path="/login" element={<> <Login/> </>} />
       <Route path="/planners" element={ <> <TopBar/> </>} />
       <Route path="*" element={<PageNotFound />} />
 
