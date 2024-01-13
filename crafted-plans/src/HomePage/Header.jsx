@@ -1,22 +1,35 @@
 import React from 'react';
-import '../Styles/Header.css';
-import ImageSlider from './ImageSlider'
+// import '../Styles/Header.css';
+import Carousel from 'react-bootstrap/Carousel';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Header = () => {
-    const slides= [
-        {url:'http://localhost:3000/Carousel1.png', title: 'image1'},
-        {url:'http://localhost:3000/Carousel2-0.jpg', title: 'image2'},
-        {url:'http://localhost:3000/Carousel3.png', title: 'image3'},
-        {url:'http://localhost:3000/Carousel4.avif', title: 'image4'}
-
-    ]
   return (
     <div>
-        <div className='image-slider-header'>
-      <ImageSlider slides={slides}/>
-        </div>
+     <Carousel>
+      <Carousel.Item>
+        <Carousel.Caption>
+          <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <Carousel.Caption>
+          <h3>Second slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <Carousel.Caption>
+          <h3>Third slide label</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
