@@ -1,0 +1,38 @@
+.hero-container{
+    margin: 20px 30px;
+}
+.hero-button{
+    border-radius: 10px;
+    background: #917B9F;
+    color: #FFF;
+    text-align: center;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border: none;
+    padding-bottom: 7px;
+
+
+}
+.hero-button:hover{
+    background: none;
+    border: 2px solid #917B9F;
+}
+
+ /*Tablet*/
+ @media screen and (min-width:767px) and (max-width:1023px){
+    .hero-container{
+        margin: 10px 20px;
+    }
+ }
+
+ /*Phone*/
+@media (max-width: 766px){
+    .hero-button{
+        font-size: 13px;
+    }
+    .hero-container{
+        margin: 10px 10px;
+    }
+}

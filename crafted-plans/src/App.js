@@ -4,6 +4,8 @@ import Contact from './HomePage/Contact';
 import Footer from './HomePage/Footer';
 import NavBar from './HomePage/NavBar';
 import Header from './HomePage/Header';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Hero from './HomePage/Hero';
 import ProductsHomePage from './HomePage/ProductsHomePage';
 import Advantages from './HomePage/Advantages';
 import Gallery from './HomePage/Gallery';
@@ -21,7 +23,7 @@ function App() {
    <div>
     <Router>
       <Routes>
-      <Route path="/" element={ <> <NavBar/><Header/><ProductsHomePage/><About/><Banner/><Gallery/><Advantages/> </>} />
+      <Route path="/" element={ <> <NavBar/><Hero/><ProductsHomePage/><About/><Banner/><Gallery/><Advantages/> <Footer/> </>} />
       <Route path="/contact" element={ <> <Contact/> </>} />
       <Route path="/notepads" element={ <> <NotePads/> </>} />
       <Route path="/notepadProduct" element={ <> <NotepadProduct/> </>} />
