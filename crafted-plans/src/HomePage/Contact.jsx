@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import '../Styles/contact.css';
 import FAQ from './FAQ';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm(
+      process.env.REACT_APP_EMAILJS_SERVICE_ID,
+      process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+       form.current, 
+       process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+       )
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+  };
   return (
     <div>
         <NavBar/>
@@ -18,7 +36,7 @@ const Contact = () => {
         </div>
         <div className="form-container-contact">
          <div className="left-form-contact">
-         <form>
+         <form ref={form} onSubmit={sendEmail}>
           <div className="name-phone-contact">
         <div className="full-name-contact">
           {/* Full Name */}
