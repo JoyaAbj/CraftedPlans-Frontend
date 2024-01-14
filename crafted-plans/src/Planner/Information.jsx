@@ -2,12 +2,12 @@ import React from 'react'
 
 const Information = () => {
   return (
-    <div className='information-information'>
-      <div className="page-information">
-        <h2 className="title-information">
+    <div className='Dates'>
+      <div className="page-dates">
+        <h2 className="title-dates">
           Information
         </h2>
-        <p className="text-information">
+        <p className="text-dates">
         Welcome to your planner.  Feel free to fill your first page
         </p>
         <form action="" className="form-information">
@@ -35,6 +35,7 @@ const Information = () => {
           cols="30" 
           rows="10">
           </textarea>
+          <input type="submit" />
         </form>
       </div>
     </div>
