@@ -215,6 +215,19 @@
 
 /*Tablet*/
 @media screen and (min-width:767px) and (max-width:1023px){
+    /*contact*/
+    .form-container-contact{
+        flex-direction: column;
+    }
+    .left-form-contact{
+        width: 650px;
+    }
+    .right-text-contact{
+        width: 90%;
+    }
+    .info-contact{
+        font-size: 20px;
+    }
     /*FAQ*/
     .faq-wrapper{
         padding-top: 5px;
@@ -225,10 +238,63 @@
 }
 /*Phone*/
 @media (max-width: 766px){
+    /*Contact*/
+    .form-container-contact{
+        flex-direction: column;
+    }
+    .left-form-contact{
+        width: 280px;
+        padding-left: 25px;
+        margin: 0 auto;
+        margin-top: 15px;
+    }
+    .full-name-contact{
+        width: 265px;
+    }
+    .name-phone-contact{
+        flex-direction: column;
+    }
+    .label-conatct{
+        font-size: 20px;
+    }
+    .input-contact{
+        width: 230px;
+    }
+    .input-contact1{
+        width: 230px;
+    }
+    .text-contact{
+        font-size: 20px;
+        margin: 0 auto;
+        width: 225px;
+    }
+    .title-right-side{
+        width: 225px;
+        margin: 0 auto;
+    }
+    .craft-your{
+        font-size: 20px;
+    }
+    .plans{
+        font-size: 20px;
+    }
+    .extra-info-contact{
+        flex-direction: column;
+    }
+    .info-contact{
+        font-size: 20px;
+    }
+    /*FAQ*/
     .regular-title-contact{
         font-size: 18px;
     }
     .italic-title-contact{
         font-size: 20px;
+    }
+    .faq-question{
+        font-size: 17px;
+    }
+    .faq-content{
+        font-size: 11px;
     }
 }

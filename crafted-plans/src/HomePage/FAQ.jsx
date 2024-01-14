@@ -24,7 +24,7 @@ const FAQ = () => {
         {data.map((item, i) => (
           <div className="item-faq" key={i}>
             <div className="faq-title" onClick={() => toggle(i)}>
-              <h2>{item.question}</h2>
+              <h2 className='faq-question'>{item.question}</h2>
               <span>{selected === i ? '▲' : '▼'}</span>
             </div>
             <div className='faq-line'></div>
