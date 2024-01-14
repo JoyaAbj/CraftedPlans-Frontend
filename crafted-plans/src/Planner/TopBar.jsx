@@ -86,7 +86,7 @@ function App() {
         </a>
         </div>
         <div className="one-cover">
-        <img src="/TopBar/cover.png" alt="" 
+        <img src="/TopBar/Pages.png" alt="pages" 
         className={`cover-png ${visiblePages ? '' : 'inactive-icon'}`} 
        />
         {visiblePages && 
@@ -99,7 +99,7 @@ function App() {
         </a>
         </div>
         <div className="one-cover">
-        <img src="/TopBar/cover.png" alt="" 
+        <img src="/TopBar/Add-ons.png" alt="" 
         className={`cover-png ${visibleAddOns ? '' : 'inactive-icon'}`} 
         />
         {visibleAddOns && 
@@ -112,7 +112,7 @@ function App() {
         </a>
         </div>
         <div className="one-cover">
-        <img src="/TopBar/cover.png" alt="" 
+        <img src="/TopBar/Review.png" alt="" 
         className={`cover-png ${visibleReview ? '' : 'inactive-icon'}`}  
         />
         {visibleReview && 
