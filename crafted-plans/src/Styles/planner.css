@@ -163,6 +163,13 @@
     width: 600px;
     padding: 10px;
 }
+.page-dates1{
+    background: white;
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 10px;
+    height: fit-content;
+}
 .text-part-dates{
     display: flex;
     flex-direction: column;
@@ -274,4 +281,38 @@
 .add-event{
     height: 20px;
     width: 20px;
+}
+/*Pages*/
+.mockup-display-pages{
+    width: 100%;
+    height: 100%;
+}
+.toggle-btns-pages{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.weekly-daily-btns{
+    border: none;
+    border-radius: 10px;
+    background: #917B9F;
+    color: #FFF;
+    text-align: center;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 1%;
+}
+.templates-pages{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+
+}
+.choose-template{
+    height: 100%;
+    width: 200px;
+    border-radius: 10px;
 }

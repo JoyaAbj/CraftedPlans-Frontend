@@ -73,7 +73,7 @@ function App() {
         </a>
         </div>
         <div className="one-cover">
-        <img src="/TopBar/cover.png" alt="" 
+        <img src="/TopBar/events.png" alt="events" 
           className={`cover-png ${visibleEvents ? '' : 'inactive-icon'}`} 
           />
         {visibleEvents &&
