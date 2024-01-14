@@ -2,6 +2,7 @@ import React from 'react';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import '../Styles/contact.css';
+import FAQ from './FAQ';
 
 const Contact = () => {
   return (
@@ -45,11 +46,11 @@ const Contact = () => {
           <div className="full-name-contact">
         {/* Email */}
         <label className='label-conatct'  htmlFor="email">Email:</label>
-        <input className='input-contact'
+        <input className='input-contact1'
           type="email"
           id="email"
           name="email"
-          value="email"
+          // value="email"
           required
         />
         </div>
@@ -57,10 +58,10 @@ const Contact = () => {
         <div className="full-name-contact">
         {/* Message */}
         <label className='label-conatct'  htmlFor="message">Message:</label>
-        <textarea className='input-contact'
+        <textarea className='input-contact1'
           id="message"
           name="message"
-          value= "message"
+          // value= "message"
           rows="4"
           cols="50"
           required
@@ -68,7 +69,7 @@ const Contact = () => {
         </div>
 
         {/* Submit Button */}
-        <button type="submit">Submit</button>
+        <button className='submit-btn-contact' type="submit">Submit</button>
       </form>
          </div>
          <div className="right-text-contact">
@@ -77,8 +78,8 @@ const Contact = () => {
             <h3 className="plans">Plans</h3>
           </div>
           <p className="text-contact">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mi purus, 
-            feugiat non lectus in, tincidunt convallis dui. 
+          Need assistance or have questions? Reach out to Crafted Plans —
+           we're here to help you on your journey to organized and stylish planning. 
           </p>
           <div className="social-icons-contact">
             <img src="/Images/Instagram.png" alt="insta" className="icons-contact" />
@@ -108,8 +109,7 @@ const Contact = () => {
             </p>
           </div>
         </div>
-        
-
+        <FAQ/>
         <Footer/>
     </div>
   )

@@ -1,5 +1,6 @@
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './Styles/style.css'
 import Contact from './HomePage/Contact';
 import Footer from './HomePage/Footer';
 import NavBar from './HomePage/NavBar';

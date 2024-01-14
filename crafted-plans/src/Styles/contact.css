@@ -1,17 +1,19 @@
 .form-title-contact{
     display: flex;
     gap: 7px;
+    margin: 0 20px;
 }
 .regular-title-contact{
     color: #000;
-    font-size: 55px;
+    font-size: 45px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    margin: 0 20px;
 }
 .italic-title-contact{
     color: #917B9F;
-    font-size: 55px;
+    font-size: 45px;
     font-style: italic;
     font-weight: 500;
     line-height: normal;
@@ -20,7 +22,7 @@
     border-radius: 10px;
     background: #F2E6E8;
     box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    margin: 20px;
+    margin: 0 40px;
     display: flex;
     justify-content: space-evenly;
 }
@@ -29,26 +31,65 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 20px 20px;
+    background: white;
+    border-radius: 10px;
+    padding: 1%;
+    width: 700px;
 }
 .name-phone-contact{
     display: flex;
+    justify-content: space-between;
+    /* gap: 10%; */
 }
 .full-name-contact{
     display: flex;
     flex-direction: column;
+    /* width: 265px; */
 }
-.label-contact{
+.label-conatct{
     color: #000;
     font-size: 25px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    padding: 1%;
+    margin: 5px;
 }
 .input-contact{
     border-radius: 10px;
     border: 1px solid #000;
-    height: 45px;
+    height: 50px;
+    margin: 5px;
+    width: 265px;
+}
+.input-contact1{
+    border-radius: 10px;
+    border: 1px solid #000;
+    height: 50px;
+    margin: 5px;
+    width: 600px;
 
+}
+.submit-btn-contact{
+    border-radius: 10px;
+    background: #917B9F;
+    box-shadow: 6px 4px 4px 0px rgba(0, 0, 0, 0.50);
+    color: #FFF;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: none;
+    padding: 5px;
+    width: 200px;
+    height: 50px;
+    margin: 10px 0;
+}
+.submit-btn-contact:hover{
+    border: 3px solid #917B9F;
+    color: #917B9F;
+    background: transparent
 }
 
 
@@ -58,6 +99,7 @@
     justify-content: space-around;
     align-items: center;
     width: 40%;
+    margin: 20px 40px;
 }
 .title-right-side{
     display: flex;
@@ -84,15 +126,20 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    margin: 0;
 }
-
+.social-icons-contact{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+}
 .extra-info-contact{
     display: flex;
     justify-content: space-evenly;
     border-radius: 10px;
     background: #F2E6E8;
     box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    margin: 20px;
+    margin:  40px;
 }
 .block-contact{
     border-radius: 10px;
@@ -115,4 +162,73 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+}
+
+/*FAQ*/
+.faq-wrapper{
+    display: flex;
+    height: 30vh;
+    justify-content: start;
+    align-items: center;
+    margin: 0 40px 20px 40px;
+    padding-top: 20px;
+}
+.accordion-faq{
+    width: 100%;
+}
+.item-faq{
+    padding-bottom: 20px;
+}
+.faq-title{
+    display: flex;
+    justify-content: space-between;
+    color: #000;
+    text-align: justify;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+}
+.faq-line{
+    background: #917B9F;
+    width: 100%;
+    height: 2px;
+}
+.faq-content{
+    color: #000;
+    text-align: justify;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0,1,0,1);
+
+}
+.faq-content.show{
+    height: auto;
+    max-height: 9999px;
+    transition: all 0.5s cubic-bezier(1,0,1,0);
+}
+
+/*Tablet*/
+@media screen and (min-width:767px) and (max-width:1023px){
+    /*FAQ*/
+    .faq-wrapper{
+        padding-top: 5px;
+    }
+    .italic-title-contact{
+        margin: 0;
+    }
+}
+/*Phone*/
+@media (max-width: 766px){
+    .regular-title-contact{
+        font-size: 18px;
+    }
+    .italic-title-contact{
+        font-size: 20px;
+    }
 }
