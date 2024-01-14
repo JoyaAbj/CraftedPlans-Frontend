@@ -151,3 +151,91 @@
     padding: 10px;
     width: 450px;
 }
+/*Dates*/
+.Dates{
+    background: #F2E6E8;
+    padding: 20px;
+}
+.page-dates{
+    background: white;
+    border-radius: 10px;
+    margin: 0 auto;
+    width: 600px;
+    padding: 10px;
+}
+.text-part-dates{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.text-dates{
+    text-align: center;
+}
+.radio-btn-dates{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.button-dates{}
+.checkbox-custom{
+    width: 20px; 
+    height: 20px; 
+    border: 2px solid #917B9F; 
+    border-radius: 5px; 
+    margin-right: 5px; 
+    cursor: pointer; 
+}
+.labels-dates-m-s{
+    color: #000;
+    text-align: center;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.division-line{
+    height: 3px;
+    background-color: #50415A;
+    /* border: none;  */
+    /* margin: 10px 0; */
+}
+.toggle-start-end-dates{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.s-e-dates.active-btn {
+    color: #917B9F !important;
+  }
+.s-e-dates:not(.active-btn):hover {
+    color: #917B9F;
+  }
+
+.s-e-dates{
+    color: #000;
+    text-align: center;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+.chosen-date-dates{
+    margin: 10px auto;
+    color: #000;
+    text-align: center;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: 1px solid #000;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 2%;
+}
+.calendar-dates{
+    margin: 10px 40px;
+}

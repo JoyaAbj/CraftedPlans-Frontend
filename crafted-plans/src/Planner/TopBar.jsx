@@ -33,7 +33,7 @@ function App() {
       <NavBar/>
       <div className="sidebar">
       <div className="one-cover">
-          <img src="/TopBar/cover.png" alt="" 
+          <img src="/TopBar/cover.png" alt="cover" 
             className={`cover-png ${visibleCover ? '' : 'inactive-icon'}`} 
             />
         {visibleCover &&
@@ -46,7 +46,7 @@ function App() {
         </a>
         </div>
         <div className="one-cover">
-          <img src="/TopBar/Information.png" alt="" 
+          <img src="/TopBar/Information.png" alt="info" 
             className={`cover-png ${visibleInformation ? '' : 'inactive-icon'}`} 
             />
         {visibleInformation &&
@@ -60,7 +60,7 @@ function App() {
         </div>
         
         <div className="one-cover">
-        <img src="/TopBar/cover.png" alt="" 
+        <img src="/TopBar/Dates.png" alt="dates" 
           className={`cover-png ${visibleDates ? '' : 'inactive-icon'}`} 
           />
         {visibleDates &&
