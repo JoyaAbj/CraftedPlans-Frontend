@@ -177,7 +177,7 @@
     justify-content: space-evenly;
     align-items: center;
 }
-.button-dates{}
+/* .button-dates{} */
 .checkbox-custom{
     width: 20px; 
     height: 20px; 
@@ -238,4 +238,40 @@
 }
 .calendar-dates{
     margin: 10px 40px;
+}
+/*Events*/
+.events-form{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 30px;
+}
+.event-name{
+    border-radius: 10px;
+    border: 1px solid #000;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.50);
+    padding: 1%;
+}
+.add-event-btn{
+    background: #917B9F;
+    color: white;
+    border: none;
+    padding: 1%;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.50);
+}
+.table-events{
+    width: 582px;
+}
+.title-table-events{
+    border-radius: 10px;
+}
+
+.title-th-table-events{
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: left;
+}
+.add-event{
+    height: 20px;
+    width: 20px;
 }
