@@ -82,14 +82,14 @@ const Cover = () => {
           <div className="modal-content">
             <span className="close" onClick={closeModal}>&times;</span>
             <div className="cover-images-modal">
-              <img src={selectedCover.image} alt="product" className="img-cover" />
-              <img src={selectedCover.image[1]} alt="product" className="img-cover" />
-              <img src={selectedCover.image[2]} alt="product" className="img-cover" />
+              <img src={selectedCover.image} alt="product" className="img-cover-modal" />
+              <img src={selectedCover.image[1]} alt="product" className="img-cover-modal" />
+              <img src={selectedCover.image[2]} alt="product" className="img-cover-modal" />
             </div>
             <p className="name-cover-modal">{selectedCover.name}</p>
-            <p className="name-cover-modal">{selectedCover.price}</p>
+            <p className="name-cover-modal">{selectedCover.price}$</p>
             <button className="choose-cover-modal">Choose This Cover</button>
-            <p className="name-cover-modal">
+            <p className="name-cover-modal1">
               Every planner includes a cover page and a month at a glance
               </p>
             {console.log("Modal content displayed")}

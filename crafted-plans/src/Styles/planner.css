@@ -96,7 +96,14 @@
     border-radius: 10px;
     margin: 20px;
 }
-
+.img-cover-modal{
+    width: 300px;
+    border-radius: 10px;
+    margin: 20px;
+}
+.img-cover-modal:hover{
+    transform: scale(2);
+}
 .name-cover{
     color: #000;
     font-size: 30px;
@@ -109,13 +116,13 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 500px;
-    height: 1470px;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 40px;
+    
   }
   .modal-content {
     position: fixed;
@@ -124,6 +131,7 @@
     transform: translate(-50%, -50%);
     background-color: #fff; 
     padding: 20px;
+    width: 1000px;
 
   }
   
@@ -140,6 +148,37 @@
   }
   .name-cover-modal{
     margin: 0 auto;
+    color: #000;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .name-cover-modal1{
+    margin: 0 auto;
+    color: #000;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+  }
+  .choose-cover-modal{
+    border-radius: 10px;
+    background: #917B9F;
+    color: #FFF;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    width: fit-content;
+    border: none;
+    margin: 0 auto;
+    padding: 1%;
+  }
+  .choose-cover-modal:hover{
+    border: 2px solid #917B9F;
+    color: #917B9F;
+    background: transparent;
   }
 
 /*Information*/
