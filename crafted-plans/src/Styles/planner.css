@@ -96,6 +96,7 @@
     border-radius: 10px;
     margin: 20px;
 }
+
 .name-cover{
     color: #000;
     font-size: 30px;
@@ -103,6 +104,43 @@
     font-weight: 500;
     line-height: normal;
 }
+.modal {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 500px;
+    height: 1470px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px;
+  }
+  .modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff; 
+    padding: 20px;
+
+  }
+  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .cover-images-modal{
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .name-cover-modal{
+    margin: 0 auto;
+  }
 
 /*Information*/
 .information-information{
