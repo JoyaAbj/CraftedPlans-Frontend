@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Pages = () => {
   const [selectedTemplate, setSelectedTemplate] = useState(null);
-  const [isWeeklyPlanner, setIsWeeklyPlanner] = useState(false);
+  const [isWeeklyPlanner, setIsWeeklyPlanner] = useState(true);
 
   const handleTemplateClick = (template) => {
     setSelectedTemplate(template);
@@ -10,8 +11,29 @@ const Pages = () => {
 
   const handleToggleClick = () => {
     setIsWeeklyPlanner(!isWeeklyPlanner);
-    setSelectedTemplate(null); // Reset selected template when toggling between weekly and daily
+    setSelectedTemplate(null); 
   };
+
+  // Fetch Pages by category
+  const [pages, setPages] = useState([]);
+  const category = "pages";
+  // const url = process.env.REACT_APP_API_URL;
+  const getAllPages = () => {
+      axios.post(`http://localhost:5000/templates/getTemplateByCategory`, {category})
+        .then((response) => {
+          setPages(response.data.templates);
+          console.log(response.data.templates)
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    };
+    
+    
+    useEffect(() => {
+      getAllPages();
+
+    }, []);
 
   return (
     <div className='Dates'>

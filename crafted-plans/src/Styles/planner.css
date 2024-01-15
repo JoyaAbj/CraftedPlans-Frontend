@@ -403,3 +403,10 @@
     width: 200px;
     border-radius: 10px;
 }
+/*AddOns*/
+.add-ons-images{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
