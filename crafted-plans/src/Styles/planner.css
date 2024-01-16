@@ -437,7 +437,20 @@
     line-height: normal;
     border-radius: 10px;
     padding: 7px;
-    width: 150px;
+    width: fit-content;
     text-align: center;
+}
+.drorpdowns-options{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.img-cover-addOns{
+    width: 300px;
+    border-radius: 10px;
+    margin: 20px;
+}
+.img-cover-addOns:hover{
+    transform: scale(1.5);
 }
 

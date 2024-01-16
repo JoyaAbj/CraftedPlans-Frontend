@@ -35,11 +35,6 @@ const Pages = () => {
 
     }, []);
 
-    const handleImageClick = (selectedImage) => {
-      setSelectedTemplate(selectedImage);
-    };
-  
-
   return (
     <div className='Dates'>
       {selectedTemplate && (
@@ -120,19 +115,6 @@ const Pages = () => {
           </>
         )}
       </div>
-      {/* {pages.image && pages.image.map((page, i) => (
-        <div className="map-images">
-          <img
-            key={i}
-            src={page.image}
-            className="img-cover"
-            onClick={() => handleImageClick(page.image)}
-              />
-            <input 
-            type="radio" 
-            className="add-page-addOns" />
-        </div>
-      ))} */}
     </div>
   );
 };
