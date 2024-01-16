@@ -1,6 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Events = () => {
+  const [events,setEvents] = useState([]);
+  const [eventName,setEventName] = useState("");
+  const [date,setDate] = useState("");
+  const handleAddEvent = (event) => {
+    console.log(event)
+    event.preventDefault()
+    setEvents((prevEvents)=>[...prevEvents, {eventName, date}]);
+    setEventName("");
+    setDate("");
+  }
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    if (name === "eventName") {
+      setEventName(value);
+    } else if (name === "date") {
+      setDate(value);
+    }
+  };
+  const handleDeleteEvent = (index) => {
+    const updatedEvents = [...events];
+    updatedEvents.splice(index, 1);
+    setEvents(updatedEvents);
+  }
   return (
     <div className='Dates'>
        <div className="page-dates">
@@ -11,19 +34,23 @@ const Events = () => {
        </p>
        </div>
        <hr className="division-line" />
-       <form action="addEvents" className="events-form">
+       <form  className="events-form" onSubmit={handleAddEvent}>
         <input 
-        type="text" 
-        className="event-name" 
+        type="text"
+        className="event-name"
         name="eventName"
-        defaultValue="Event Name"
+        value={eventName}
+        placeholder="Event Name"
+        onChange={handleInputChange}
         required
         />
         <input 
-        type="text" 
-        className="event-name" 
-        name="eventDate"
-        defaultValue="Date"
+         type="date"
+         className="event-date"
+         name="date"
+         value={date}
+         onChange={handleInputChange}
+         required
         
         />
         <input 
@@ -42,24 +69,24 @@ const Events = () => {
       {/* <hr className='division-line'/> */}
       </thead>
       <tbody>
+        {events && events.map((event,i) => (
+          <div className="map-events">
+
         <tr>
-          <td>Christmas</td>
-          <td>25th December 2024</td>
+          <td>{event.eventName}</td>
+          <td>{event.date}</td>
           <td>
             <div className="add-delete-event">
-              <img src="/TopBar/x.png" alt="x" className="add-event" />
+              <img 
+              src="/TopBar/x.png" 
+              alt="x" 
+              className="add-event"
+              onClick={handleDeleteEvent} />
             </div>
           </td>
         </tr>
-        <tr>
-          <td>Christmas</td>
-          <td>25th December 2024</td>
-          <td>
-            <div className="add-delete-event">
-              <img src="/TopBar/x.png" alt="x" className="add-event" />
-            </div>
-          </td>
-        </tr>
+          </div>
+        ))}
       </tbody>
        </table>
        </div>

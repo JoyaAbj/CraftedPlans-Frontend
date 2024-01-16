@@ -358,6 +358,7 @@
 .add-event{
     height: 20px;
     width: 20px;
+    cursor: pointer;
 }
 /*Pages*/
 .mockup-display-pages{
@@ -404,9 +405,39 @@
     border-radius: 10px;
 }
 /*AddOns*/
+.map-images{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 .add-ons-images{
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
 }
+.add-page-addOns{
+    margin: 0 auto;
+}
+.dropdown-addOns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+#dropdown{
+    border: none;
+    background: #917B9F;
+    color: #FFF;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 10px;
+    padding: 7px;
+    width: 150px;
+    text-align: center;
+}
+
