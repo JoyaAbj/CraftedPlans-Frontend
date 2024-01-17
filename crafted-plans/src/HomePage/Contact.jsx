@@ -4,6 +4,7 @@ import Footer from './Footer';
 import '../Styles/contact.css';
 import FAQ from './FAQ';
 import emailjs from '@emailjs/browser';
+import { Link } from 'react-router-dom';
 
 const Contact = () => {
   const form = useRef();
@@ -100,9 +101,15 @@ const Contact = () => {
            we're here to help you on your journey to organized and stylish planning. 
           </p>
           <div className="social-icons-contact">
-            <img src="/Images/Instagram.png" alt="insta" className="icons-contact" />
-            <img src="/Images/Instagram.png" alt="insta" className="icons-contact" />
-            <img src="/Images/Instagram.png" alt="insta" className="icons-contact" />
+            <Link to="https://www.instagram.com/buildwithjoya.aj/" target="_blank" rel="noopener noreferrer">
+            <img src="/Images/insta-contact.png" alt="insta" className="icons-contact" />
+            </Link>
+            <Link to="https://www.instagram.com/buildwithjoya.aj/" target="_blank" rel="noopener noreferrer">
+            <img src="/Images/facebook-contact.png" alt="insta" className="icons-contact" />
+            </Link>
+            <Link to="https://www.tiktok.com/@webdesign_andstuff" target="_blank" rel="noopener noreferrer">
+            <img src="/Images/tiktok-contact.png" alt="insta" className="icons-contact" />
+            </Link>
           </div>
          </div>
         </div>

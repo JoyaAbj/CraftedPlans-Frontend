@@ -21,9 +21,9 @@ const Footer = () => {
       </div>
       <div className="social-footer">
         <ul className="social-links">
-          <li className="social-footer"><img src='/Images/Instagram.png' alt='instagram' className='social-icons'/><Link to='#' className='social-name-footer'>@Crafted_Plans</Link></li>
-          <li className="social-footer"><img src='/Images/Facebook.png' alt='instagram' className='social-icons'/><Link to='#' className='social-name-footer'>@Crafted_Plans</Link></li>
-          <li className="social-footer"><img src='/Images/Tiktok.png' alt='instagram' className='social-icons'/><Link to='#' className='social-name-footer'>@Crafted_Plans</Link></li>
+          <li className="social-footer"><img src='/Images/Instagram.png' alt='instagram' className='social-icons'/><Link to="https://www.instagram.com/buildwithjoya.aj/" target="_blank" rel="noopener noreferrer" className='social-name-footer'>@Crafted_Plans</Link></li>
+          <li className="social-footer"><img src='/Images/Facebook.png' alt='instagram' className='social-icons'/><Link to="https://www.instagram.com/buildwithjoya.aj/" target="_blank" rel="noopener noreferrer" className='social-name-footer'>@Crafted_Plans</Link></li>
+          <li className="social-footer"><img src='/Images/Tiktok.png' alt='instagram' className='social-icons'/><Link to="https://www.tiktok.com/@webdesign_andstuff" target="_blank" rel="noopener noreferrer" className='social-name-footer'>@Crafted_Plans</Link></li>
         </ul>
       </div>
         </div>

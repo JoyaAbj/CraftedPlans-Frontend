@@ -168,10 +168,11 @@
 .faq-wrapper{
     display: flex;
     height: 30vh;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
     margin: 0 40px 20px 40px;
     padding-top: 20px;
+    width: 50%;
 }
 .accordion-faq{
     width: 100%;
@@ -212,6 +213,9 @@
     max-height: 9999px;
     transition: all 0.5s cubic-bezier(1,0,1,0);
 }
+.faq-question{
+    font-size: 25px;
+}
 
 /*Tablet*/
 @media screen and (min-width:767px) and (max-width:1023px){
@@ -231,6 +235,7 @@
     /*FAQ*/
     .faq-wrapper{
         padding-top: 5px;
+        width: 90%;
     }
     .italic-title-contact{
         margin: 0;
@@ -285,6 +290,9 @@
         font-size: 20px;
     }
     /*FAQ*/
+    .faq-wrapper{
+        width: 80%;
+    }
     .regular-title-contact{
         font-size: 18px;
     }
