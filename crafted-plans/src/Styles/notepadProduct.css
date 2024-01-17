@@ -62,7 +62,7 @@
     gap: 10px;
     border: 1px solid #917B9F;
     border-radius: 10px;
-    width: 200px;
+    width: 400px;
 }
 .product-quantity-product{
     color: #000;
@@ -72,12 +72,11 @@
     line-height: normal;
     padding: 10px;
 }
-/* .btns-quantity{
+.btns-quantity{
     display: flex;
     justify-self: start;
     align-items: center;
-    flex-direction: column;
-} */
+}
 .product-increase, .product-decrease{
     border: none;
     color: #000;

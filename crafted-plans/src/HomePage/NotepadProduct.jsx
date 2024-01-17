@@ -79,10 +79,10 @@ const NotepadProduct = () => {
             </p>
             <div className="qty-cart">
             <div className="quantity-product">
-            <p className='product-quantity-product'>Quantity: {notePad.quantity}</p>
             <div className="btns-quantity">
             <button className='product-increase'
             onClick={handleDecrease}>-</button>
+            <p className='product-quantity-product'>{quantity}</p>
             <button className='product-decrease'
              onClick={handleIncrease}>+</button>
             </div>
