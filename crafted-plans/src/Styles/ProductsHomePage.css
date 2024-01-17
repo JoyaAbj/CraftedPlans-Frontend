@@ -14,15 +14,7 @@
     width: 320px;
     height: auto;
 }
-/* .line-home{
-    position: absolute;
-  height: 37%;
-  width: 2px;
-  background-color: black;
-  left: 50%;
-  transform: translateX(-50%) translateY(100%);
-  z-index: 1;
-} */
+
 .product-name-home{
     color: #000;
     font-size: 40px;
@@ -38,11 +30,14 @@
     font-weight: 500;
     line-height: normal;
     text-decoration: none;
-}
-.product-link-home:hover{
     border: 2px solid #917B9F;
     border-radius: 10px;
     padding: 2%;
+}
+.product-link-home:hover{
+    border: none;
+    background: #917B9F;
+    color: white;
 }
 
  /*Tablet*/

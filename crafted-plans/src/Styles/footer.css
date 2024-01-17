@@ -2,7 +2,7 @@
     background: #917B9F;
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
+    align-items: flex-end;
 }
 .menu-logo-footer{
     display: flex;
