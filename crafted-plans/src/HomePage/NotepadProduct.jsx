@@ -1,10 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import '../Styles/notepadProduct.css';
 import NavBar from './NavBar';
 import Footer from './Footer';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const NotepadProduct = () => {
+    const { Id } = useParams();
     const [quantity, setQuantity] = useState(1);
+    const [notePad, setNotePad] = useState({}); 
 
   const handleIncrease = () => {
     setQuantity(quantity + 1);
@@ -15,36 +19,51 @@ const NotepadProduct = () => {
       setQuantity(quantity - 1);
     }
   };
+  const getNotePadById = () => {
+    axios.get(`http://localhost:5000/products/getProductById/${Id}`)
+    .then((response)=> {
+      console.log(response.data.products)
+      setNotePad(response.data.products);
+    })
+  .catch((error) => {
+    console.error(error);
+  });
+  }
+  useEffect(() => {
+    getNotePadById();
+  }, [Id]);
   return (
     <div>
      <NavBar/>
      <div className="product">
-        {/* IMAGES */}
-        <div className="images-product">
+       {/* IMAGES */}
+       
+          <div className="images-product" >
             <div className="big-small-images">
-                <img src="/Images/Daily Notes.png" alt="" className="big-image" />
-                <div className="small-images">
-                <img src="/Images/Daily Notes.png" alt="" className="small-image" />
-                <img src="/Images/Daily Notes.png" alt="" className="small-image" />
-                <img src="/Images/Daily Notes.png" alt="" className="small-image" />
-                </div>
+              <img src={notePad.image} alt="" className="big-image" />
+              <div className="small-images">
+                <img src={notePad.image} alt="" className="small-image" />
+                <img src={notePad.image} alt="" className="small-image" />
+                <img src={notePad.image} alt="" className="small-image" />
+              </div>
             </div>
-        </div>
+          </div>
+        
+        {/* </div> */}
         {/* INFORMATION */}
         <div className="informations-product">
             <h2 className="product-name-product">
-                Daily Notes
+                {notePad.name}
             </h2>
             <p className="product-price-product">
-                5$
+                {notePad.price}$
             </p>
             <p className="product-desc-product">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mi purus,
-             feugiat non lectus in, tincidunt convallis dui. 
+              {notePad.description}
             </p>
             <div className="qty-cart">
             <div className="quantity-product">
-            <p className='product-quantity-product'>Quantity: {quantity}</p>
+            <p className='product-quantity-product'>Quantity: {notePad.quantity}</p>
             <div className="btns-quantity">
             <button className='product-increase'
             onClick={handleDecrease}>-</button>
@@ -58,7 +77,7 @@ const NotepadProduct = () => {
                 <p className="product-details-title">Details</p>
                 <hr className="line-product-division"/>
                 <p className="product-details-content">
-                    Size: A5 <br/> Color: beige <br/> Design: Stylish
+                    Size: {notePad.details} <br/> Color: beige <br/> Design: Stylish
                 </p>
             </div>
         </div>

@@ -24,9 +24,10 @@ const NotePads = () => {
         getAllNotePads();
       }, []);
 
-    const handleProductClick = () => {
-
-    }
+      const handleProductClick = (Id) => {
+        // Pass the product ID as state to the NotepadProduct component
+        window.location.href = `/notepadProduct/${Id}`;
+      };
   return (
     <div>
       <NavBar/>
@@ -40,12 +41,12 @@ const NotePads = () => {
     {notePads && notePads.map ((product, i) =>(
     <div className="product-card-notepads" key={i}>
         <div className="image-notepad">
-            <Link to='/notepadProduct'>
+        <Link to='/notepadProduct' onClick={() => handleProductClick(product._id)}>
             <img 
             src={product.image} 
             alt="product" 
             className="img-note"
-            onClick={() => handleProductClick(i)} 
+            // onClick={() => handleProductClick(i)} 
             />
             </Link>
         </div>
