@@ -3,10 +3,12 @@ import '../Styles/productAccessories.css';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { toast } from "react-hot-toast";
 
 const NotepadProduct = () => {
-  const {Id} = useParams();
+    const {Id} = useParams();
+    const navigate = useNavigate();
     const [quantity, setQuantity] = useState(1);
     const [accessorie,setAccessorie] = useState({});
 
@@ -32,6 +34,21 @@ const NotepadProduct = () => {
   useEffect(() => {
     getAccessorieById();
   }, [Id]);
+
+  const handleAddToCart = () => {
+    if (!localStorage.getItem("Ids")) {
+      localStorage.setItem("Ids", Id);
+      navigate("/cart");
+    } else {
+      if (localStorage.getItem("Ids").split(",").includes(Id)) {
+        toast.error("Already in your cart");
+        return;
+      }
+      let updatedId = localStorage.getItem("Ids") + `,${Id}`;
+      localStorage.setItem("ids", updatedId);
+    }
+   
+  };
   return (
     <div>
      <NavBar/>
@@ -69,7 +86,10 @@ const NotepadProduct = () => {
              onClick={handleIncrease}>+</button>
             </div>
             </div>
-            <button className='product-add-to-cart'>Add to Cart</button>
+            <button 
+            className='product-add-to-cart'
+            onClick={handleAddToCart}>
+              Add to Cart</button>
             </div>
             <div className="product-details-div">
                 <p className="product-details-title">Details</p>

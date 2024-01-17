@@ -18,13 +18,16 @@ import Accessories from './HomePage/Accessories';
 import ProductAccessories from './HomePage/ProductAccessories';
 import PageNotFound from './HomePage/PageNotFound';
 import TopBar from './Planner/TopBar';
-import './Styles/style.css';
 import Login from './HomePage/Login';
+import { Toaster } from 'react-hot-toast';
+import Cart from './HomePage/Cart';
+import './Styles/style.css';
 
 function App() {
   return (
    <div>
     <Router>
+      <Toaster toastOptions={{ duration: 5000 }} />
       <Routes>
       <Route path="/" element={ <> <NavBar/><Hero/><ProductsHomePage/><About/><Banner/><Gallery/><Advantages/> <Footer/> </>} />
       <Route path="/contact" element={ <> <Contact/> </>} />
@@ -34,6 +37,7 @@ function App() {
       <Route path="/productAccessories/:Id" element={ <> <ProductAccessories/> </>} />
       <Route path="/login" element={<> <Login/> </>} />
       <Route path="/planners" element={ <> <TopBar/> </>} />
+      <Route path="/cart" element={ <> <Cart/> </>} />
       <Route path="*" element={<PageNotFound />} />
 
       </Routes>
