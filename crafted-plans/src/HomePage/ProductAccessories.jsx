@@ -45,7 +45,7 @@ const NotepadProduct = () => {
         return;
       }
       let updatedId = localStorage.getItem("Ids") + `,${Id}`;
-      localStorage.setItem("ids", updatedId);
+      localStorage.setItem("Ids", updatedId);
     }
    
   };
