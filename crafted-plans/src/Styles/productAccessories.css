@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-evenly;
     align-items: start;
-    gap: 10px;
+    /* gap: 10px; */
     margin: 25px 20px;
 }
 /*Images*/
@@ -11,6 +11,12 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: start;
+}
+.big-small-images{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
 }
 .big-image{
     height: 400px;

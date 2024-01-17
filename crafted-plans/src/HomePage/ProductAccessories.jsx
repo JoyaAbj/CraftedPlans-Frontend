@@ -58,9 +58,10 @@ const NotepadProduct = () => {
             <p className="product-desc-product">
             {accessorie.description} 
             </p>
+            <p className="product-desc-product">Quantity: {accessorie.quantity}</p>
             <div className="qty-cart">
             <div className="quantity-product">
-            <p className='product-quantity-product'>Quantity: {accessorie.quantity}</p>
+            <p className='product-quantity-product'>Quantity: {quantity}</p>
             <div className="btns-quantity">
             <button className='product-increase'
             onClick={handleDecrease}>-</button>
