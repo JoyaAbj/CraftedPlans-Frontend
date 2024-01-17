@@ -1,10 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import '../Styles/productAccessories.css';
 import NavBar from './NavBar';
 import Footer from './Footer';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const NotepadProduct = () => {
+  const {Id} = useParams();
     const [quantity, setQuantity] = useState(1);
+    const [accessorie,setAccessorie] = useState({});
 
   const handleIncrease = () => {
     setQuantity(quantity + 1);
@@ -15,6 +19,19 @@ const NotepadProduct = () => {
       setQuantity(quantity - 1);
     }
   };
+  const getAccessorieById = () => {
+    axios.get(`http://localhost:5000/products/getProductById/${Id}`)
+    .then((response)=> {
+      console.log(response.data.products)
+      setAccessorie(response.data.products);
+    })
+  .catch((error) => {
+    console.error(error);
+  });
+  }
+  useEffect(() => {
+    getAccessorieById();
+  }, [Id]);
   return (
     <div>
      <NavBar/>
@@ -22,29 +39,28 @@ const NotepadProduct = () => {
         {/* IMAGES */}
         <div className="images-product">
             <div className="big-small-images">
-                <img src="/Images/image 3.png" alt="" className="big-image" />
+                <img src={accessorie.image} alt="" className="big-image" />
                 <div className="small-images">
-                <img src="/Images/image 3.png" alt="" className="small-image" />
-                <img src="/Images/image 3.png" alt="" className="small-image" />
-                <img src="/Images/image 3.png" alt="" className="small-image" />
+                <img src={accessorie.image}alt="" className="small-image" />
+                <img src={accessorie.image}alt="" className="small-image" />
+                <img src={accessorie.image}alt="" className="small-image" />
                 </div>
             </div>
         </div>
         {/* INFORMATION */}
         <div className="informations-product">
             <h2 className="product-name-product">
-                Daily Notes
+                {accessorie.name}
             </h2>
             <p className="product-price-product">
-                5$
+                {accessorie.price}$
             </p>
             <p className="product-desc-product">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mi purus,
-             feugiat non lectus in, tincidunt convallis dui. 
+            {accessorie.description} 
             </p>
             <div className="qty-cart">
             <div className="quantity-product">
-            <p className='product-quantity-product'>Quantity: {quantity}</p>
+            <p className='product-quantity-product'>Quantity: {accessorie.quantity}</p>
             <div className="btns-quantity">
             <button className='product-increase'
             onClick={handleDecrease}>-</button>
@@ -58,7 +74,7 @@ const NotepadProduct = () => {
                 <p className="product-details-title">Details</p>
                 <hr className="line-product-division"/>
                 <p className="product-details-content">
-                    Size: A5 <br/> Color: beige <br/> Design: Stylish
+                    {accessorie.details}
                 </p>
             </div>
         </div>

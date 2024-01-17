@@ -31,7 +31,7 @@ function App() {
       <Route path="/notepads" element={ <> <NotePads/> </>} />
       <Route path="/notepadProduct/:Id" element={ <> <NotepadProduct/> </>} />
       <Route path="/accessories" element={ <> <Accessories/> </>} />
-      <Route path="/productAccessories" element={ <> <ProductAccessories/> </>} />
+      <Route path="/productAccessories/:Id" element={ <> <ProductAccessories/> </>} />
       <Route path="/login" element={<> <Login/> </>} />
       <Route path="/planners" element={ <> <TopBar/> </>} />
       <Route path="*" element={<PageNotFound />} />

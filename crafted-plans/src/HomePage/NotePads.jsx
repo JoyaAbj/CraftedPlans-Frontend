@@ -25,7 +25,6 @@ const NotePads = () => {
       }, []);
 
       const handleProductClick = (Id) => {
-        // Pass the product ID as state to the NotepadProduct component
         window.location.href = `/notepadProduct/${Id}`;
       };
   return (
@@ -49,13 +48,17 @@ const NotePads = () => {
             // onClick={() => handleProductClick(i)} 
             />
             </Link>
+            <Link to='/productAccessories' onClick={() => handleProductClick(product._id)} 
+                className="check-item-button">
+                Check Item
+            </Link>
         </div>
         <p className="name-notepad">
             {product.name}
         </p>
         <div className="price-cart-notepad">
         <p className="price-notepad">
-           {product.price}
+           {product.price}$
         </p>
            <img 
            src="/Images/cart.png" 

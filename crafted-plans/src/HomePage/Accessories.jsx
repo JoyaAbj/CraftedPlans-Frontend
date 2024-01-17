@@ -1,11 +1,31 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import '../Styles/accessories.css';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const NotePads = () => {
-    // const handleProductClick = () => {}
+        const [accessories, setAccessories] = useState([]);
+        const category = "accessories";
+        // const url = process.env.REACT_APP_API_URL;
+        const getAllaccessories = () => {
+            axios.post(`http://localhost:5000/products/getProductByCategory`, {category})
+              .then((response) => {
+                setAccessories(response.data.products);
+                console.log(response.data.products)
+              })
+              .catch((error) => {
+                console.error(error);
+              });
+          };
+          
+          useEffect(() => {
+            getAllaccessories();
+          }, []);
+          const handleProductClick = (Id) => {
+            window.location.href = `/productAccessories/${Id}`;
+          };
   return (
     <div>
       <NavBar/>
@@ -16,24 +36,28 @@ const NotePads = () => {
       </div>
 
       <div className="notepad-card">
-    {notepad.map ((product, i) =>(
+    {accessories.map ((product, i) =>(
     <div className="product-card-notepads" key={i}>
         <div className="image-notepad">
-            <Link to='/productAccessories'>
+            <Link to='/productAccessories' onClick={() => handleProductClick(product._id)}>
             <img 
             src={product.image} 
             alt="product" 
             className="img-note"
-            // onClick={() => handleProductClick(i)} 
+             
             />
+            </Link>
+            <Link to='/productAccessories' onClick={() => handleProductClick(product._id)} 
+                className="check-item-button">
+                Check Item
             </Link>
         </div>
         <p className="name-notepad">
-            {product.productName}
+            {product.name}
         </p>
         <div className="price-cart-notepad">
         <p className="price-notepad">
-           {product.productPrice}
+           {product.price}$
         </p>
            <img 
            src="/Images/cart.png" 
