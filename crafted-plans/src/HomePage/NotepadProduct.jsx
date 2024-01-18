@@ -10,7 +10,15 @@ const NotepadProduct = () => {
     const { Id } = useParams();
     const navigate = useNavigate();
     const [quantity, setQuantity] = useState(1);
-    const [notePad, setNotePad] = useState({}); 
+    const [notePad, setNotePad] = useState({
+      image: [],
+      price: 0,
+      name: "",
+      description: "",
+      quantity: 0,
+      details: "",
+      category: "",
+  }); 
 
   const handleIncrease = () => {
     setQuantity(quantity + 1);
@@ -24,7 +32,8 @@ const NotepadProduct = () => {
   const getNotePadById = () => {
     axios.get(`http://localhost:5000/products/getProductById/${Id}`)
     .then((response)=> {
-      console.log(response.data.products)
+      console.log('omar ', response.data.products)
+      console.log('omar2 ', response.data.products.image[0])
       setNotePad(response.data.products);
     })
   .catch((error) => {
@@ -53,14 +62,14 @@ const NotepadProduct = () => {
      <NavBar/>
      <div className="product">
        {/* IMAGES */}
-       
+       {console.log('hel ',notePad.image[0])}
           <div className="images-product" >
             <div className="big-small-images">
               <img src={notePad.image} alt="" className="big-image" />
               <div className="small-images">
-                <img src={notePad.image} alt="" className="small-image" />
-                <img src={notePad.image} alt="" className="small-image" />
-                <img src={notePad.image} alt="" className="small-image" />
+                <img src={notePad.image[0]} alt="" className="small-image" />
+                <img src={notePad.image[1]} alt="" className="small-image" />
+                <img src={notePad.image[2]} alt="" className="small-image" />
               </div>
             </div>
           </div>

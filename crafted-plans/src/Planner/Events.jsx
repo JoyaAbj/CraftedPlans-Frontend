@@ -1,28 +1,41 @@
 import React, { useState } from 'react'
 
 const Events = () => {
-  const [events,setEvents] = useState([]);
+  const [events,setEvents] = useState(localStorage.getItem('events')? JSON.parse(localStorage.getItem('events')): []);
   const [eventName,setEventName] = useState("");
   const [date,setDate] = useState("");
-  const handleAddEvent = (event) => {
-    console.log(event)
-    event.preventDefault()
+  const handleAddEvent = (e) => {
+    e.preventDefault()
+
+    const oldArray = JSON.parse(localStorage.getItem('events'))
+    if (oldArray && oldArray.length > 0){
+      oldArray.push({eventName, date})
+      localStorage.setItem('events', JSON.stringify(oldArray))
+    }
+  else
+  localStorage.setItem('events', JSON.stringify([{eventName, date}]))
     setEvents((prevEvents)=>[...prevEvents, {eventName, date}]);
-    setEventName("");
-    setDate("");
+    setEventName('')
+    setDate('')
   }
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    console.log(name, value)
+
     if (name === "eventName") {
       setEventName(value);
     } else if (name === "date") {
       setDate(value);
     }
   };
+
   const handleDeleteEvent = (index) => {
     const updatedEvents = [...events];
     updatedEvents.splice(index, 1);
-    setEvents(updatedEvents);
+    const currentArray = JSON.parse(localStorage.getItem('events'))
+    currentArray.splice(index,1)
+    localStorage.setItem('events', JSON.stringify(currentArray))
+    // setEvents(updatedEvents);
   }
   return (
     <div className='Dates'>

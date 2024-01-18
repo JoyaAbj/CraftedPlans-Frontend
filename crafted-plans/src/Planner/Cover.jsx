@@ -39,7 +39,10 @@ const Cover = () => {
     const closeModal = () => {
       setIsModalOpen(false);
     };
-
+    const handleChooseCover = (selectedCover) =>{
+      localStorage.setItem('cover', selectedCover._id)
+    }
+    
   return (
     <div>
       {/* Name on cover */}
@@ -88,7 +91,9 @@ const Cover = () => {
             </div>
             <p className="name-cover-modal">{selectedCover.name}</p>
             <p className="name-cover-modal">{selectedCover.price}$</p>
-            <button className="choose-cover-modal">Choose This Cover</button>
+            <button 
+            className="choose-cover-modal"
+            onClick={()=>handleChooseCover(selectedCover)}>Choose This Cover</button>
             <p className="name-cover-modal1">
               Every planner includes a cover page and a month at a glance
               </p>

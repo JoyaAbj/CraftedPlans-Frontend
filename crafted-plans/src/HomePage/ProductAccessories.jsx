@@ -54,6 +54,7 @@ const NotepadProduct = () => {
      <NavBar/>
      <div className="product">
         {/* IMAGES */}
+        {console.log(accessorie.image)}
         <div className="images-product">
             <div className="big-small-images">
                 <img src={accessorie.image} alt="" className="big-image" />

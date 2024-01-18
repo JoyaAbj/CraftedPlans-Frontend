@@ -6,6 +6,7 @@ const AddOns = () => {
   const [selectedOption, setSelectedOption] = useState('');
   const [addOns, setAddOns] = useState([]);
   const [correspondingImageUrl, setCorrespondingImageUrl] = useState(null);
+  const [largeImage, setLargeImage] = useState('')
   const category = "addOns";
 
   // Fetch AddOns
@@ -48,6 +49,22 @@ const AddOns = () => {
   //   ]
   // };
 
+  
+
+  const correspondingImageUrls = [
+      { name: "Meal Planner", url: "https://firebasestorage.googleapis.com/v0/b/crafted-plans.appspot.com/o/files%2Fmeal-planner-mockup-nobg.png?alt=media&token=3d027d5e-ac37-46b8-a532-71a97f708a6c" },
+      { name: "Workout Tracker", url: "https://firebasestorage.googleapis.com/v0/b/crafted-plans.appspot.com/o/files%2FWorkout-tracker-mockup-nobg.png?alt=media&token=59bcedc4-fd70-4d79-bd11-5520558e7759" },
+      { name: "Measurement Tracker", url: "https://firebasestorage.googleapis.com/v0/b/crafted-plans.appspot.com/o/files%2FMeasurement-Tracker-mockup-nobg.png?alt=media&token=23de9ef4-8270-4fec-b010-c7c5236824d0" },
+    
+      {name: "Habit Tracker", url: "https://firebasestorage.googleapis.com/v0/b/crafted-plans.appspot.com/o/files%2FHabit-tracker-mockup-nobg.png?alt=media&token=007f3a1e-def6-43fe-b325-04a0bcf31eb9"},
+      {name: "Project Tracker", url: "https://firebasestorage.googleapis.com/v0/b/crafted-plans.appspot.com/o/files%2FProject-Tracker-mockup-nobg.png?alt=media&token=d75eef64-3f38-4500-807c-f44f8c93458f"},
+      {name: "Reading Tracker", url: "https://firebasestorage.googleapis.com/v0/b/crafted-plans.appspot.com/o/files%2FReading-Tracker-mockup-nobg.png?alt=media&token=6e0772df-3ba9-4c62-9e0a-b197a12fc388"},
+    
+      {name: "Assignment Tracker", url: "https://firebasestorage.googleapis.com/v0/b/crafted-plans.appspot.com/o/files%2FAssignment%20Tracker-mockup-nobg.png?alt=media&token=567eadfb-715a-4dee-896b-55fd77d7f264"},
+      {name: "Semester Planner", url: "https://firebasestorage.googleapis.com/v0/b/crafted-plans.appspot.com/o/files%2FSemester-planner-mockup-nobg.png?alt=media&token=00dc7687-eeef-4e15-bfb4-1421e955e662"},
+      {name: "Study Session", url: "https://firebasestorage.googleapis.com/v0/b/crafted-plans.appspot.com/o/files%2FStudy-session-mockup-nobg.png?alt=media&token=e2bcdcb0-aa4a-4c24-b652-29e64c4ea136"},
+  ];
+
   // const handleImageClick = (selectedImageName) => {
   //   // Find corresponding image URL based on the selected option and name
   //   const correspondingImageArray = correspondingImageUrls[selectedOption];
@@ -61,6 +78,13 @@ const AddOns = () => {
   //   }
   // };
   
+  const handleImageClick = (selectedImageName) => {
+    console.log(selectedImageName)
+    const result = correspondingImageUrls.filter(option=>option.name === selectedImageName)
+    console.log(result)
+    setLargeImage(result[0].url)
+  }
+  
   
   const filteredAddOns = addOns.filter((addOn) => {
     return selectedOption === '' || addOn.name === selectedOption;
@@ -68,14 +92,14 @@ const AddOns = () => {
 
   return (
     <div className='Dates'>
-     {/* Display the corresponding image
-     {correspondingImageUrl && (
+     {/* Display the corresponding image */}
+     {largeImage !=='' && (
         <img
-          src={correspondingImageUrl}
+          src={largeImage}
           alt="Corresponding Image"
           className="corresponding-image"
         />
-      )} */}
+      )}
 
       <div className="drorpdowns-options">
       {/* DropDown Fitness */}
@@ -123,7 +147,7 @@ const AddOns = () => {
                       src={image}
                       alt={`product-${i}-${j}`}
                       className="img-cover-addOns"
-                      // onClick={() => handleImageClick(addOn.name)}
+                      onClick={() => handleImageClick(addOn.name)}
                     />
                     <input
                       type="radio"
