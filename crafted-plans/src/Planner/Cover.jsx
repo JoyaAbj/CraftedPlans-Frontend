@@ -6,6 +6,7 @@ const Cover = () => {
   const [inputValue, setInputValue] = useState('');
   const [selectedCover, setSelectedCover] = useState(null); 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMonthModalOpen,setIsMonthModalOpen] = useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('Submitted value:', inputValue);
@@ -39,28 +40,15 @@ const Cover = () => {
     const closeModal = () => {
       setIsModalOpen(false);
     };
+    const handleOpenMonthModal = () => {
+      setIsMonthModalOpen(true); 
+    }
     const handleChooseCover = (selectedCover) =>{
       localStorage.setItem('cover', selectedCover._id)
     }
     
   return (
     <div>
-      {/* Name on cover */}
-      <form onSubmit={handleSubmit} className="name-on-cover-cover">
-        <label className='label-cover' htmlFor="name on planner">Name on Planner</label>
-        <div className="input-submit-cover">
-        <input className='input-cover'
-          type="text"
-          id="name on planner"
-          name="name on planner"
-          value="planner"
-          onChange={(e) => setInputValue(e.target.value)}
-          required
-        />
-        <input className='submit-cover' type="submit" value="Submit" />
-        </div>
-      </form>
-
       {/* Covers */}
       <div className="cover-card-cover" >
       {cover && cover.map ((cover, i) =>(
@@ -94,10 +82,41 @@ const Cover = () => {
             <button 
             className="choose-cover-modal"
             onClick={()=>handleChooseCover(selectedCover)}>Choose This Cover</button>
+            <div className="month-view">
             <p className="name-cover-modal1">
               Every planner includes a cover page and a month at a glance
               </p>
+              <img 
+              src="/TopBar/events.png" 
+              alt="month at a glance" 
+              className="month-at-a-glance" 
+              onClick={handleOpenMonthModal}/>
+            </div>
             {console.log("Modal content displayed")}
+          </div>
+        </div>
+      )}
+      {/* Month Modal */}
+      {isMonthModalOpen && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={() => setIsMonthModalOpen(false)}>
+              &times;
+            </span>
+            <div className="grid-month-modal">
+            <img src="/Month-at-a-glance/1.png" alt="january" className="static-month-at-a-glance" />
+            <img src="/Month-at-a-glance/2.png" alt="february" className="static-month-at-a-glance" />
+            <img src="/Month-at-a-glance/3.png" alt="march" className="static-month-at-a-glance" />
+            <img src="/Month-at-a-glance/4.png" alt="april" className="static-month-at-a-glance" />
+            <img src="/Month-at-a-glance/5.png" alt="may" className="static-month-at-a-glance" />
+            <img src="/Month-at-a-glance/6.png" alt="june" className="static-month-at-a-glance" />
+            <img src="/Month-at-a-glance/7.png" alt="july" className="static-month-at-a-glance" />
+            <img src="/Month-at-a-glance/8.png" alt="august" className="static-month-at-a-glance" />
+            <img src="/Month-at-a-glance/9.png" alt="september" className="static-month-at-a-glance" />
+            <img src="/Month-at-a-glance/10.png" alt="october" className="static-month-at-a-glance" />
+            <img src="/Month-at-a-glance/11.png" alt="november" className="static-month-at-a-glance" />
+            <img src="/Month-at-a-glance/12.png" alt="december" className="static-month-at-a-glance" />
+            </div>
           </div>
         </div>
       )}

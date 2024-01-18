@@ -33,46 +33,6 @@
     align-items: center;
 }
 /*name on planner*/
-.name-on-cover-cover{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.label-cover{
-    color: #000;
-    font-size: 35px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-}
-.input-submit-cover{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 7px;
-}
-.input-cover{
-    border-radius: 10px;
-    border: 3px solid #000;
-    box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.25);
-    color: #A890AD;
-    font-size: 35px;
-    font-style: italic;
-    font-weight: 300;
-    line-height: normal;
-}
-.submit-cover{
-    color: #FFF;
-    text-align: center;
-    font-size: 35px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    border-radius: 10px;
-    background: #917B9F;
-    box-shadow: 4px 5px 4px 0px rgba(0, 0, 0, 0.25);
-}
 
 /*Covers*/
 .cover-card-cover{
@@ -95,6 +55,7 @@
     width: 300px;
     border-radius: 10px;
     margin: 20px;
+    cursor: pointer;
 }
 .img-cover-modal{
     width: 300px;
@@ -110,6 +71,8 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    display: flex;
+    justify-content: center;
 }
 .modal {
     display: block;
@@ -180,6 +143,25 @@
     color: #917B9F;
     background: transparent;
   }
+  .month-at-a-glance{
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+  }
+  .month-view{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .static-month-at-a-glance{
+    width: 180px;
+    height: 200px;
+  }
+  .grid-month-modal{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
 
 /*Information*/
 .information-information{
@@ -217,16 +199,66 @@
 .form-information{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 100px;
+   
+}
+.first-3-info{
+    display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     gap: 20px;
-   
 }
+.last-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+}
+
 .input-information{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid lightgray;
+    text-align: center;
+    resize: none;
+    width: 275px;
+    font-family: cursive;
+}
+.input-information-name{
+    color: #000;
+    text-align: center;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid lightgray;
+    font-family: cursive;
+}
+.input-information:focus{
+    border-bottom: 1px solid black;    
+}
+.input-information-name:focus{
+    font-family: Poppins;
+}
+.information-submit{
+    border: none;
+    background: #917B9F;
+    color: white;
+    padding: 1px;
     border-radius: 10px;
-    border: 2px solid #000;
-    padding: 10px;
-    width: 450px;
+    width: 275px;
+    height: 40px;
+}
+.information-submit:hover{
+    background: transparent;
+    border: 1px solid #917B9F;
+    color: #917B9F;
 }
 /*Dates*/
 .Dates{

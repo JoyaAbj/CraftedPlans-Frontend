@@ -83,9 +83,9 @@ const Events = () => {
       </thead>
       <tbody>
         {events && events.map((event,i) => (
-          <div className="map-events">
+         
 
-        <tr>
+        <tr className='title-table-events'>
           <td>{event.eventName}</td>
           <td>{event.date}</td>
           <td>
@@ -98,7 +98,6 @@ const Events = () => {
             </div>
           </td>
         </tr>
-          </div>
         ))}
       </tbody>
        </table>

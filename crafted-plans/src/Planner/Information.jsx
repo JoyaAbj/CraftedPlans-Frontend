@@ -1,6 +1,31 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 const Information = () => {
+  const initialFormData = {
+    fullName: 'Full Name',
+    phoneNumber: 'Phone Number',
+    email: 'email@example.com',
+    message: 'I am creating the best version of myself',
+  };
+  const [formData, setFormData] = useState(initialFormData);
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleInputFocus = (field) => {
+    if (formData[field] === initialFormData[field]) {
+      setFormData({
+        ...formData,
+        [field]: '',
+      });
+    }
+  };
+  const handleSaveInformations = () => {
+
+  }
   return (
     <div className='Dates'>
       <div className="page-dates">
@@ -12,33 +37,50 @@ const Information = () => {
         Welcome to your planner.  Feel free to fill your first page
         </p>
         </div>
-        <form action="" className="form-information">
+        <form action="" className="form-information"  onSubmit={handleSaveInformations}>
+          <div className="first-3-info">
           <input type="text"
-          className='input-information'
+          className='input-information-name'
           name="fullName"
-          value="Full Name"
+          value={formData.fullName}
+          onChange={handleChange}
+          onFocus={() => handleInputFocus('fullName')}
           required
           />
           <input type="text"
           className='input-information'
           name="phoneNumber"
-          value="Phone Number"
+          value={formData.phoneNumber}
+          onChange={handleChange}
+          onFocus={() => handleInputFocus('phoneNumber')}
           required
           />
           <input type="text"
           className='input-information'
           name="email"
-          value="Email"
+          value={formData.email}
+          onChange={handleChange}
+          onFocus={() => handleInputFocus('email')}
           required
           />
-          <textarea 
+          </div>
+          <div className="last-info">
+            <textarea 
           className='input-information'
           name="message" id="" 
-          value="Message"
+          value={formData.message}
+          onChange={handleChange}
+          onFocus={() => handleInputFocus('message')}
           cols="30" 
-          rows="10">
+          rows="4"
+          maxLength="50" >
+            
           </textarea>
-          <input type="submit" />
+          <input 
+          type="submit"
+          value="Save"
+          className='information-submit' />
+            </div>
         </form>
       </div>
     </div>
