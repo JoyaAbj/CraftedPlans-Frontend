@@ -82,5 +82,9 @@
        .link-notepads{
         justify-content: space-evenly;
        }
+       .linking-notepads{
+        font-size: 15px;
+       }
+       
 }
     

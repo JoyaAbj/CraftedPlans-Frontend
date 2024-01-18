@@ -28,6 +28,7 @@
 }
 .small-image{
     height: 115px;
+    border-radius: 10px;
 }
 
 /*Information*/
@@ -135,7 +136,7 @@
 /*Tablet*/
 @media screen and (min-width:767px) and (max-width:1023px){
     .product-desc-product{
-        width: 400px;
+        width: 300px;
     }
 }
 
@@ -143,6 +144,8 @@
 @media (max-width: 766px){
     .product{
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     .product-desc-product{
         width: 346px;
@@ -151,5 +154,11 @@
         border: none;
         background: #917B9F;
         color: white;
+    }
+    .big-image{
+        height: 300px;
+    }
+    .small-image{
+        height: 100px;
     }
 }
