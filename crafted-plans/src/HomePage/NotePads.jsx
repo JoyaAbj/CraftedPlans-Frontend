@@ -35,17 +35,18 @@ const NotePads = () => {
         
             <p className='linking-notepads'>Notepads</p>
       </div>
+ 
 
       <div className="notepad-card">
     {notePads && notePads.map ((product, i) =>(
     <div className="product-card-notepads" key={i}>
         <div className="image-notepad">
-        <Link to='/notepadProduct' onClick={() => handleProductClick(product._id)}>
+        <Link to={`/notepadProduct/${product._id}`}>
             <img 
             src={product.image} 
             alt="product" 
             className="img-note"
-            // onClick={() => handleProductClick(i)} 
+            onClick={() => handleProductClick(product._id)}
             />
             </Link>
             <Link to='/productAccessories' onClick={() => handleProductClick(product._id)} 
@@ -60,10 +61,7 @@ const NotePads = () => {
         <p className="price-notepad">
            {product.price}$
         </p>
-           <img 
-           src="/Images/cart.png" 
-           alt="cart" 
-           className="cart-notepad"/>
+
         </div>
     </div>
     ))}

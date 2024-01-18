@@ -20,15 +20,16 @@
 }
 .notepad-card{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 50px;
-    margin: 0 40px;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 30px;
+     margin: 0 20px;
+     place-items: center;
 }
 .product-card-notepads{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 15px;
+    gap: 8px;
 }
 .image-notepad{
     border-radius: 10px;
@@ -99,4 +100,21 @@
 }
 .cart-notepad{
     cursor: pointer;
+}
+/*Tablet*/
+@media screen and (min-width:767px) and (max-width:1023px){
+    .image-notepad::after,
+    .image-notepad:hover::after,
+    .image-notepad:hover .check-item-button {
+        opacity: 0;
+  }
+}
+
+/*Phone*/
+@media (max-width: 766px){
+    .image-notepad::after,
+    .image-notepad:hover::after,
+    .image-notepad:hover .check-item-button {
+        opacity: 0;
+}
 }

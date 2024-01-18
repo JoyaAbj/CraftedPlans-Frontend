@@ -5,8 +5,10 @@ import Footer from './Footer';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+
 const NotePads = () => {
         const [accessories, setAccessories] = useState([]);
+
         const category = "accessories";
         // const url = process.env.REACT_APP_API_URL;
         const getAllaccessories = () => {
@@ -26,13 +28,15 @@ const NotePads = () => {
           const handleProductClick = (Id) => {
             window.location.href = `/productAccessories/${Id}`;
           };
+          
+          
   return (
     <div>
       <NavBar/>
       <div className="link-notepads">
         <Link to='/' className='linking-notepads'>Home/</Link>
         
-            <p className='linking-notepads'>Notepads</p>
+            <p className='linking-notepads'>Accessories</p>
       </div>
 
       <div className="notepad-card">
@@ -59,10 +63,7 @@ const NotePads = () => {
         <p className="price-notepad">
            {product.price}$
         </p>
-           <img 
-           src="/Images/cart.png" 
-           alt="cart" 
-           className="cart-notepad"/>
+           
         </div>
     </div>
     ))}

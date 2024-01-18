@@ -3,15 +3,23 @@ import '../Styles/productAccessories.css';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { toast } from "react-hot-toast";
 
 const NotepadProduct = () => {
     const {Id} = useParams();
     const navigate = useNavigate();
     const [quantity, setQuantity] = useState(1);
-    const [accessorie,setAccessorie] = useState({});
-
+    const [accessorie,setAccessorie] = useState({
+      image: [],
+      price: 0,
+      name: "",
+      description: "",
+      quantity: 0,
+      details: "",
+      category: "",
+  }); 
+  const [selectedImageIndex,setSelectedImageIndex] = useState(0);
   const handleIncrease = () => {
     setQuantity(quantity + 1);
   };
@@ -49,19 +57,35 @@ const NotepadProduct = () => {
     }
    
   };
+
+  const handleChangeImage = (index) =>{
+    setSelectedImageIndex(index);
+  }
   return (
     <div>
      <NavBar/>
+     <div className="link-notepads">
+        <Link to='/' className='linking-notepads'>Home/</Link>
+        <Link to='/accessories' className='linking-notepads'>Accessories/</Link>
+        
+            <p className='linking-notepads'>{accessorie.name}</p>
+      </div>
      <div className="product">
         {/* IMAGES */}
         {console.log(accessorie.image)}
         <div className="images-product">
             <div className="big-small-images">
-                <img src={accessorie.image} alt="" className="big-image" />
+                <img src={accessorie.image[selectedImageIndex]} alt="" className="big-image" />
                 <div className="small-images">
-                <img src={accessorie.image}alt="" className="small-image" />
-                <img src={accessorie.image}alt="" className="small-image" />
-                <img src={accessorie.image}alt="" className="small-image" />
+                {accessorie.image.map((smallImage, index) => (
+                <img
+                  key={index}
+                  src={smallImage}
+                  alt={`small-image-${index}`}
+                  className={`small-image ${selectedImageIndex === index ? 'selected' : ''}`}
+                  onClick={() => handleChangeImage(index)}
+                />
+              ))}
                 </div>
             </div>
         </div>

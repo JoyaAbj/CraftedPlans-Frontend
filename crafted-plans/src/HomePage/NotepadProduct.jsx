@@ -3,7 +3,7 @@ import '../Styles/notepadProduct.css';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { toast } from "react-hot-toast";
 
 const NotepadProduct = () => {
@@ -19,6 +19,7 @@ const NotepadProduct = () => {
       details: "",
       category: "",
   }); 
+  const [selectedImageIndex,setSelectedImageIndex] = useState(0);
 
   const handleIncrease = () => {
     setQuantity(quantity + 1);
@@ -57,19 +58,34 @@ const NotepadProduct = () => {
     }
    
   };
+  const handleChangeImage = (index) =>{
+    setSelectedImageIndex(index);
+  }
   return (
     <div>
      <NavBar/>
+     <div className="link-notepads">
+        <Link to='/' className='linking-notepads'>Home/</Link>
+        <Link to='/notepads' className='linking-notepads'>Notepads/</Link>
+        
+            <p className='linking-notepads'>{notePad.name}</p>
+      </div>
      <div className="product">
        {/* IMAGES */}
        {console.log('hel ',notePad.image[0])}
           <div className="images-product" >
             <div className="big-small-images">
-              <img src={notePad.image} alt="" className="big-image" />
+              <img src={notePad.image[selectedImageIndex]} alt="" className="big-image" />
               <div className="small-images">
-                <img src={notePad.image[0]} alt="" className="small-image" />
-                <img src={notePad.image[1]} alt="" className="small-image" />
-                <img src={notePad.image[2]} alt="" className="small-image" />
+              {notePad.image.map((smallImage, index) => (
+                <img
+                  key={index}
+                  src={smallImage}
+                  alt={`small-image-${index}`}
+                  className={`small-image ${selectedImageIndex === index ? 'selected' : ''}`}
+                  onClick={() => handleChangeImage(index)}
+                />
+              ))}
               </div>
             </div>
           </div>

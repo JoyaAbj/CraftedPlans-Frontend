@@ -12,17 +12,20 @@
      font-weight: 500;
      line-height: normal;
      cursor: pointer;
+     margin: 0;
  }
  .price-cart-notepad{
      display: flex;
-     justify-content: space-between;
+     justify-content: start;
      align-items: center;
+     gap: 15px;
  }
  .notepad-card{
      display: grid;
      grid-template-columns: repeat(3, 1fr);
-     gap: 50px;
+     gap: 30px;
      margin: 0 20px;
+     place-items: center;
  }
  .image-notepad{
      border-radius: 10px;
@@ -33,7 +36,8 @@
      display: flex;
      justify-content: center;
      align-items: center;
-     padding: 20px;
+     padding: 15px;
+     width: 300px;
  }
  .img-note{
      border-radius: 10px;
@@ -46,10 +50,11 @@
      font-weight: 500;
      line-height: normal;
      cursor: pointer;
+     margin: 0;
  }
  .price-notepad{
      color: #A890AD;
-     font-size: 25px;
+     font-size: 30px;
      font-style: normal;
      font-weight: 500;
      line-height: normal;
@@ -57,4 +62,25 @@
  }
  .cart-notepad{
      cursor: pointer;
+     width: 35px;
+     bottom: 7px;
+     position: relative;
  }
+
+
+ /*Tablet*/
+@media screen and (min-width:767px) and (max-width:1023px){
+   .notepad-card{
+    grid-template-columns: repeat(2, 1fr);
+   }
+}
+/*Phone*/
+@media (max-width: 766px){
+    .notepad-card{
+        grid-template-columns: repeat(1, 1fr);
+       }
+       .link-notepads{
+        justify-content: space-evenly;
+       }
+}
+    
