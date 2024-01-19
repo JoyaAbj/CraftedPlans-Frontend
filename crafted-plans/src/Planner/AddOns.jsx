@@ -6,6 +6,7 @@ const AddOns = () => {
   const [selectedTemplate, setSelectedTemplate] = useState(null);
   const [selectedOption, setSelectedOption] = useState('');
   const [addOns, setAddOns] = useState([]);
+  const [addOnsObj, setAddOnsObj] = useState({});
   const [correspondingImageUrl, setCorrespondingImageUrl] = useState(null);
   const [largeImage, setLargeImage] = useState('')
   const category = "addOns";
@@ -90,8 +91,22 @@ const AddOns = () => {
   const filteredAddOns = addOns.filter((addOn) => {
     return selectedOption === '' || addOn.name === selectedOption;
   })
+  // console.log(filteredAddOns)
 
-
+  const handleChange = (event, addOn) => {
+        if (event.target.checked) {
+    localStorage.setItem(addOn.name, addOn._id)
+    setAddOnsObj((previous) => ({
+      ...previous, [addOn.name ]: addOn._id
+    }))
+        } else {
+    localStorage.removeItem(addOn.name)
+    setAddOnsObj((previous) => ({
+      ...previous,
+      [addOn.name] : null
+    }))
+        }
+  };
 
   return (
     <div className='Dates'>
@@ -142,7 +157,7 @@ const AddOns = () => {
       {selectedOption && (
         <div className="cover-card-cover">
           {filteredAddOns.map((addOn, i) => (
-            <div key={i}>
+            <div key={addOn._id}>
               <div className="add-ons-images">
                 {addOn.image.length > 0 && (
                   <div className="map-images">
@@ -154,11 +169,12 @@ const AddOns = () => {
                     />
                    <label class="labels-dates-m-s">
                       <input 
-                        type="radio" 
-                        className="button-dates checkbox-custom" 
+                        type="checkbox" 
+                        className="button-dates1 checkbox-custom1" 
                         name="addOn" 
-                        value={addOn.name}
-                        // onClick={() => handleRadioClick(addOn.name)}
+                        checked={addOnsObj[addOn.name] || localStorage.getItem(addOn.name) ? true : false}
+                        onChange={(e) => handleChange(e, addOn)}
+                        // onClick={() => handleCheckBoxClick(addOn.name)}
                       />
                       <span className="radio-label">{addOn.name}</span>
                     </label>

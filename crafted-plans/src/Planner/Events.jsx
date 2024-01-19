@@ -35,7 +35,7 @@ const Events = () => {
     const currentArray = JSON.parse(localStorage.getItem('events'))
     currentArray.splice(index,1)
     localStorage.setItem('events', JSON.stringify(currentArray))
-    // setEvents(updatedEvents);
+    setEvents(updatedEvents);
   }
   return (
     <div className='Dates'>
