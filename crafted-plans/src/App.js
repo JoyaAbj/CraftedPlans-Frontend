@@ -22,6 +22,7 @@ import Login from './HomePage/Login';
 import { Toaster } from 'react-hot-toast';
 import Cart from './HomePage/Cart';
 import './Styles/style.css';
+import SideBar from './Dashboard/SideBar';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
       <Route path="/login" element={<> <Login/> </>} />
       <Route path="/planners" element={ <> <TopBar/> </>} />
       <Route path="/cart" element={ <> <Cart/> </>} />
+      <Route path="/dashboard" element={<> <SideBar/></>} />
       <Route path="*" element={<PageNotFound />} />
 
       </Routes>
