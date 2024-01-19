@@ -93,7 +93,7 @@ const Pages = () => {
         <img
           src={largeImage}
           alt="Corresponding Image"
-          className="corresponding-image"
+          className="mockup-display-pages"
         />
       )}
       <div className="toggle-btns-pages">
