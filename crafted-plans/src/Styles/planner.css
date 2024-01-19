@@ -293,6 +293,25 @@
     justify-content: space-evenly;
     align-items: center;
 }
+.checkbox-custom {
+    display: none; /* Hide the default radio button */
+  }
+  .checkbox-custom + .radio-label:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    background-color: #eee; /* Default background color */
+    border-radius: 50%;
+    margin-right: 10px; /* Space between checkmark and label text */
+  }
+  .checkbox-custom:checked + .radio-label:before {
+    background-color: #917B9F; /* Change color to purple when selected */
+  }
+  .radio-label {
+    vertical-align: middle;
+  }
 /* .button-dates{} */
 .checkbox-custom{
     width: 20px; 
@@ -353,7 +372,11 @@
     padding: 2%;
 }
 .calendar-dates{
-    margin: 10px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    width: 550px;
 }
 /*Events*/
 .events-form{

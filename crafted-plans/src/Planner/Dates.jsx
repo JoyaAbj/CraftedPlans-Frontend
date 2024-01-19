@@ -3,14 +3,36 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
 const Dates = () => {
-  const [date, setDate] = useState(new Date());
-  const onChange = (date) => {
-    setDate(date);
-  }
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+ 
   const [activeButton, setActiveButton] = useState('start');
   const handleButtonClick = (buttonType) => {
     setActiveButton(buttonType);
+
+    // Save the buttonType to local storage
+    localStorage.setItem('activeButtonType', buttonType);
   };
+
+  const handleRadioClick = (value) => {
+    // Save the selected value to local storage
+    localStorage.setItem('selectedStartDay', value);
+  };
+
+  const handleCalendarChange = (date) => {
+    if (activeButton === 'start') {
+      date.setHours(0, 0, 0, 0);
+      setStartDate(date);
+      localStorage.setItem('selectedPlannerStartDate', date.toLocaleDateString());
+    } else if (activeButton === 'end') {
+      date.setHours(0, 0, 0, 0);
+      setEndDate(date);
+      localStorage.setItem('selectedPlannerEndDate', date.toLocaleDateString());
+    }
+  };
+  const selectedStartDateString = startDate.toLocaleDateString();
+  const selectedEndDateString = endDate.toLocaleDateString();
+  const minStartDate = new Date();
   return (
     <div className='Dates'>
       <div className="page-dates">
@@ -24,20 +46,23 @@ const Dates = () => {
       <div className="radio-btn-dates">
       <label className='labels-dates-m-s'>
       <input 
-      type="checkbox" 
+      type="radio" 
       className="button-dates checkbox-custom" 
-      name="Date" 
-      value="Monday Start"/>
-      Monday Start
+      name="date" 
+      value="Monday Start"
+      onClick={() => handleRadioClick("Monday Start")}/>
+      <span class="radio-label">Monday Start</span>
       </label>
-      <label className='labels-dates-m-s'>
+      <label class="labels-dates-m-s">
       <input 
-      type="checkbox" 
-      className="button-dates checkbox-custom" 
-      name="Date" 
-      value="Sunday Start"/>
-      Sunday Start
-      </label>
+        type="radio" 
+        class="button-dates checkbox-custom" 
+        name="date" 
+        value="Sunday Start"
+        onClick={() => handleRadioClick("Sunday Start")}
+      />
+      <span class="radio-label">Sunday Start</span>
+    </label>
       </div>
       <hr className='division-line'/>
       {/* Toggle between start date and end date to choose on the calendar*/}
@@ -51,12 +76,25 @@ const Dates = () => {
         End Date
       </button>
       </div>
-        <h2 className="chosen-date-dates">January 1st 2024</h2>
+      {activeButton === 'start' && (
+          <h2 className="chosen-date-dates">Start Date: {selectedStartDateString}</h2>
+        )}
+        {activeButton === 'end' && (
+          <h2 className="chosen-date-dates">End Date: {selectedEndDateString}</h2>
+        )}
         <hr className='division-line'/>
     <div className='calendar-dates'>
-      <Calendar
-      onChange={onChange} value={date}>
-      </Calendar>
+    {activeButton === 'start' && (
+            <Calendar 
+            onChange={handleCalendarChange} 
+            value={startDate} 
+            minDate={minStartDate}/>
+          )}
+          {activeButton === 'end' && (
+            <Calendar 
+            onChange={handleCalendarChange} 
+            value={endDate} />
+          )}
     </div>
       </div>
     </div>
