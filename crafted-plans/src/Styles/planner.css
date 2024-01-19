@@ -294,7 +294,7 @@
     align-items: center;
 }
 .checkbox-custom {
-    display: none; /* Hide the default radio button */
+    display: none;
   }
   .checkbox-custom + .radio-label:before {
     content: "";
@@ -302,12 +302,12 @@
     vertical-align: middle;
     width: 20px;
     height: 20px;
-    background-color: #eee; /* Default background color */
+    background-color: white;
     border-radius: 50%;
-    margin-right: 10px; /* Space between checkmark and label text */
+    margin-right: 10px; 
   }
   .checkbox-custom:checked + .radio-label:before {
-    background-color: #917B9F; /* Change color to purple when selected */
+    background-color: #917B9F; 
   }
   .radio-label {
     vertical-align: middle;
@@ -505,7 +505,5 @@
     border-radius: 10px;
     margin: 20px;
 }
-.img-cover-addOns:hover{
-    transform: scale(1.5);
-}
+
 

@@ -51,17 +51,17 @@ const Dates = () => {
       name="date" 
       value="Monday Start"
       onClick={() => handleRadioClick("Monday Start")}/>
-      <span class="radio-label">Monday Start</span>
+      <span className="radio-label">Monday Start</span>
       </label>
       <label class="labels-dates-m-s">
       <input 
         type="radio" 
-        class="button-dates checkbox-custom" 
+        className="button-dates checkbox-custom" 
         name="date" 
         value="Sunday Start"
         onClick={() => handleRadioClick("Sunday Start")}
       />
-      <span class="radio-label">Sunday Start</span>
+      <span className="radio-label">Sunday Start</span>
     </label>
       </div>
       <hr className='division-line'/>

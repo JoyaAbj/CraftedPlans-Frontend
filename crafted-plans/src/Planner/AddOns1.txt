@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const AddOns = () => {
-  const [selectedTemplates, setSelectedTemplates] = useState([]);
   const [selectedTemplate, setSelectedTemplate] = useState(null);
   const [selectedOption, setSelectedOption] = useState('');
   const [addOns, setAddOns] = useState([]);
@@ -91,8 +90,6 @@ const AddOns = () => {
     return selectedOption === '' || addOn.name === selectedOption;
   })
 
-
-
   return (
     <div className='Dates'>
      {/* Display the corresponding image */}
@@ -144,29 +141,23 @@ const AddOns = () => {
           {filteredAddOns.map((addOn, i) => (
             <div key={i}>
               <div className="add-ons-images">
-                {addOn.image.length > 0 && (
-                  <div className="map-images">
+                {addOn.image.map((image, j) => (
+                  <div className="map-images" key={j}>
                     <img
-                      src={addOn.image[0]}
-                      alt={`product-${i}-0`}
+                      src={image}
+                      alt={`product-${i}-${j}`}
                       className="img-cover-addOns"
                       onClick={() => handleImageClick(addOn.name)}
                     />
-                   <label class="labels-dates-m-s">
-                      <input 
-                        type="radio" 
-                        className="button-dates checkbox-custom" 
-                        name="addOn" 
-                        value={addOn.name}
-                        // onClick={() => handleRadioClick(addOn.name)}
-                      />
-                      <span className="radio-label">{addOn.name}</span>
-                    </label>
-                  </div>
-                )}
-                    </div>
+                    <input
+                      type="radio"
+                      className="add-page-addOns"
+                    />
                   </div>
                 ))}
+              </div>
+            </div>
+          ))}
         </div>
       )}
 
