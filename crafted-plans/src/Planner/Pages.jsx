@@ -5,7 +5,7 @@ const Pages = () => {
   const [pages, setPages] = useState([]);
   const [selectedPlanner, setSelectedPlanner] = useState('weekly'); // Default to weekly planner
   const category = "pages";
-  const [addOnsObj, setAddOnsObj] = useState({});
+  const [addOnsObj1, setAddOnsObj1] = useState({});
 
   const getAllPages = () => {
     axios.post(`http://localhost:5000/templates/getTemplateByCategory`, { category })
@@ -42,31 +42,29 @@ const Pages = () => {
     // Clear other planner type from local storage and state
     if (selectedPlanner === 'weekly') {
       localStorage.removeItem('dailyPlanner');
-      setAddOnsObj((previous) => ({
+      setAddOnsObj1((previous) => ({
         ...previous,
         dailyPlanner: null,
       }));
     } else {
       localStorage.removeItem('weeklyPlanner');
-      setAddOnsObj((previous) => ({
+      setAddOnsObj1((previous) => ({
         ...previous,
         weeklyPlanner: null,
       }));
     }
   
-    // Set the selected planner type in local storage and state
     if (event.target.checked) {
       const plannerType = selectedPlanner === 'weekly' ? 'weeklyPlanner' : 'dailyPlanner';
       localStorage.setItem(plannerType, templateId);
-      setAddOnsObj((previous) => ({
+      setAddOnsObj1((previous) => ({
         ...previous,
         [plannerType]: templateId,
       }));
     } else {
-      // Uncheck: Remove the selected planner type from local storage and state
       const plannerType = selectedPlanner === 'weekly' ? 'weeklyPlanner' : 'dailyPlanner';
       localStorage.removeItem(plannerType);
-      setAddOnsObj((previous) => ({
+      setAddOnsObj1((previous) => ({
         ...previous,
         [plannerType]: null,
       }));
@@ -102,9 +100,8 @@ const Pages = () => {
                         type="checkbox" 
                         className="button-dates1 checkbox-custom1" 
                         name="addOn" 
-                        checked={addOnsObj[selectedPlanner] === template._id || localStorage.getItem(selectedPlanner) === template._id}
+                        checked={addOnsObj1[selectedPlanner] === template._id ? true : false}
                         onChange={(e) => handleChange(e, template)}
-                        // onClick={() => handleCheckBoxClick(template.name)}
                       />
                       {/* <span className="radio-label">{template.name}</span> */}
                     </label>

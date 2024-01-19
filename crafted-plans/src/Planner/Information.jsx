@@ -23,9 +23,19 @@ const Information = () => {
       });
     }
   };
-  const handleSaveInformations = () => {
+  const handleSaveInformations = (e) => {
+    e.preventDefault();
+    const existingData = JSON.parse(localStorage.getItem('formDataArray')) || [];
+    const newData = {
+      fullName: formData.fullName,
+      phoneNumber: formData.phoneNumber,
+      email: formData.email,
+      message: formData.message,
+    };
+    localStorage.setItem('formDataArray', JSON.stringify([...existingData, newData]));
+    setFormData(initialFormData);
+  };
 
-  }
   return (
     <div className='Dates'>
       <div className="page-dates">
