@@ -1,6 +1,7 @@
 .products-D{
     border-radius: 10px 10px 0px 0px;
     background: #F2E6E8;
+    padding-bottom: 100px;
 }
 .products-toggle-D{
     display: flex;
