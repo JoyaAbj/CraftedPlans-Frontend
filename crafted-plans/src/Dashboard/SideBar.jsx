@@ -75,7 +75,6 @@ const SideBar = () => {
         {visibleOrders && <Orders/>}
         {visibleUsers && <Users/>}
       </div>
-      <Footer/>
     </body>
       
     </div>
