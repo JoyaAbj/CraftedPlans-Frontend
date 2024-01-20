@@ -11,11 +11,12 @@ const Review = () => {
     endDate: localStorage.getItem('selectedPlannerEndDate'),
     events: JSON.parse(localStorage.getItem('events')),
     pagesID: localStorage.getItem('weeklyPlanner'),
-    price: '0.00', // Initial price
+    // addOns: JSON.parse(localStorage.getItem('selectedAddOnTemplates')) || [],
   });
 
   const [cover, setCover] = useState({ images: [] });
   const [pages, setPages] = useState({ images: [] });
+  // const [addOns, setAddOns] = useState([]);
 
   useEffect(() => {
     const fetchData = async (templateId, setFunction) => {
@@ -27,23 +28,31 @@ const Review = () => {
           setFunction({ images: imageUrls });
         }
 
-        const totalPrice = calculateTotalPrice(
-          parseFloat(plannerData.price),
-          parseFloat(response.data.templates.price),
-          plannerData.startDate,
-          plannerData.endDate,
-          plannerData.pagesID
-        );
-
-        setPlannerData(prevData => ({
-          ...prevData,
-          template: response.data,
-          price: totalPrice.toFixed(2),
-        }));
+        setPlannerData(prevData => ({ ...prevData, template: response.data }));
       } catch (error) {
         console.error('Error fetching template:', error);
       }
     };
+
+    // const fetchAddOns = async () => {
+    //   const addOnsArray = plannerData.addOns || [];
+    //   const addOnsData = [];
+
+    //   for (const id of addOnsArray) {
+    //     try {
+    //       const response = await axios.get(`http://localhost:5000/templates/getTemplateById/${id}`);
+    //       if (response.data.templates && response.data.templates.image) {
+    //         const imageUrls = response.data.templates.image;
+    //         // Use only the first image for each add-on
+    //         addOnsData.push({ images: [imageUrls[0]] });
+    //       }
+    //     } catch (error) {
+    //       console.error('Error fetching add-on template:', error);
+    //     }
+    //   }
+
+    //   setAddOns(addOnsData);
+    // };
 
     if (plannerData.coverID) {
       fetchData(plannerData.coverID, setCover);
@@ -52,28 +61,18 @@ const Review = () => {
     if (plannerData.pagesID) {
       fetchData(plannerData.pagesID, setPages);
     }
-  }, [plannerData.coverID, plannerData.pagesID, plannerData.startDate, plannerData.endDate]);
 
-  const calculateTotalPrice = (currentPrice, templatePrice, startDate, endDate, weeklyPlannerId) => {
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-    const daysDifference = Math.floor((end - start) / (24 * 60 * 60 * 1000)) + 1;
-    const weeks = Math.ceil(daysDifference / 7);
-
-    let additionalPages = 0;
-    if (weeklyPlannerId) {
-      additionalPages = weeks; // Assuming each week corresponds to a page
-    }
-
-    return currentPrice + (templatePrice * (1 + additionalPages));
-  };
+    // fetchAddOns();
+  }, [plannerData.coverID, plannerData.pagesID, 
+    // plannerData.addOns
+  ]);
 
   const handleSubmitPlanner = () => {
     axios.post('http://localhost:5000/planners/addPlanner', {
       cover: plannerData.coverID,
       personalInformation: plannerData.informations,
       events: plannerData.events,
-      price: plannerData.price,
+      price: 10,
       pages: plannerData.pagesID,
       addOns: plannerData.addOns,
     })
@@ -87,7 +86,7 @@ const Review = () => {
 
   return (
     <div className='Dates'>
-      <p className="review-planner">Review Planner Before Confirming</p>
+      <p className="review-planner">Review Planner Before confirming</p>
       <div>
         <h2>Information:</h2>
         {plannerData.template && (
@@ -124,8 +123,19 @@ const Review = () => {
             className="img-cover"
           />
         ))}
-        <h2>Total Price:</h2>
-        <p>{`$${plannerData.price}`}</p>
+        {/* <h2>AddOns:</h2>
+        {addOns.map((addOn, index) => (
+          <div key={index}>
+            {addOn.images && addOn.images.map((imageUrl, imgIndex) => (
+              <img
+                key={imgIndex}
+                src={imageUrl}
+                alt={`addOn-${index}-${imgIndex}`}
+                className="img-cover"
+              />
+            ))}
+          </div>
+        ))} */}
       </div>
       <button onClick={handleSubmitPlanner}>Submit Planner</button>
     </div>
