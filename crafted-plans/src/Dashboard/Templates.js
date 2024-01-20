@@ -8,14 +8,16 @@ const Templates = () => {
   const {id} = useParams();
   const [activeCategory, setActiveCategory] = useState('pages');
   const [templates, setTemplates] = useState("");
+  const [price, setPrice] = useState("");
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState("");
+  const [images, setImages] = useState([]);
   const [isAddProductModalOpen, setAddProductIsModalOpen] = useState(false);
 
   const handleAddProduct = () => {
-    // Open or toggle the modal
     setAddProductIsModalOpen(true);
   };
   const closeModal = () => {
-    // Close the modal
     setAddProductIsModalOpen(false);
   };
   const getAllTemplatesByCategory = (category) => {
@@ -32,26 +34,46 @@ const Templates = () => {
     setActiveCategory(category);
     getAllTemplatesByCategory(category);
   };
+  
   const handleDeleteTemplate = (id) => {
-    // Display confirmation dialog
     const confirmDelete = window.confirm("Are you sure you want to delete this template?");
     
     if (confirmDelete) {
       axios.delete(`http://localhost:5000/templates/deleteTemplate/${id}`)
         .then((response) => {
-          // Handle the response or perform any other actions after deletion
           console.log(`Template with ID ${id} deleted successfully`);
-          // Update the UI
           getAllTemplatesByCategory(activeCategory);
-          // Show success toast
-          toast.success('Template deleted successfully!', { position: "bottom-right" });
+          toast.success('Template deleted successfully!', { position: "top-center" });
         })
         .catch((error) => {
           console.error("Error deleting template", error);
           // Show error toast
-          toast.error('Error deleting template. Please try again.', { position: "bottom-right" });
+          toast.error('Error deleting template. Please try again.', { position: "top-center" });
         });
     }
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Create FormData object
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('category', category);
+    formData.append('price', price);
+    // Append each selected image to the form data
+    for (let i = 0; i < images.length; i++) {
+      formData.append('images', images[i]);
+    }
+    axios.post('http://localhost:5000/templates/addTemplate', formData)
+      .then((response) => {
+        console.log(response.data);
+        setAddProductIsModalOpen(false);
+        getAllTemplatesByCategory(activeCategory);
+        toast.success('Template added successfully!', { position: 'bottom-right' });
+      })
+      .catch((error) => {
+        console.error(error);
+        toast.error('Error adding template. Please try again.', { position: 'bottom-right' });
+      });
   };
   useEffect(() => {
     getAllTemplatesByCategory(activeCategory);
@@ -73,6 +95,12 @@ const Templates = () => {
         >
           Add Ons
         </button>
+        <button
+          className={`products-btns-D ${activeCategory === 'cover' ? 'active' : ''}`}
+          onClick={() => handleCategoryChange('cover')}
+        >
+          Covers
+        </button>
       </div>
       <div className='products-container-D'>
         <button 
@@ -81,7 +109,7 @@ const Templates = () => {
         >Add</button>
         <hr className='division-line-D' />
         <div className='show-products-D'>
-          {/* Render products based on the active category */}
+          {/* Render templates based on the active category */}
           {templates && templates.map((template) => (
             <div key={template.id} className='product-card-D'>
               <img
@@ -107,39 +135,32 @@ const Templates = () => {
         </div>
       </div>
     </div>
-     {/* Modal for adding a product */}
+     {/* Modal for adding a template */}
     {isAddProductModalOpen && (
       <div className="modal">
         <div className="modal-content">
           <span className="close" onClick={closeModal}>&times;</span>
-          {/* Add your modal content here */}
-          {/* <form onSubmit={handleSubmit}> */}
+          <form 
+          onSubmit={handleSubmit}
+          >
             <label>
-              Product Name:
-              {/* <input type="text" value={name} onChange={(e) => setName(e.target.value)} /> */}
+              Name:
+              <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
             </label>
             <label>
-              Description:
-              {/* <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} /> */}
-            </label>
-            <label>
-              Details:
-              {/* <input type="text" value={details} onChange={(e) => setDetails(e.target.value)} /> */}
+              Category:
+              <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} />
             </label>
             <label>
               Price:
-              {/* <input type="text" value={price} onChange={(e) => setPrice(e.target.value)} /> */}
-            </label>
-            <label>
-              Quantity:
-              {/* <input type="text" value={quantity} onChange={(e) => setQuantity(e.target.value)} /> */}
+              <input type="text" value={price} onChange={(e) => setPrice(e.target.value)} />
             </label>
             <label>
               Images (up to 3):
-              {/* <input type="file" multiple onChange={(e) => setImages(e.target.files)} /> */}
+              <input type="file" multiple onChange={(e) => setImages(e.target.files)} />
             </label>
             <button type="submit">Submit</button>
-          {/* </form> */}
+          </form>
         </div>
       </div>
     )}
