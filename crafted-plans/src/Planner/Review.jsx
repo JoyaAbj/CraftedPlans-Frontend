@@ -27,18 +27,13 @@ const Review = () => {
           setFunction({ images: imageUrls });
         }
 
-        const totalPrice = calculateTotalPrice(
-          parseFloat(plannerData.price),
-          parseFloat(response.data.templates.price),
-          plannerData.startDate,
-          plannerData.endDate,
-          plannerData.pagesID
-        );
-
         setPlannerData(prevData => ({
           ...prevData,
           template: response.data,
-          price: totalPrice.toFixed(2),
+          price: (
+            parseFloat(prevData.price) +
+            parseFloat(response.data.templates.price)
+          ).toFixed(2),
         }));
       } catch (error) {
         console.error('Error fetching template:', error);
@@ -52,21 +47,7 @@ const Review = () => {
     if (plannerData.pagesID) {
       fetchData(plannerData.pagesID, setPages);
     }
-  }, [plannerData.coverID, plannerData.pagesID, plannerData.startDate, plannerData.endDate]);
-
-  const calculateTotalPrice = (currentPrice, templatePrice, startDate, endDate, weeklyPlannerId) => {
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-    const daysDifference = Math.floor((end - start) / (24 * 60 * 60 * 1000)) + 1;
-    const weeks = Math.ceil(daysDifference / 7);
-
-    let additionalPages = 0;
-    if (weeklyPlannerId) {
-      additionalPages = weeks; // Assuming each week corresponds to a page
-    }
-
-    return currentPrice + (templatePrice * (1 + additionalPages));
-  };
+  }, [plannerData.coverID, plannerData.pagesID]);
 
   const handleSubmitPlanner = () => {
     axios.post('http://localhost:5000/planners/addPlanner', {
