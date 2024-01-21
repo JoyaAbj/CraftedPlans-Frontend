@@ -23,8 +23,10 @@ import { Toaster } from 'react-hot-toast';
 import Cart from './HomePage/Cart';
 import './Styles/style.css';
 import SideBar from './Dashboard/SideBar';
+import {getUserRole} from './HomePage/GetData';
 
 function App() {
+  const role =getUserRole();
   return (
    <div>
     <Router>
@@ -33,13 +35,13 @@ function App() {
       <Route path="/" element={ <> <NavBar/><Hero/><ProductsHomePage/><About/><Banner/><Gallery/><Advantages/> <Footer/> </>} />
       <Route path="/contact" element={ <> <Contact/> </>} />
       <Route path="/notepads" element={ <> <NotePads/> </>} />
-      <Route path="/notepadProduct/:Id" element={ <> <NotepadProduct/> </>} />
+      <Route path="/notepadProduct/:Id" element={ role === 'customer'? <NotepadProduct/> : <PageNotFound/>} />
       <Route path="/accessories" element={ <> <Accessories/> </>} />
-      <Route path="/productAccessories/:Id" element={ <> <ProductAccessories/> </>} />
+      <Route path="/productAccessories/:Id" element={role === 'customer'?  <ProductAccessories/> : <PageNotFound/> } />
       <Route path="/login" element={<> <Login/> </>} />
-      <Route path="/planners" element={ <> <TopBar/> </>} />
-      <Route path="/cart" element={ <> <Cart/> </>} />
-      <Route path="/dashboard" element={<> <SideBar/></>} />
+      <Route path="/planners" element={ role === 'customer' ? <TopBar/> : <Login/>} />
+      <Route path="/cart" element={role === 'customer' ?<Cart /> : <PageNotFound/>} />
+      <Route path="/dashboard" element={role === 'admin'? <SideBar/> : <Login/>} /> 
       <Route path="*" element={<PageNotFound />} />
 
       </Routes>

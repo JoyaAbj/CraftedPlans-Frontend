@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import '../Styles/NavBar.css';
 import { Link } from 'react-router-dom';
+import { getUserRole } from './GetData';
+import { Navbar } from 'react-bootstrap';
 
 
 const NavBar = () => {
@@ -9,6 +11,10 @@ const NavBar = () => {
     const handleClick = () => {
         setclicked(!clicked)
     }
+    const token = localStorage.getItem("token")
+    const logout = ()=>{
+     localStorage.clear();}
+    const role = getUserRole();
   return (
     <div>
       <div className="catchy-phrase">
@@ -29,13 +35,29 @@ const NavBar = () => {
             className={clicked
              ? 'fas fa-times' : 'fas fa-bars'}></i>
           </div>
+          {token ? (
+        <div>
+          {role === 'customer' && (
+            <Link to='/cart'>
+              <img src="/Images/cart.png" alt="cart" className="login-navbar" />
+            </Link>
+          )}
+
+          {role === 'admin' && (
+            <Link to='/dashboard'>
+              <img src="/Images/vector1.png" alt="dash" className="login-navbar" />
+            </Link>
+          )}
+
+          <Link to='/login' onClick={logout}>
+            <img src="/Images/Logout.png" alt="log out" className='login-navbar' />
+          </Link>
+        </div>
+      ) : (
         <Link to='/login'>
-        <img 
-        src="/Images/vector1.png" 
-        alt="login" 
-        className="login-navbar" 
-        />
+          <img src="/Images/vector1.png" alt="login" className="login-navbar" />
         </Link>
+      )}
       </div>
       </div>
       <div className="menu-navbar">
