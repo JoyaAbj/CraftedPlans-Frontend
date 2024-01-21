@@ -180,6 +180,8 @@
       position: relative;
       top: 10%;
       right: auto;
+      margin-top: 50%;
+      padding-top: 40px;
     }
     @keyframes slideAndShake {
       0% {
@@ -229,6 +231,8 @@
       position: relative;
       top: 20%;
       right: auto;
+      margin-top: 50%;
+      padding-top: 40px;
     }
     
   }
