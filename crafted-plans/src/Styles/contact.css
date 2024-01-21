@@ -289,6 +289,12 @@
     .info-contact{
         font-size: 20px;
     }
+    .social-icons-contact {
+        display: flex;
+        justify-content: center;
+        margin-left: 80px;
+    }
+
     /*FAQ*/
     .faq-wrapper{
         width: 80%;

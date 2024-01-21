@@ -67,6 +67,10 @@
     .phrase{
         font-size: 18px;
     }
+    .icons-navbar{
+        display: flex;
+        margin-right: 50%;
+    }
 }
 
  /*Phone*/

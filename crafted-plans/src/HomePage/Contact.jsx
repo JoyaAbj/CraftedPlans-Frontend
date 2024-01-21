@@ -13,11 +13,10 @@ const Contact = () => {
     e.preventDefault();
 
     emailjs.sendForm(
-      process.env.REACT_APP_EMAILJS_SERVICE_ID,
-      process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-       form.current, 
-       process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-       )
+      'service_liskoa8',
+      'template_bqmuj8e', 
+      form.current, 
+      'mA7pfqXd0DAnDMc01')
       .then((result) => {
           console.log(result.text);
       }, (error) => {

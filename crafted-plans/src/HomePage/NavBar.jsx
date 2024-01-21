@@ -36,7 +36,7 @@ const NavBar = () => {
              ? 'fas fa-times' : 'fas fa-bars'}></i>
           </div>
           {token ? (
-        <div>
+        <div className='icons-navbar'>
           {role === 'customer' && (
             <Link to='/cart'>
               <img src="/Images/cart.png" alt="cart" className="login-navbar" />
