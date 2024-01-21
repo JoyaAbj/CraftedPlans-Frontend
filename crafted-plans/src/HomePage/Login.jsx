@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { toast, Toaster } from "react-hot-toast";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../Styles/login.css';
 
 
 
@@ -17,11 +18,11 @@ const Login = () => {
   const [passwordError, setPasswordError] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
   const [confirmPassError, setConfirmPassError] = useState("");
-  const [registerShow, setRegisterShow] = useState(true);
-  const [LoginShow, setLoginShow] = useState(false);
   const [loginError, setLoginError] = useState("");
   const navigate= useNavigate();
-  
+
+  const [isRegisterFormVisible, setRegisterFormVisible] = useState(true);
+  const [isLoginFormVisible, setLoginFormVisible] = useState(false);
   
   const handleRegister = (e) => {
     e.preventDefault();
@@ -105,6 +106,7 @@ const Login = () => {
         <h2>  👍Login Success</h2>
        ):(
         <div className="register">
+          {isRegisterFormVisible && (
           <form className="card" onSubmit={(e)=>handleRegister(e)}>
             <div>
               <input 
@@ -150,22 +152,24 @@ const Login = () => {
             <button className="register-button" type="submit">
             Register
           </button>
-          <span className="link-register">
+          <span className="link">
             Already have an account?
             <span
-              className="link2-register"
+              className="link2"
               onClick={() => {
-                setRegisterShow(false);
-                setLoginShow(true);
+                setRegisterFormVisible(false);
+                setLoginFormVisible(true);
               }}
             >
               Sign in
             </span>
           </span>
           </form>
+          )}
           </div>
        )}
-       {LoginShow && (
+       
+       {isLoginFormVisible && (
          
          <form className="card2"
          onSubmit={(e)=>handleLogin(e)}
@@ -197,9 +201,9 @@ const Login = () => {
             Don't have an account?
             <span
               className="link2"
-              onClick={() => {
-                setRegisterShow(true);
-                setLoginShow(false);
+              onClick={() => {  
+                setRegisterFormVisible(true);
+                setLoginFormVisible(false);
               }}
             >
               Register

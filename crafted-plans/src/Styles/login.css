@@ -1,0 +1,234 @@
+.register {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    background: #917B9F;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(154, 152, 152, 0.25);
+    box-shadow: 8px 10px 6px 0px rgba(0, 0, 0, 0.32);
+    backdrop-filter: blur(0px);
+    margin: 5% auto;
+    height: 75%;
+    gap: 3%;
+    animation: slideAndShake 3s ease-in-out;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  @keyframes slideAndShake {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateX(0);
+    }
+    60% {
+      transform: translateX(-5px);
+    }
+    70% {
+      transform: translateX(5px);
+    }
+    80% {
+      transform: translateX(-5px);
+    }
+    90% {
+      transform: translateX(5px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes shakeAndSlide {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateX(0);
+    }
+    60% {
+      transform: translateX(-5px);
+    }
+    70% {
+      transform: translateX(5px);
+    }
+    80% {
+      transform: translateX(-5px);
+    }
+    90% {
+      transform: translateX(5px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  .card2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(154, 152, 152, 0.25);
+    box-shadow: 8px 10px 6px 0px rgba(0, 0, 0, 0.32);
+    backdrop-filter: blur(0px);
+    position: absolute;
+    top: 12%;
+    right: 35%;
+    height: 45%;
+    gap: 7%;
+    animation: shakeAndSlide 3s ease-in-out;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    margin: 0 auto;
+  }
+  
+  .register-input {
+    width: 240px;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.71);
+    backdrop-filter: blur(2.5999999046325684px);
+    padding: 13px;
+    font-weight: 500;
+    font-size: 15px;
+  }
+  .register-button {
+    color: white;
+    width: 140px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    background: #917B9F;
+    backdrop-filter: blur(2.5999999046325684px);
+    font-weight: 800;
+    font-size: 17px;
+  }
+  .register-button:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+  }
+  .link {
+    font-weight: 500;
+    font-size: 16px;
+    color: black;
+    padding: 5px;
+  }
+  .link2{
+    text-decoration: underline;
+    cursor: pointer;
+  
+  }
+  .link2:hover{
+    color: white
+  }
+  .error {
+    color: #c92424;
+    font-size: small;
+    text-align: center;
+    max-width: 242px;
+  }
+  
+  
+  @media screen and (min-width:767px) and (max-width:1023px){
+    .card {
+      width: 40%;
+      height: 75%;
+      left: auto;
+      gap: 3%;
+      animation: slideAndShake 3s ease-in-out;
+      animation-fill-mode: forwards;
+      opacity: 0;
+      transition: transform 0.5s ease-in-out;
+    }
+    .register {
+      display: flex;
+      justify-content: center;
+    }
+    .card2 {
+      width: 40%;
+      height: 45%;
+      gap: 7%;
+      animation: shakeAndSlide 3s ease-in-out;
+      animation-fill-mode: forwards;
+      opacity: 0;
+      position: relative;
+      top: 10%;
+      right: auto;
+    }
+    @keyframes slideAndShake {
+      0% {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      
+    }
+    @keyframes shakeAndSlide {
+      0% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  }
+  
+  @media screen and (max-width: 766px){
+    .card {
+      width: 80%;
+      height: 80%;
+      left: auto;
+      gap: 3%;
+      animation: none;
+      opacity: 1;
+      position: relative;
+      top: 6%;
+     
+    }
+    .register {
+      display: flex;
+      justify-content: center;
+    }
+    .card2 {
+      width: 80%;
+      height: 50%;
+      gap: 7%;
+      animation:none;
+      opacity: 1;
+      position: relative;
+      top: 20%;
+      right: auto;
+    }
+    
+  }
