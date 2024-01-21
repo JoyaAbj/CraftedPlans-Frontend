@@ -19,6 +19,7 @@ import ProductAccessories from './HomePage/ProductAccessories';
 import PageNotFound from './HomePage/PageNotFound';
 import TopBar from './Planner/TopBar';
 import Login from './HomePage/Login';
+import Testimonials from './HomePage/Testimonials';
 import { Toaster } from 'react-hot-toast';
 import Cart from './HomePage/Cart';
 import './Styles/style.css';
@@ -32,7 +33,7 @@ function App() {
     <Router>
       <Toaster toastOptions={{ duration: 5000 }} />
       <Routes>
-      <Route path="/" element={ <> <NavBar/><Hero/><ProductsHomePage/><About/><Banner/><Gallery/><Advantages/> <Footer/> </>} />
+      <Route path="/" element={ <> <NavBar/><Hero/><ProductsHomePage/><About/><Banner/><Testimonials/><Gallery/><Advantages/> <Footer/> </>} />
       <Route path="/contact" element={ <> <Contact/> </>} />
       <Route path="/notepads" element={ <> <NotePads/> </>} />
       <Route path="/notepadProduct/:Id" element={ role === 'customer'? <NotepadProduct/> : <PageNotFound/>} />
