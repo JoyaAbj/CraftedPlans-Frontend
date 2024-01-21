@@ -20,6 +20,41 @@ const NotepadProduct = () => {
       category: "",
   }); 
   const [selectedImageIndex,setSelectedImageIndex] = useState(0);
+
+  // const handleQuantityChange = (index, newQuantity) => {
+  //   if (newQuantity <= 0) {
+  //     toast.error("Quantity must be greater than 0");
+  //     return;
+  //   }
+  // if (newQuantity <= cartDetails[index].quantity) {
+  //   setCart((prevCart) => {
+  //     const updatedCart = prevCart.map((item, i) =>
+  //       i === index
+  //         ? {
+  //             ...item,
+  //             quantity: newQuantity,
+  //             totalPrice: (
+  //               newQuantity *
+  //               parseFloat(cartDetails[index].discountedPrice || cartDetails[index].originalPrice)
+  //             ).toFixed(2),
+  //           }
+  //         : item
+  //     );
+
+  //     const updatedCartDetails = [...cartDetails];
+  //     updatedCartDetails[index].quantity -= newQuantity;
+
+  //     localStorage.setItem("cart", JSON.stringify(updatedCart));
+  //     localStorage.setItem("cartDetails", JSON.stringify(updatedCartDetails));
+
+  //     updateCartKey(); 
+
+  //     return updatedCart; 
+  //   });
+  // } else {
+  //   toast.error("Not enough quantity in stock");
+  // }
+
   const handleIncrease = () => {
     setQuantity(quantity + 1);
   };
