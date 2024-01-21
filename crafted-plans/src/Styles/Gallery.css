@@ -55,7 +55,10 @@
   .top-right-home{
     display: none; 
   }
+  .image-gallery{
+    width: 700px;
 
+  }
  }
 
 /*Phone*/
@@ -66,18 +69,18 @@
     justify-content: center;
   }
 
-  .long-picture-home,
-  .top-left-home,
-  .top-right-home,
-  .bottom-left-home {
-    width: 400px;
-    margin: 10px;
-  }
+
 
   .top-left-home,
   .top-right-home,
   .bottom-left-home{
     display: none; 
+  }
+  .image-gallery1{
+    width: 320px;
+    /* margin-left: 20px; */
+    display: flex;
+    justify-content: center;
   }
 }
   
