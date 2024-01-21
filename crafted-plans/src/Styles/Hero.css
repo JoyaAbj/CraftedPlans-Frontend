@@ -3,8 +3,8 @@
 }
 .hero-button{
     border-radius: 10px;
-    background: #917B9F;
-    color: #FFF;
+    /* background: #917B9F; */
+    color: #917B9F;
     text-align: center;
     font-size: 30px;
     font-style: normal;
@@ -14,6 +14,7 @@
     padding-bottom: 7px;
     padding: 1%;
     text-decoration: none;
+    border: 2px solid #917B9F;
 }
 .hero-button:hover{
     background: none;
