@@ -16,7 +16,7 @@ const Footer = () => {
           </ul>
       </div>
       <div className="logo-footer">
-        <img src="/Images/logo2.png" alt="logo" />
+        <img className='logo-footer' src="/Images/logo2.png" alt="logo" />
       </div>
       </div>
       <div className="social-footer">

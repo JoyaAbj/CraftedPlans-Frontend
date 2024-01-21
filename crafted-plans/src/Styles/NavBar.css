@@ -83,12 +83,12 @@
         align-items: flex-start;
         justify-content: flex-start;
         position: fixed;
-        top: 90px;
         right: -300px;
         width: 300px;
-        height: 100vh;
+        height: fit-content;
         background: #917B9F;
         z-index: 1000;
+        border-radius: 10px;
     }
     #navlinks-navbar.active{
         right: 0px;
@@ -101,6 +101,9 @@
     }
     .login-navbar{
         display: none;
+    }
+    .menu-items-navabar .menu-links-navabar{
+        color: white;
     }
 }
 
