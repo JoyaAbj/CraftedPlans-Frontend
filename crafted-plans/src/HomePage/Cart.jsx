@@ -19,16 +19,10 @@ const Cart = () => {
   const [cartData, setCartData] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [checkoutStatus, setCheckoutStatus] = useState();
-  const [products, setProducts] = useState({
-    image: [],
-    price: 0,
-    name: "",
-    description: "",
-    quantity: 0,
-    details: "",
-    category: "",
-});
+  const [products, setProducts] = useState([]);
   const [Ids, setIds] = useState([]);
+  const [prices, setPrices] = useState([]);
+  const [showBillingForm, setShowBillingForm] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,6 +36,16 @@ const Cart = () => {
   const handleRemoveItem = (id) => {
     if (Ids.length!==0) 
     setIds(Ids.filter((Id) => Id !== id));
+  };
+   const handleSubtotal = () => {
+    const subtotal = products
+      .filter((product) => Ids.includes(product._id))
+      .reduce((acc, product) => acc + product.price, 0);
+
+    return subtotal.toFixed(2); // To display two decimal places
+  };
+  const openBilling = () => {
+    setShowBillingForm(true);
   };
   return (
     <div>
@@ -96,6 +100,60 @@ const Cart = () => {
               })}
           </tbody>
         </table>
+      <table>
+              <thead>
+              <tr>
+                <td className="td-white">SubTotal</td>
+                <td className="td-n">
+                  {handleSubtotal()+" $"}
+                </td>
+                </tr>
+                </thead>
+                </table>
+      <button 
+      className="checkout-cart"
+      onClick={openBilling}
+      >Checkout</button>
+      {showBillingForm && (
+          <div className="billing-form">
+            <div className="billing-title-line">
+              <h1 className="billing-title">Billing Details</h1>
+              <hr className="billing-line" />
+            </div>
+            <div className="billing-form">
+              <label className="billing-label">
+                <input 
+                type="text" 
+                placeholder='Full Name'
+                className="billing-input" />
+              </label>
+              <label className="billing-label">
+                <input 
+                type="text" 
+                placeholder='Email'
+                className="billing-input" />
+              </label>
+              <label className="billing-label">
+                <input 
+                type="text" 
+                placeholder='Phone Number'
+                className="billing-input" />
+              </label>
+              <label className="billing-label">
+                <textarea 
+                  placeholder="Address" 
+                  id="" 
+                  cols="30" 
+                  rows="10" 
+                  className="billing-text">
+                </textarea>
+              </label>
+            <hr className="billing-line" />
+            <p className="info-extra">Cash On Delivery</p>
+            <input  className='checkout-cart' type="submit" />
+            </div>
+          </div>
+        )}
       </div>
       </div>
     </div>

@@ -116,8 +116,51 @@ font-weight: 500;
 line-height: normal;
 text-transform: capitalize;
 }
-
-
+.checkout-cart{
+    border-radius: 10px;
+    background: #917B9F;
+    color: #FFF;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border: none;
+    padding: 7px;
+}
+.billing-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.billing-input{
+    border-radius: 10px;
+    border: 1px solid #917b95;
+    color: rgba(0, 0, 0, 0.53);
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 7px;
+}
+.billing-text{
+    border-radius: 10px;
+    border: 1px solid #917b95;
+    color: rgba(0, 0, 0, 0.53);
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 7px;
+    resize: none;
+    width: 330px;
+}
+.billing-line{
+    border: 1px solid #917B9F; 
+    margin: 10px 0;
+}
 
 
 @media screen and (min-width:767px) and (max-width:1023px){
