@@ -4,15 +4,33 @@ import { Carousel } from 'react-bootstrap';
 import '../Styles/review.css'; 
 import axios from 'axios';
 
+const StarRating = ({ rating }) => {
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 !== 0;
+  
+    const starIcons = [];
+    for (let i = 0; i < fullStars; i++) {
+      starIcons.push(<span key={i}>&#9733;</span>); // Full star (★)
+    }
+  
+    if (hasHalfStar) {
+      starIcons.push(<span key="half">&#9734;&#9733;</span>); // Half star (☆★)
+    }
+  
+    return <div>{starIcons}</div>;
+  };
+
 const Reviews = () => {
     const [reviews, setReviews] = useState([]);
     const [users, setUsers] = useState([]);
     const componentStyle = {
-        backgroundColor: 'rgb(248, 248, 248)',
+        // backgroundColor: '#917B9F',
+        margin: ' 20px 40px 30px 40px',
+        borderRadius: '10px'
      };
 
     const carouselItemStyle = {
-        height: '500px',
+        height: '300px',
      };
 
   const getAllReviews = () => {
@@ -50,16 +68,20 @@ const Reviews = () => {
   return (
     <div style={{ ...componentStyle, ...carouselItemStyle }}>
       <div className='revdiv'>
-        <img className='reviewstitle' src='/Images/quotes.png'/>
       </div>
 
       <Carousel>
         {reviews.map((review, i) => (
-          <Carousel.Item key={i}>
+            <Carousel.Item key={i}>
+              <div className='review-titles'>
+                <img className='reviewstitle' src='/Images/quotes.png'/>
+                <p className='show-review'>{getUserNameById(review.userID)}</p>
+
+              </div>
+                <p className='stars'><StarRating rating={review.rating} /></p>
             <div className='rev1'>
               <div className='revbox'>
-                <p>Reviewer: {getUserNameById(review.userID)}</p>
-                <p>{review.comment}</p>
+                <p className='show-review'>{review.comment}</p>
               </div>
             </div>
           </Carousel.Item>

@@ -4,16 +4,9 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding: 20px;
     }
-    .reviewstitle{
-        flex: 1;
-        font-family: 'Oooh Baby', sans-serif;
-    font-size: 48px;
-    margin-top: 7%;
-    margin-bottom: 3%;
-    text-align: center;
-        
-    }
+
     
     .revdiv{
         justify-content: center;
@@ -41,4 +34,32 @@
     text-align: center;
     color: rgb(187, 0, 9);
     
+    }
+    .show-review{
+        color: black;
+    }
+    .review-titles{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #917B9F;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin-top: 50px;
+    }
+    .stars{
+        color: #917B9F;
+        width: 20px;
+        height: 20px;
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+    }
+    @media (max-width: 766px){
+        .review-titles{
+            font-size: 27px;
+        }
     }
