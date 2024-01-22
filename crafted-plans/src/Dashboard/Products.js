@@ -147,32 +147,32 @@ const Products = () => {
         <div className="modal">
           <div className="modal-content">
             <span className="close" onClick={closeModal}>&times;</span>
-            <form onSubmit={handleSubmit}>
-              <label>
+            <form className='form-modal-dashboard' onSubmit={handleSubmit}>
+              <label className='label-modal-dashboard'>
                 Product Name:
-                <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                <input className='input-form-dashboard' type="text" value={name} onChange={(e) => setName(e.target.value)} />
               </label>
-              <label>
+              <label className='label-modal-dashboard'>
                 Description:
-                <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
+                <input className='input-form-dashboard' type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
               </label>
-              <label>
+              <label className='label-modal-dashboard'>
                 Details:
-                <input type="text" value={details} onChange={(e) => setDetails(e.target.value)} />
+                <input className='input-form-dashboard' type="text" value={details} onChange={(e) => setDetails(e.target.value)} />
               </label>
-              <label>
+              <label className='label-modal-dashboard'>
                 Price:
-                <input type="text" value={price} onChange={(e) => setPrice(e.target.value)} />
+                <input className='input-form-dashboard' type="text" value={price} onChange={(e) => setPrice(e.target.value)} />
               </label>
-              <label>
+              <label className='label-modal-dashboard'>
                 Quantity:
-                <input type="text" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+                <input className='input-form-dashboard' type="text" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
               </label>
-              <label>
+              <label className='label-modal-dashboard'>
                 Images (up to 3):
-                <input type="file" multiple onChange={(e) => setImages(e.target.files)} />
+                <input className='input-form-dashboard' type="file" multiple onChange={(e) => setImages(e.target.files)} />
               </label>
-              <button type="submit">Submit</button>
+              <button className='submit-form-dashboard' type="submit">Submit</button>
             </form>
           </div>
         </div>

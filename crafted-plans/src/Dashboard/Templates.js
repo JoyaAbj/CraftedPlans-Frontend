@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import '../Styles/dashboard.css';
+
 
 const Templates = () => {
   const { id } = useParams() || {};
