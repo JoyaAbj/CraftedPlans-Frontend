@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../Styles/dashboard.css';
+import { toast } from 'react-hot-toast';
 
 const Products = () => {
   const [activeCategory, setActiveCategory] = useState('notepads');
@@ -12,10 +13,20 @@ const Products = () => {
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const [images, setImages] = useState([]);
+  const [addProductsIsModalOpen,setAddProductsIsModalOpen] = useState(false);
+
+  const handleAddProducts = () => {
+    setName('');
+    setDescription('');
+    setDetails('');
+    setPrice('');
+    setQuantity('');
+    setImages([]);
+    setAddProductsIsModalOpen(true);
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // You can send the form data to your backend API here
     const formData = new FormData();
     formData.append("name", name);
     formData.append("description", description);
@@ -24,27 +35,41 @@ const Products = () => {
     formData.append("quantity", quantity);
     formData.append("category", activeCategory);
     for (let i = 0; i < images.length; i++) {
-      formData.append(`images[${i}]`, images[i]);
+      formData.append('images', images[i]);
     }
-
-    // Perform your axios post request here with formData
     axios.post('http://localhost:5000/products/addProduct', formData)
       .then(response => {
-        // Handle the response
         console.log(response.data);
+        setAddProductsIsModalOpen(false);
+        getAllProductsByCategory(activeCategory);
+        toast.success('Product added successfully!', {position: 'top-center'})
       })
       .catch(error => {
-        // Handle the error
         console.error(error);
+        toast.error('Error adding product. Please try again.', {position: 'top-center'})
       });
-
-    // Close the modal after form submission
-    setAddProductIsModalOpen(false);
   };
 
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
     getAllProductsByCategory(category);
+  };
+
+  const handleDeleteProduct = (id) => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this product?')
+
+    if (confirmDelete){
+      axios.delete(`http://localhost:5000/products/deleteProduct/${id}`)
+      .then((response)=>{
+        console.log(`Template with ID ${id} deleted successfully`);
+        getAllProductsByCategory(activeCategory);
+        toast.success('Template deleted successfully!', {position: 'top-center'});
+      })
+      .catch((error)=>{
+        console.error('Error deleting template', error)
+        toast.error('Error deleting template. Please try again.', {position: 'top-center'})
+      });
+    }
   };
 
   const getAllProductsByCategory = (category) => {
@@ -57,13 +82,10 @@ const Products = () => {
         console.error(error);
       });
   };
-  const handleAddProduct = () => {
-    // Open or toggle the modal
-    setAddProductIsModalOpen(true);
-  };
+ 
   const closeModal = () => {
     // Close the modal
-    setAddProductIsModalOpen(false);
+    setAddProductsIsModalOpen(false);
   };
 
   useEffect(() => {
@@ -89,8 +111,8 @@ const Products = () => {
         </div>
         <div className='products-container-D'>
           <button 
+          onClick={handleAddProducts}
           className='add-product-D'
-          onClick={handleAddProduct}
           >Add</button>
           <hr className='division-line-D' />
           <div className='show-products-D'>
@@ -112,6 +134,7 @@ const Products = () => {
                     src="/Images/bin.svg"
                     alt='edit-image-2'
                     className='product-image-D1'
+                    onClick={() => handleDeleteProduct(product._id)}
                   />
                 </div>
               </div>
@@ -120,11 +143,10 @@ const Products = () => {
         </div>
       </div>
        {/* Modal for adding a product */}
-      {isAddProductModalOpen && (
+      {addProductsIsModalOpen && (
         <div className="modal">
           <div className="modal-content">
             <span className="close" onClick={closeModal}>&times;</span>
-            {/* Add your modal content here */}
             <form onSubmit={handleSubmit}>
               <label>
                 Product Name:

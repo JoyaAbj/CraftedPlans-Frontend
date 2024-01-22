@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../Styles/cartStyle.css';
 import NavBar from './NavBar';
+import { getUserID } from './GetData';
+import { getUserRole } from './GetData';
 
 const fetchProducts = async () => {
   try {
@@ -24,6 +26,9 @@ const Cart = () => {
   const [prices, setPrices] = useState([]);
   const [showBillingForm, setShowBillingForm] = useState(false);
 
+  
+
+  getUserID();
   useEffect(() => {
     const fetchData = async () => {
       const fetchedProducts = await fetchProducts();
@@ -47,6 +52,7 @@ const Cart = () => {
   const openBilling = () => {
     setShowBillingForm(true);
   };
+
   return (
     <div>
       <NavBar/>
@@ -125,19 +131,25 @@ const Cart = () => {
                 <input 
                 type="text" 
                 placeholder='Full Name'
-                className="billing-input" />
+                className="billing-input" 
+                // value={fullName}
+                />
               </label>
               <label className="billing-label">
                 <input 
                 type="text" 
                 placeholder='Email'
-                className="billing-input" />
+                className="billing-input" 
+                // value={userInfo ? userInfo.email : ''}
+                />
               </label>
               <label className="billing-label">
                 <input 
                 type="text" 
                 placeholder='Phone Number'
-                className="billing-input" />
+                className="billing-input" 
+                // value={userInfo ? userInfo.phoneNumber : ''}
+                />
               </label>
               <label className="billing-label">
                 <textarea 
