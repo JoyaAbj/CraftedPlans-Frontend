@@ -1,11 +1,90 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+import '../Styles/dashboard.css';
 
 const Orders = () => {
+  const { id } = useParams();
+  const [activeOrder, setActiveOrder] = useState('products');
+  const [orders, setOrders] = useState([]);
+  const [templateImages, setTemplateImages] = useState({});
+
+  const getAllOrders = () => {
+    axios.get(`http://localhost:5000/orders/getOrdersByUserId/${id}`)
+      .then((response) => {
+        console.log(response.data.orders);
+        setOrders(response.data.orders);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  const cover = "65a505654b3cf288d134d93f";
+  const fetchTemplateImages = () => {
+    axios.post('http://localhost:5000/planners/getPlannerByCover', {cover})
+      .then((response)=>{
+        console.log(response.data)
+      })
+    .catch ((error)=>{
+      console.error('Error fetching template images:', error);
+    });
+    };
+  
+
+  useEffect(() => {
+    getAllOrders(activeOrder);
+    fetchTemplateImages();
+  }, [activeOrder]);
+
   return (
     <div>
-      Orders
-    </div>
-  )
-}
+      <div className="products-D1">
+        <div className="cart-product1">
+          <table>
+            <thead>
+              <tr>
+                <th className='white-tr-td'>Products</th>
+                <th className='white-tr-td'>Planners</th>
+                <th className='white-tr-td'>User</th>
+                <th className='white-tr-td'>Status</th>
+                <th className='white-tr-td'>Address</th>
+              </tr>
+            </thead>
+            <tbody>
+              {orders && orders.map((order, i) => (
+                <tr key={i}>
+                  {/* Products */}
+                  <td className='white-tr'>
+                    {order.products && order.products.map((product, j) => (
+                      <div key={j}>
+                        <p>{product.name}</p>
+                        {/* Include other product details here */}
+                      </div>
+                    ))}
+                  </td>
 
-export default Orders
+                  {/* Planners */}
+                  <td className='white-tr'>
+                   <p>{order.planner}</p>
+                  </td>
+
+                  {/* User */}
+                  <td className='white-tr'>{order.userID}</td>
+
+                  {/* Status */}
+                  <td className='white-tr'>{order.status ? 'Completed' : 'Pending'}</td>
+
+                  {/* Address */}
+                  <td className='white-tr'>{order.address}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Orders;
