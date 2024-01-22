@@ -138,13 +138,6 @@ const NotepadProduct = () => {
             <p className="product-desc-product">Quantity: {accessorie.quantity}</p>
             <div className="qty-cart">
             <div className="quantity-product">
-            <div className="btns-quantity">
-            <button className='product-increase'
-            onClick={handleDecrease}>-</button>
-            <p className='product-quantity-product'>{quantity}</p>
-            <button className='product-decrease'
-             onClick={handleIncrease}>+</button>
-            </div>
             </div>
             <button 
             className='product-add-to-cart'

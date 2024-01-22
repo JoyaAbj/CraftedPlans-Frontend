@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import PriceCalculation from './PriceCalculation';
 
 const AddOns = () => {
   const [selectedTemplates, setSelectedTemplates] = useState([]);
@@ -185,7 +186,7 @@ const AddOns = () => {
                 ))}
         </div>
       )}
-
+    <PriceCalculation/>
       
     </div>
   );

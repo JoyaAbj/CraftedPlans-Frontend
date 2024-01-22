@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import PriceCalculation from './PriceCalculation';
 
 const Pages = () => {
   const [pages, setPages] = useState([]);
@@ -132,6 +133,7 @@ const Pages = () => {
           </div>
         ))}
       </div>
+      <PriceCalculation/>
     </div>
   );
 };

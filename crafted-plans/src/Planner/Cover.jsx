@@ -27,7 +27,7 @@ const Cover = () => {
         setTimeout(() => {
           setIsLoading(false);
           setShowContent(true);
-        }, 4000);
+        }, 5000);
       })
       .catch((error) => {
         console.error(error);
