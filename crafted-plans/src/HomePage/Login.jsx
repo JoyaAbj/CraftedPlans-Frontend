@@ -212,14 +212,36 @@ const Login = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           </div>
-          <div>
+          <div className='password-hide-open'>
           <input
-            type='password'
-            className="register-input"
+             type={showPassword ? 'text' : 'password'}
+            className="register-input1"
             placeholder="PASSWORD"
             required
             onChange={(e) => setPassword(e.target.value)}
           />
+          <div
+              className="absolute top-1/2 transform -translate-y-1/2 right-2 cursor-pointer"
+              onClick={togglePasswordVisibility}
+              >
+              {showPassword ? (
+                <img
+                  src="/Images/open.svg"
+                  alt="show-password"
+                  height="16"
+                  width="20"
+                  viewBox="0 0 640 512"
+                />
+              ) : (
+                <img
+                  src="/Images/hide.svg"
+                  alt="hide-password"
+                  height="16"
+                  width="18"
+                  viewBox="0 0 576 512"
+                />
+              )}
+            </div>
          
           {loginError &&
             <p className="error">{loginError}</p>
