@@ -4,6 +4,7 @@ import '../Styles/planner.css';
 
 const Review = () => {
   const [plannerData, setPlannerData] = useState({});
+  const [addOns, setAddOns] = useState([]);
   const coverID = localStorage.getItem('cover');
   const informations = localStorage.getItem('formDataArray');
   const data = JSON.parse(informations);
@@ -26,8 +27,9 @@ const Review = () => {
   const startDate = localStorage.getItem('selectedPlannerStartDate');
   const endDate = localStorage.getItem('selectedPlannerEndDate');
   const events = JSON.parse(localStorage.getItem('events'));
-  const pagesID = localStorage.getItem('dailyPlanner');
-  const templateNames = Object.keys(localStorage); 
+  const pagesID = localStorage.getItem('dailyPlanner') || localStorage.getItem('weeklyPlanner');
+  const templateNames = Object.keys(localStorage);
+  // console.log(templateNames) 
   const addOnsData = templateNames
     .filter((key) => 
     key !== 'cover' 
@@ -39,8 +41,11 @@ const Review = () => {
     && key !== 'dailyPlanner'
     && key !== 'activeButtonType'
     && key !== 'token'
-    && key !== 'id') 
+    && key !== 'id'
+    && key !== 'Ids'
+    && key !== 'weeklyPlanner') 
     .map((name) => ({ name, id: localStorage.getItem(name) })); 
+    // console.log(addOnsData)
 
   const price = '0.00';
 
@@ -79,6 +84,35 @@ const Review = () => {
     }
   }, [coverID, pagesID]);
 
+  const getAllAddOns = () => {
+    axios.get(`http://localhost:5000/templates/getAll`)
+    .then((response)=>{
+      
+      function findSelectedTemplate(array1, array2) {
+        const result = [];
+    
+        array1.forEach(obj1 => {
+            const matchingObject = array2.find(obj2 => obj1._id === obj2.id);
+    
+            if (matchingObject) {
+                result.push(obj1);
+            }
+        });
+    
+        return result;
+    }
+    
+    const matchings = findSelectedTemplate(response?.data?.templates, addOnsData);
+    setAddOns(matchings)
+    })
+    .catch((error)=>{
+      console.error(error)
+    });
+  };
+  useEffect(()=>{
+    getAllAddOns()
+  });
+
   const handleSubmitPlanner = () => {
     axios.post('http://localhost:5000/planners/addPlanner', {
       "cover":coverID,
@@ -91,7 +125,7 @@ const Review = () => {
       "events":events,
       "price":30,
       "pages": pagesID,
-      "addOns":"65a59a2d223d9c15b0eaace9"
+      "addOns": addOnsData.map((addOn)=>addOn.id)
     })
       .then(response => {
         console.log('Success:', response);
@@ -113,14 +147,14 @@ const Review = () => {
           className="img-cover"
         />
       ))}
-      <p>Full Name: {fullName}</p>
-      <p>Phone Number: {phoneNumber}</p>
-      <p>Email: {email}</p>
-      <p>Message: {message}</p>
-      <h2>Dates:</h2>
-      <p>Week Start: {weekStart}</p>
-      <p>Start Date: {startDate}</p>
-      <p>End Date: {endDate}</p>
+      <p className='infor-review'>Full Name: {fullName}</p>
+      <p className='infor-review'>Phone Number: {phoneNumber}</p>
+      <p className='infor-review'>Email: {email}</p>
+      <p className='infor-review'>Message: {message}</p>
+      <h2 >Dates:</h2>
+      <p className='infor-review'>Week Start: {weekStart}</p>
+      <p className='infor-review'>Start Date: {startDate}</p>
+      <p className='infor-review'>End Date: {endDate}</p>
       <p>Events:</p>
       <ul>
         {events.map((event, index) => (
@@ -136,11 +170,13 @@ const Review = () => {
         />
       )}
       <h2>Add-ons:</h2>
-      {addOnsData &&
-        Array.isArray(addOnsData) &&
-        addOnsData.map((addOn, index) => (
+      {addOns &&
+        Array.isArray(addOns) &&
+        addOns.map((addOn, index) => (
           <div key={index}>
             <h3>{addOn.name}</h3>
+            <h3>{addOn.price}</h3>
+            <img src={addOn.image} alt="" />
           </div>
         ))}
         <button
