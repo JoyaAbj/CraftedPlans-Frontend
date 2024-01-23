@@ -48,16 +48,17 @@ const UserTable = () => {
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
-            <tr key={user._id}>
-              <td className='white-tr'>{user.fullName}</td>
-              <td className='white-tr'>{user.email}</td>
-              <td className='white-tr'>{user.phoneNumber}</td>
-              <td className='white-tr'>{user.role}</td>
-              <td className='white-tr-icon'
-              onClick={()=>handleRemoveUser(user._id)}>x</td>
-            </tr>
-          ))}
+        {users
+              .filter(user => user.role === 'customer') // Filter users with role 'customer'
+              .map((user) => (
+                <tr key={user._id}>
+                  <td className='white-tr'>{user.fullName}</td>
+                  <td className='white-tr'>{user.email}</td>
+                  <td className='white-tr'>{user.phoneNumber}</td>
+                  <td className='white-tr'>{user.role}</td>
+                  <td className='white-tr-icon' onClick={() => handleRemoveUser(user._id)}>x</td>
+                </tr>
+              ))}
         </tbody>
       </table>
       </div>

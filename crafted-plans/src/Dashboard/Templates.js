@@ -16,6 +16,7 @@ const Templates = () => {
   const [imagesArray, setImagesArray] = useState([]);
   const [isAddProductModalOpen, setAddProductIsModalOpen] = useState(false);
   const [updateModalOpen, setUpdateModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleAddProduct = () => {
     setName('');
@@ -79,6 +80,7 @@ const Templates = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     // Create FormData object
     const formData = new FormData();
     formData.append('name', name);
@@ -94,11 +96,14 @@ const Templates = () => {
         console.log(response.data);
         setAddProductIsModalOpen(false);
         getAllTemplatesByCategory(activeCategory);
-        toast.success('Template added successfully!', { position: 'bottom-right' });
+        toast.success('Template added successfully!', { position: 'top-center' });
       })
       .catch((error) => {
         console.error(error);
         toast.error('Error adding template. Please try again.', { position: 'bottom-right' });
+      })
+      .finally(()=>{
+        setLoading(false);
       });
   };
 
@@ -214,7 +219,13 @@ const Templates = () => {
                 Images (up to 3):
                 <input className='input-form-dashboard' type="file" multiple onChange={(e) => setImages(e.target.files)} />
               </label>
-              <button className='submit-form-dashboard' type="submit">Add</button>
+              <button className='submit-form-dashboard' type="submit" disabled={loading}>
+                {loading ? (
+                  <img src="/Images/wired-outline-112-book.gif" alt="loader" className="loader" />
+                ) : (
+                  'Add'
+                )}
+              </button>
             </form>
           </div>
         </div>
