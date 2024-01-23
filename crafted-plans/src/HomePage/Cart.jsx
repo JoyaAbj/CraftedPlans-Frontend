@@ -25,6 +25,9 @@ const Cart = () => {
   const [Ids, setIds] = useState([]);
   const [prices, setPrices] = useState([]);
   const [showBillingForm, setShowBillingForm] = useState(false);
+  const [plannerInfo, setPlannerInfo] = useState(null); 
+  const [coverTemplate, setCoverTemplate] = useState(null);
+  
 
   
 
@@ -34,20 +37,39 @@ const Cart = () => {
       const fetchedProducts = await fetchProducts();
       setProducts(fetchedProducts);
       setIds(localStorage.getItem('Ids').split(','));
-    };
 
+      const storedPlannerInfo = JSON.parse(localStorage.getItem('submittedPlanner'));
+      setPlannerInfo(storedPlannerInfo);
+    };
     fetchData();
   }, [Ids]);
+
+  useEffect(() => {
+    const fetchCoverTemplate = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/templates/getTemplateById/${plannerInfo?.cover}`);
+        setCoverTemplate(response.data.templates);
+      } catch (error) {
+        console.error('Error fetching cover template:', error);
+      }
+    };
+
+    if (plannerInfo && plannerInfo.cover) {
+      fetchCoverTemplate();
+    }
+  }, [plannerInfo]);
   const handleRemoveItem = (id) => {
     if (Ids.length!==0) 
     setIds(Ids.filter((Id) => Id !== id));
   };
-   const handleSubtotal = () => {
+  const handleSubtotal = () => {
+    const plannerPrice = plannerInfo ? parseFloat(plannerInfo.price) : 0;
+  
     const subtotal = products
       .filter((product) => Ids.includes(product._id))
-      .reduce((acc, product) => acc + product.price, 0);
-
-    return subtotal.toFixed(2); // To display two decimal places
+      .reduce((acc, product) => acc + parseFloat(product.price), 0);
+  
+    return (subtotal + plannerPrice).toFixed(2);
   };
   const openBilling = () => {
     setShowBillingForm(true);
@@ -68,6 +90,33 @@ const Cart = () => {
             </tr>
           </thead>
           <tbody>
+             {/* Display planner info if available */}
+             {/* Display planner info if available */}
+             {plannerInfo && coverTemplate && (
+                <tr key="planner">
+                  <td className="cart-details-order">
+                    <img
+                      className="cart-details-order-img"
+                      src={coverTemplate.image}
+                      alt="planner"
+                    />
+                  </td>
+                  <td className="cart-details-order">
+                    <span className="cart-Name">{coverTemplate.name}</span>
+                  </td>
+                  <td className="cart-details-order">
+                    <span className="cart-car-details">{plannerInfo.price}$</span>
+                  </td>
+                  <td className="cart-details-order">
+                    <button
+                      onClick={() => handleRemoveItem('planner')}
+                      className="cart-car-details"
+                    >
+                      x
+                    </button>
+                  </td>
+                </tr>
+              )}
             {Ids &&
               Ids.map((id) => {
                 const item = products.find((product) => product._id === id);

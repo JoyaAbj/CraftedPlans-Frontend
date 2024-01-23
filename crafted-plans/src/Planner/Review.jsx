@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../Styles/planner.css';
+import { useNavigate} from 'react-router-dom';
+import { toast } from "react-hot-toast";
 
 const Review = () => {
+  const [submittedPlannerId, setSubmittedPlannerId] = useState(null);
+  const navigate = useNavigate();
   const [plannerData, setPlannerData] = useState({});
   const [addOns, setAddOns] = useState([]);
   const coverID = localStorage.getItem('cover');
@@ -87,21 +91,21 @@ const Review = () => {
   const getAllAddOns = () => {
     axios.get(`http://localhost:5000/templates/getAll`)
     .then((response)=>{
-      
+
       function findSelectedTemplate(array1, array2) {
         const result = [];
-    
+
         array1.forEach(obj1 => {
             const matchingObject = array2.find(obj2 => obj1._id === obj2.id);
-    
+
             if (matchingObject) {
                 result.push(obj1);
             }
         });
-    
+
         return result;
     }
-    
+
     const matchings = findSelectedTemplate(response?.data?.templates, addOnsData);
     setAddOns(matchings)
     })
@@ -113,26 +117,80 @@ const Review = () => {
     getAllAddOns()
   });
 
-  const handleSubmitPlanner = () => {
-    axios.post('http://localhost:5000/planners/addPlanner', {
-      "cover":coverID,
-      "personalInformation": {
-          "fullName":fullName,
-          "email":email,
-          "phone":phoneNumber,
-          "message":message
+  
+  const handleSubmitPlanner = async () => {
+    try {
+      const response = await axios.post('http://localhost:5000/planners/addPlanner', {
+        "cover": coverID,
+        "personalInformation": {
+          "fullName": fullName,
+          "email": email,
+          "phone": phoneNumber,
+          "message": message
         },
-      "events":events,
-      "price":30,
-      "pages": pagesID,
-      "addOns": addOnsData.map((addOn)=>addOn.id)
-    })
-      .then(response => {
-        console.log('Success:', response);
-      })
-      .catch(error => {
-        console.error('Error:', error);
+        "events": events,
+        "price": 30,
+        "pages": pagesID,
+        "addOns": addOnsData.map((addOn) => addOn.id)
       });
+  
+      // Save the submitted planner ID to local storage
+      const submittedPlannerId = response.data.plannerId;
+      setSubmittedPlannerId(submittedPlannerId);
+  
+      // Save the planner information to local storage
+      const plannerInfo = {
+        cover: coverID,
+        personalInformation: {
+          fullName,
+          email,
+          phone: phoneNumber,
+          message,
+        },
+        events,
+        price: 30,
+        pages: pagesID,
+        addOns: addOnsData.map((addOn) => addOn.id),
+      };
+  
+      localStorage.setItem('submittedPlanner', JSON.stringify(plannerInfo));
+  
+      console.log('Success:', response);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  const handleAddToCart = () => {
+    try {
+      // Retrieve the planner information from local storage
+      const plannerInfo = JSON.parse(localStorage.getItem('submittedPlanner'));
+
+      // Check if the planner information is available
+      if (plannerInfo) {
+        const { cover, personalInformation, events, price, pages, addOns } = plannerInfo;
+
+        // Add the planner to the cart (modify this part based on your cart logic)
+        const cartItem = {
+          cover,
+          personalInformation,
+          events,
+          price,
+          pages,
+          addOns,
+        };
+
+        // You can save the cart items to local storage or dispatch an action to update the global state
+        // Example: localStorage.setItem('cartItems', JSON.stringify([...existingCartItems, cartItem]));
+
+        toast.success('Planner added to cart successfully');
+      } else {
+        toast.error('No planner information found. Please submit a planner first.');
+      }
+    } catch (error) {
+      console.error('Error adding planner to cart:', error);
+      toast.error('Error adding planner to cart. Please try again.');
+    }
   };
 
   return (
@@ -180,7 +238,14 @@ const Review = () => {
           </div>
         ))}
         <button
-        onClick={handleSubmitPlanner}>Add Planner</button>
+        onClick={handleSubmitPlanner}>
+          Add Planner
+        </button>
+        <button 
+        onClick={handleAddToCart}
+        >
+        Add to cart
+      </button>
     </div>
   );
 };
