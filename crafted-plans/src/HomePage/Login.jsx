@@ -15,10 +15,14 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword,setShowPassword]= useState(false);
   const [passwordError, setPasswordError] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
   const [confirmPassError, setConfirmPassError] = useState("");
   const [loginError, setLoginError] = useState("");
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
   const navigate= useNavigate();
 
   const [isRegisterFormVisible, setRegisterFormVisible] = useState(true);
@@ -64,6 +68,7 @@ const Login = () => {
       const id = response.data.id;
       localStorage.setItem("token",token);
       localStorage.setItem("id",id);
+      toast.success("Successfully registered, Please Login!")
     })
     .catch((error) => {
       if (error.response) {
@@ -133,14 +138,38 @@ const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
                />
                {emailError && <p className="error">{emailError}</p>}
+               <div className='password-hide-open'>
                <input
-              type="password"
-              className="register-input"
+               type={showPassword ? 'text' : 'password'}
+              className="register-input1"
               placeholder="PASSWORD"
               required
               onChange={(e) => setPassword(e.target.value)}
             />
+            <div
+              className="absolute top-1/2 transform -translate-y-1/2 right-2 cursor-pointer"
+              onClick={togglePasswordVisibility}
+              >
+              {showPassword ? (
+                <img
+                  src="/Images/open.svg"
+                  alt="show-password"
+                  height="16"
+                  width="20"
+                  viewBox="0 0 640 512"
+                />
+              ) : (
+                <img
+                  src="/Images/hide.svg"
+                  alt="hide-password"
+                  height="16"
+                  width="18"
+                  viewBox="0 0 576 512"
+                />
+              )}
+            </div>
             {passwordError && <p className="error">{passwordError}</p>}
+            </div>
             <input
               type="password"
               className="register-input"
