@@ -3,16 +3,46 @@ import axios from 'axios';
 import '../Styles/planner.css';
 
 const Review = () => {
-  const [plannerData, setPlannerData] = useState({
-    coverID: localStorage.getItem('cover'),
-    informations: localStorage.getItem('formDataArray'),
-    weekStart: localStorage.getItem('selectedStartDay'),
-    startDate: localStorage.getItem('selectedPlannerStartDate'),
-    endDate: localStorage.getItem('selectedPlannerEndDate'),
-    events: JSON.parse(localStorage.getItem('events')),
-    pagesID: localStorage.getItem('weeklyPlanner'),
-    price: '0.00', // Initial price
-  });
+  const [plannerData, setPlannerData] = useState({});
+  const coverID = localStorage.getItem('cover');
+  const informations = localStorage.getItem('formDataArray');
+  const data = JSON.parse(informations);
+
+  let fullName = '';
+  let phoneNumber = '';
+  let email = '';
+  let message = '';
+
+  if (Array.isArray(data)) {
+    data.forEach((entry, index) => {
+      fullName = entry.fullName;
+      phoneNumber = entry.phoneNumber;
+      email = entry.email;
+      message = entry.message;
+    });
+  }
+
+  const weekStart = localStorage.getItem('selectedStartDay');
+  const startDate = localStorage.getItem('selectedPlannerStartDate');
+  const endDate = localStorage.getItem('selectedPlannerEndDate');
+  const events = JSON.parse(localStorage.getItem('events'));
+  const pagesID = localStorage.getItem('dailyPlanner');
+  const templateNames = Object.keys(localStorage); 
+  const addOnsData = templateNames
+    .filter((key) => 
+    key !== 'cover' 
+    && key !== 'formDataArray' 
+    && key !== 'selectedStartDay' 
+    && key !== 'selectedPlannerStartDate' 
+    && key !== 'selectedPlannerEndDate'
+    && key !== 'events'
+    && key !== 'dailyPlanner'
+    && key !== 'activeButtonType'
+    && key !== 'token'
+    && key !== 'id') 
+    .map((name) => ({ name, id: localStorage.getItem(name) })); 
+
+  const price = '0.00';
 
   const [cover, setCover] = useState({ images: [] });
   const [pages, setPages] = useState({ images: [] });
@@ -40,23 +70,28 @@ const Review = () => {
       }
     };
 
-    if (plannerData.coverID) {
-      fetchData(plannerData.coverID, setCover);
+    if (coverID) {
+      fetchData(coverID, setCover);
     }
 
-    if (plannerData.pagesID) {
-      fetchData(plannerData.pagesID, setPages);
+    if (pagesID) {
+      fetchData(pagesID, setPages);
     }
-  }, [plannerData.coverID, plannerData.pagesID]);
+  }, [coverID, pagesID]);
 
   const handleSubmitPlanner = () => {
     axios.post('http://localhost:5000/planners/addPlanner', {
-      cover: plannerData.coverID,
-      personalInformation: plannerData.informations,
-      events: plannerData.events,
-      price: plannerData.price,
-      pages: plannerData.pagesID,
-      addOns: plannerData.addOns,
+      "cover":coverID,
+      "personalInformation": {
+          "fullName":fullName,
+          "email":email,
+          "phone":phoneNumber,
+          "message":message
+        },
+      "events":events,
+      "price":30,
+      "pages": pagesID,
+      "addOns":"65a59a2d223d9c15b0eaace9"
     })
       .then(response => {
         console.log('Success:', response);
@@ -68,47 +103,48 @@ const Review = () => {
 
   return (
     <div className='Dates'>
-      <p className="review-planner">Review Planner Before Confirming</p>
-      <div>
-        <h2>Information:</h2>
-        {plannerData.template && (
-          <div>
-            <p>Cover ID: {plannerData.coverID}</p>
-            <p>Information: {plannerData.informations}</p>
+      
+      <h2>Cover:</h2>
+      {cover.images && cover.images.map((imageUrl, index) => (
+        <img
+          key={index}
+          src={imageUrl}
+          alt={`cover-${index}`}
+          className="img-cover"
+        />
+      ))}
+      <p>Full Name: {fullName}</p>
+      <p>Phone Number: {phoneNumber}</p>
+      <p>Email: {email}</p>
+      <p>Message: {message}</p>
+      <h2>Dates:</h2>
+      <p>Week Start: {weekStart}</p>
+      <p>Start Date: {startDate}</p>
+      <p>End Date: {endDate}</p>
+      <p>Events:</p>
+      <ul>
+        {events.map((event, index) => (
+          <li key={index}>{`Event ${index + 1}: ${event.eventName} - ${event.date}`}</li>
+        ))}
+      </ul>
+      <h2>Pages:</h2>
+      {pages.images && pages.images.length > 0 && (
+        <img
+          src={pages.images[0]}
+          alt={`pages-0`}
+          className="img-cover"
+        />
+      )}
+      <h2>Add-ons:</h2>
+      {addOnsData &&
+        Array.isArray(addOnsData) &&
+        addOnsData.map((addOn, index) => (
+          <div key={index}>
+            <h3>{addOn.name}</h3>
           </div>
-        )}
-        <h2>Cover:</h2>
-        {cover.images && cover.images.map((imageUrl, index) => (
-          <img
-            key={index}
-            src={imageUrl}
-            alt={`cover-${index}`}
-            className="img-cover"
-          />
         ))}
-        <h2>Dates:</h2>
-        <p>Week Start: {plannerData.weekStart}</p>
-        <p>Start Date: {plannerData.startDate}</p>
-        <p>End Date: {plannerData.endDate}</p>
-        <p>Events:</p>
-        <ul>
-          {plannerData.events.map((event, index) => (
-            <li key={index}>{`Event ${index + 1}: ${event.eventName} - ${event.date}`}</li>
-          ))}
-        </ul>
-        <h2>Pages:</h2>
-        {pages.images && pages.images.map((imageUrl, index) => (
-          <img
-            key={index}
-            src={imageUrl}
-            alt={`pages-${index}`}
-            className="img-cover"
-          />
-        ))}
-        <h2>Total Price:</h2>
-        <p>{`$${plannerData.price}`}</p>
-      </div>
-      <button onClick={handleSubmitPlanner}>Submit Planner</button>
+        <button
+        onClick={handleSubmitPlanner}>Add Planner</button>
     </div>
   );
 };

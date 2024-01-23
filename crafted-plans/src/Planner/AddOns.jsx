@@ -3,18 +3,15 @@ import axios from 'axios';
 import PriceCalculation from './PriceCalculation';
 
 const AddOns = () => {
-  const [selectedTemplates, setSelectedTemplates] = useState([]);
-  const [selectedTemplate, setSelectedTemplate] = useState(null);
   const [selectedOption, setSelectedOption] = useState('');
-  const [addOns, setAddOns] = useState([]);
+  const [selectedAddOns, setSelectedAddOns] = useState({});
   const [addOnsObj, setAddOnsObj] = useState({});
-  const [correspondingImageUrl, setCorrespondingImageUrl] = useState(null);
-  const [largeImage, setLargeImage] = useState('')
-  const category = "addOns";
+  const [largeImage, setLargeImage] = useState('');
+  const [addOns, setAddOns] = useState([]); // Add this line to initialize addOns state
 
   // Fetch AddOns
   const getAllAddOns = () => {
-    axios.post(`http://localhost:5000/templates/getTemplateByCategory`, { category })
+    axios.post(`http://localhost:5000/templates/getTemplateByCategory`, { category: "addOns" })
       .then((response) => {
         setAddOns(response.data.templates);
         console.log(response.data.templates);
@@ -30,8 +27,7 @@ const AddOns = () => {
 
   const handleSelectChange = (event) => {
     setSelectedOption(event.target.value);
-    setSelectedTemplate(null);
-    setCorrespondingImageUrl(null); // Reset corresponding image URL when the dropdown changes
+    setLargeImage(''); // Reset large image when the dropdown changes
   };
 
   // const correspondingImageUrls = {
@@ -82,32 +78,31 @@ const AddOns = () => {
   // };
   
   const handleImageClick = (selectedImageName) => {
-    console.log(selectedImageName)
-    const result = correspondingImageUrls.filter(option=>option.name === selectedImageName)
-    console.log(result)
-    setLargeImage(result[0].url)
-  }
-  
-  
+    const result = correspondingImageUrls.find(option => option.name === selectedImageName);
+    setLargeImage(result ? result.url : '');
+  };
+
   const filteredAddOns = addOns.filter((addOn) => {
     return selectedOption === '' || addOn.name === selectedOption;
-  })
-  // console.log(filteredAddOns)
+  });
 
+  // Define the function to handle checkbox changes
   const handleChange = (event, addOn) => {
-        if (event.target.checked) {
-    localStorage.setItem(addOn.name, addOn._id)
-    setAddOnsObj((previous) => ({
-      ...previous, [addOn.name ]: addOn._id
-    }))
-        } else {
-    localStorage.removeItem(addOn.name)
-    setAddOnsObj((previous) => ({
-      ...previous,
-      [addOn.name] : null
-    }))
-        }
+    if (event.target.checked) {
+      localStorage.setItem(addOn.name, addOn._id);
+      setAddOnsObj((previous) => ({
+        ...previous,
+        [addOn.name]: addOn._id,
+      }));
+    } else {
+      localStorage.removeItem(addOn.name);
+      setAddOnsObj((previous) => ({
+        ...previous,
+        [addOn.name]: null,
+      }));
+    }
   };
+
 
   return (
     <div className='Dates'>
@@ -186,7 +181,7 @@ const AddOns = () => {
                 ))}
         </div>
       )}
-    <PriceCalculation/>
+    <PriceCalculation selectedAddOns={selectedAddOns} />
       
     </div>
   );
