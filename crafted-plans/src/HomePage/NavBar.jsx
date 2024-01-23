@@ -45,7 +45,7 @@ const NavBar = () => {
 
           {role === 'admin' && (
             <Link to='/dashboard'>
-              <img src="/Images/vector1.png" alt="dash" className="login-navbar" />
+              <img src="/Images/dashboard.svg" alt="dash" className="login-navbar" />
             </Link>
           )}
 
