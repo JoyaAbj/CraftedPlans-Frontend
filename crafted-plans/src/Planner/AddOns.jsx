@@ -166,7 +166,7 @@ const AddOns = () => {
                    <label class="labels-dates-m-s">
                       <input 
                         type="checkbox" 
-                        className="button-dates1 checkbox-custom1" 
+                        className="button-dates1 checkbox-custom2" 
                         name="addOn" 
                         checked={addOnsObj[addOn.name] || localStorage.getItem(addOn.name) ? true : false}
                         onChange={(e) => handleChange(e, addOn)}

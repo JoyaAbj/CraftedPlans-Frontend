@@ -123,7 +123,7 @@ const Pages = () => {
             <label class="labels-dates-m-s">
                       <input 
                         type="checkbox" 
-                        className="button-dates1 checkbox-custom1" 
+                        className="button-dates1 checkbox-custom2" 
                         name="addOn" 
                         checked={addOnsObj1[selectedPlanner] === template._id ? true : false}
                         onChange={(e) => handleChange(e, template)}
