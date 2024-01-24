@@ -117,10 +117,10 @@ const Cart = () => {
         <table>
           <thead>
             <tr>
-              <td className="white-tr-td">Product</td>
-              <td className="white-tr-td">Details</td>
-              <td className="white-tr-td"> Price</td>
-              <td className="white-tr-td"> Action</td>
+              <td className="white-tr-td2">Product</td>
+              <td className="white-tr-td2">Details</td>
+              <td className="white-tr-td2"> Price</td>
+              <td className="white-tr-td2"> Action</td>
             </tr>
           </thead>
           <tbody>
@@ -166,11 +166,6 @@ const Cart = () => {
                         <span className="cart-details">
                            {item.category} 
                         </span>
-                        <div className="btns-qty-cart">
-                          <button className="increase">-</button>
-                          <p className="item-qty-cart">{item.quantity}</p>
-                          <button className="increase">+</button>
-                        </div>
                       </td>
                       <td className="cart-details-order">
                         <span className="cart-car-details">
@@ -192,7 +187,7 @@ const Cart = () => {
       <table>
               <thead>
               <tr>
-                <td className="td-white">SubTotal</td>
+                <td className="td-white">SubTotal:</td>
                 <td className="td-n">
                   {handleSubtotal()+" $"}
                 </td>

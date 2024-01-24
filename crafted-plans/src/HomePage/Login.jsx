@@ -25,8 +25,8 @@ const Login = () => {
   };
   const navigate= useNavigate();
 
-  const [isRegisterFormVisible, setRegisterFormVisible] = useState(true);
-  const [isLoginFormVisible, setLoginFormVisible] = useState(false);
+  const [isRegisterFormVisible, setRegisterFormVisible] = useState(false);
+  const [isLoginFormVisible, setLoginFormVisible] = useState(true);
   
   const handleRegister = (e) => {
     e.preventDefault();
@@ -111,6 +111,71 @@ const Login = () => {
         <h2>  👍Login Success</h2>
        ):(
         <div className="register">
+          {isLoginFormVisible && (
+         
+         <form className="card2"
+         onSubmit={(e)=>handleLogin(e)}
+         >
+          <div>
+          <input
+            type="text"
+            className="register-input"
+            placeholder="EMAIL"
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          </div>
+          <div className='password-hide-open'>
+          <input
+             type={showPassword ? 'text' : 'password'}
+            className="register-input1"
+            placeholder="PASSWORD"
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <div
+              className="absolute top-1/2 transform -translate-y-1/2 right-2 cursor-pointer"
+              onClick={togglePasswordVisibility}
+              >
+              {showPassword ? (
+                <img
+                  src="/Images/open.svg"
+                  alt="show-password"
+                  height="16"
+                  width="20"
+                  viewBox="0 0 640 512"
+                />
+              ) : (
+                <img
+                  src="/Images/hide.svg"
+                  alt="hide-password"
+                  height="16"
+                  width="18"
+                  viewBox="0 0 576 512"
+                />
+              )}
+            </div>
+         
+          {loginError &&
+            <p className="error">{loginError}</p>
+          }
+          </div>
+          <button className="register-button" type="submit">Sign in</button>
+          <span className="link">
+            Don't have an account?
+            <span
+              className="link2"
+              onClick={() => {  
+                setRegisterFormVisible(true);
+                setLoginFormVisible(false);
+              }}
+            >
+              Register
+            </span>
+          </span>
+
+        </form>
+       )}
           {isRegisterFormVisible && (
           <form className="card" onSubmit={(e)=>handleRegister(e)}>
             <div>
@@ -198,71 +263,7 @@ const Login = () => {
           </div>
        )}
        
-       {isLoginFormVisible && (
-         
-         <form className="card2"
-         onSubmit={(e)=>handleLogin(e)}
-         >
-          <div>
-          <input
-            type="text"
-            className="register-input"
-            placeholder="EMAIL"
-            required
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          </div>
-          <div className='password-hide-open'>
-          <input
-             type={showPassword ? 'text' : 'password'}
-            className="register-input1"
-            placeholder="PASSWORD"
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <div
-              className="absolute top-1/2 transform -translate-y-1/2 right-2 cursor-pointer"
-              onClick={togglePasswordVisibility}
-              >
-              {showPassword ? (
-                <img
-                  src="/Images/open.svg"
-                  alt="show-password"
-                  height="16"
-                  width="20"
-                  viewBox="0 0 640 512"
-                />
-              ) : (
-                <img
-                  src="/Images/hide.svg"
-                  alt="hide-password"
-                  height="16"
-                  width="18"
-                  viewBox="0 0 576 512"
-                />
-              )}
-            </div>
-         
-          {loginError &&
-            <p className="error">{loginError}</p>
-          }
-          </div>
-          <button className="register-button" type="submit">Sign in</button>
-          <span className="link">
-            Don't have an account?
-            <span
-              className="link2"
-              onClick={() => {  
-                setRegisterFormVisible(true);
-                setLoginFormVisible(false);
-              }}
-            >
-              Register
-            </span>
-          </span>
-
-        </form>
-       )}
+       
        
        </div>
   )
