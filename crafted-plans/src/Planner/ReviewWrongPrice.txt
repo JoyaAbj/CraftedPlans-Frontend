@@ -95,7 +95,7 @@ const Review = () => {
            
         const templatePrice = parseFloat(response.data.templates.price);
       const duration = calculateDuration(startDate, endDate, type);
-      const totalPrice = (templatePrice + (0.15 * duration)).toFixed(2); // Updated totalPrice calculation
+      const totalPrice = (templatePrice + (templatePrice * duration)).toFixed(2); // Updated totalPrice calculation
 
       console.log('Template Price:', templatePrice);
       console.log('Duration:', duration);
