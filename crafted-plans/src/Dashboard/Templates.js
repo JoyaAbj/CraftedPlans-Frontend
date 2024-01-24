@@ -15,7 +15,6 @@ const Templates = () => {
   const [images, setImages] = useState([]);
   const [imagesArray, setImagesArray] = useState([]);
   const [isAddProductModalOpen, setAddProductIsModalOpen] = useState(false);
-  const [updateModalOpen, setUpdateModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleAddProduct = () => {
@@ -26,22 +25,13 @@ const Templates = () => {
     setAddProductIsModalOpen(true);
   };
 
-  const handleUpdateTemplate = (template) => {
-    setName(template.name);
-    setCategory(template.category);
-    setPrice(template.price);
-    setImagesArray(template.image);
-    setImages([]);
-    setUpdateModalOpen(true);
-  };
+
 
   const closeModal = () => {
     setAddProductIsModalOpen(false);
   };
 
-  const closeUpdateModal = () => {
-    setUpdateModalOpen(false);
-  };
+
 
   const getAllTemplatesByCategory = (category) => {
     axios
@@ -72,7 +62,6 @@ const Templates = () => {
         })
         .catch((error) => {
           console.error('Error deleting template', error);
-          // Show error toast
           toast.error('Error deleting template. Please try again.', { position: 'top-center' });
         });
     }
@@ -81,12 +70,10 @@ const Templates = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    // Create FormData object
     const formData = new FormData();
     formData.append('name', name);
     formData.append('category', category);
     formData.append('price', price);
-    // Append each selected image to the form data
     for (let i = 0; i < images.length; i++) {
       formData.append('images', images[i]);
     }
@@ -104,37 +91,6 @@ const Templates = () => {
       })
       .finally(()=>{
         setLoading(false);
-      });
-  };
-
-  const handleUpdate = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('category', category);
-    formData.append('price', price);
-
-    // Append each selected image to the form data
-    for (let i = 0; i < images.length; i++) {
-      formData.append('images', images[i]);
-    }
-
-    // Append previous images to the form data
-    for (let i = 0; i < imagesArray.length; i++) {
-      formData.append('imagesArray', imagesArray[i]);
-    }
-
-    axios
-      .put(`http://localhost:5000/templates/updateTemplate/${id}`, formData)
-      .then((response) => {
-        console.log(response.data);
-        setUpdateModalOpen(false);
-        getAllTemplatesByCategory(activeCategory);
-        toast.success('Template updated successfully!', { position: 'bottom-right' });
-      })
-      .catch((error) => {
-        console.error(error);
-        toast.error('Error updating template. Please try again.', { position: 'bottom-right' });
       });
   };
 
@@ -178,12 +134,6 @@ const Templates = () => {
                   <img src={template.image} alt={template.name} className="product-image-D" />
                   <div className="edit-product-D">
                     <img
-                      src="/Images/pen.svg"
-                      alt="edit-image-1"
-                      className="product-image-D1"
-                      onClick={() => handleUpdateTemplate(template)}
-                    />
-                    <img
                       src="/Images/bin.svg"
                       alt="edit-image-2"
                       className="product-image-D1"
@@ -226,35 +176,6 @@ const Templates = () => {
                   'Add'
                 )}
               </button>
-            </form>
-          </div>
-        </div>
-      )}
-      {/* Modal for updating a template */}
-      {updateModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={closeUpdateModal}>
-              &times;
-            </span>
-            <form className='form-modal-dashboard' onSubmit={handleUpdate}>
-              <label className='label-modal-dashboard'>
-                Name:
-                <input className='input-form-dashboard' type="text" value={name} onChange={(e) => setName(e.target.value)} />
-              </label>
-              <label className='label-modal-dashboard'>
-                Category:
-                <input className='input-form-dashboard' type="text" value={category} onChange={(e) => setCategory(e.target.value)} />
-              </label>
-              <label className='label-modal-dashboard'>
-                Price:
-                <input className='input-form-dashboard' type="text" value={price} onChange={(e) => setPrice(e.target.value)} />
-              </label>
-              <label className='label-modal-dashboard'>
-                Images (up to 3):
-                <input className='input-form-dashboard' type="file" multiple onChange={(e) => setImages(e.target.files)} />
-              </label>
-              <button className='submit-form-dashboard' type="submit">Update</button>
             </form>
           </div>
         </div>

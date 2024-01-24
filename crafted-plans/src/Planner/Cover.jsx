@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../Styles/planner.css';
 import axios from 'axios';
-import PriceCalculation from './PriceCalculation';
 
 const Cover = () => {
   const [inputValue, setInputValue] = useState('');
@@ -142,7 +141,6 @@ const Cover = () => {
           </div>
         </div>
       )}
-      <PriceCalculation/>
     </div>
   )
 }
