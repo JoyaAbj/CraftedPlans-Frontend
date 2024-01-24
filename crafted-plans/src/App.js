@@ -25,6 +25,7 @@ import Cart from './HomePage/Cart';
 import './Styles/style.css';
 import SideBar from './Dashboard/SideBar';
 import {getUserRole} from './HomePage/GetData';
+import AddReview from './HomePage/AddReview';
 
 function App() {
   const role =getUserRole();
@@ -43,6 +44,7 @@ function App() {
       <Route path="/planners" element={ role === 'customer' ? <TopBar/> : <Login/>} />
       <Route path="/cart" element={role === 'customer' ?<Cart /> : <PageNotFound/>} />
       <Route path="/dashboard" element={role === 'admin'? <SideBar/> : <Login/>} /> 
+      <Route path="/addReview" element={role === 'customer'? <AddReview/> : <PageNotFound/>} />
       <Route path="*" element={<PageNotFound />} />
 
       </Routes>

@@ -134,32 +134,33 @@ const Review = () => {
         "addOns": addOnsData.map((addOn) => addOn.id)
       });
   
-      // Save the submitted planner ID to local storage
-      const submittedPlannerId = response.data.plannerId;
-      setSubmittedPlannerId(submittedPlannerId);
-  
-      // Save the planner information to local storage
-      const plannerInfo = {
-        cover: coverID,
-        personalInformation: {
-          fullName,
-          email,
-          phone: phoneNumber,
-          message,
-        },
-        events,
-        price: 30,
-        pages: pagesID,
-        addOns: addOnsData.map((addOn) => addOn.id),
-      };
-  
-      localStorage.setItem('submittedPlanner', JSON.stringify(plannerInfo));
-  
-      console.log('Success:', response);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
+       // Save the submitted planner ID to local storage
+       const submittedPlannerId = response.data.plannerId;
+       setSubmittedPlannerId(submittedPlannerId);
+ 
+       // Save the planner information to local storage
+       const plannerInfo = {
+         cover: coverID,
+         personalInformation: {
+           fullName,
+           email,
+           phone: phoneNumber,
+           message,
+         },
+         events,
+         price: 30,
+         pages: pagesID,
+         addOns: addOnsData.map((addOn) => addOn.id),
+       };
+ 
+       localStorage.setItem('submittedPlanner', JSON.stringify(plannerInfo));
+ 
+       console.log('Success:', response);
+     } catch (error) {
+       console.error('Error:', error);
+     }
+   };
+ 
 
   const handleAddToCart = () => {
     try {

@@ -27,8 +27,12 @@ const Cart = () => {
   const [showBillingForm, setShowBillingForm] = useState(false);
   const [plannerInfo, setPlannerInfo] = useState(null); 
   const [coverTemplate, setCoverTemplate] = useState(null);
+  const [submittedPlannerId, setSubmittedPlannerId] = useState(null);
   
-
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [address, setAddress] = useState('');
   
 
   getUserID();
@@ -73,6 +77,36 @@ const Cart = () => {
   };
   const openBilling = () => {
     setShowBillingForm(true);
+  };
+  const handleFormSubmit = async () => {
+    try {
+      // Prepare the order data
+      const orderData = {
+        userId: getUserID(), // assuming getUserID() returns the user ID
+         planners: plannerInfo,
+        products: Ids,
+        status: false, // you can set the initial status as needed
+        address,
+      };
+
+      const billingDetails = {
+        fullName,
+        email,
+        phoneNumber,
+        address,
+      };
+
+      const response = await axios.post('http://localhost:5000/orders/add', {
+        ...orderData,
+        ...billingDetails,
+      });
+
+      console.log(response.data);
+
+      navigate('/addReview'); 
+    } catch (error) {
+      console.error('Error submitting order:', error);
+    }
   };
 
   return (
@@ -169,49 +203,57 @@ const Cart = () => {
       className="checkout-cart"
       onClick={openBilling}
       >Checkout</button>
-      {showBillingForm && (
-          <div className="billing-form">
-            <div className="billing-title-line">
-              <h1 className="billing-title">Billing Details</h1>
-              <hr className="billing-line" />
-            </div>
-            <div className="billing-form">
-              <label className="billing-label">
-                <input 
-                type="text" 
-                placeholder='Full Name'
-                className="billing-input" 
-                // value={fullName}
-                />
-              </label>
-              <label className="billing-label">
-                <input 
-                type="text" 
-                placeholder='Email'
-                className="billing-input" 
-                // value={userInfo ? userInfo.email : ''}
-                />
-              </label>
-              <label className="billing-label">
-                <input 
-                type="text" 
-                placeholder='Phone Number'
-                className="billing-input" 
-                // value={userInfo ? userInfo.phoneNumber : ''}
-                />
-              </label>
-              <label className="billing-label">
-                <textarea 
-                  placeholder="Address" 
-                  id="" 
-                  cols="30" 
-                  rows="10" 
-                  className="billing-text">
-                </textarea>
-              </label>
+          {showBillingForm && (
+              <div className="billing-form">
+                <div className="billing-title-line">
+                  <h1 className="billing-title">Billing Details</h1>
+                  <hr className="billing-line" />
+                </div>
+                <div className="billing-form">
+                <label className="billing-label">
+            <input 
+              type="text" 
+              placeholder='Full Name'
+              className="billing-input" 
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+            />
+          </label>
+          <label className="billing-label">
+            <input 
+              type="text" 
+              placeholder='Email'
+              className="billing-input" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+          <label className="billing-label">
+            <input 
+              type="text" 
+              placeholder='Phone Number'
+              className="billing-input" 
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
+          </label>
+          <label className="billing-label">
+            <textarea 
+              placeholder="Address" 
+              id="" 
+              cols="30" 
+              rows="10" 
+              className="billing-text"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            ></textarea>
+          </label>
             <hr className="billing-line" />
             <p className="info-extra">Cash On Delivery</p>
-            <input  className='checkout-cart' type="submit" />
+            <input  
+            className='checkout-cart' 
+            type="submit"
+            onClick={handleFormSubmit} />
             </div>
           </div>
         )}
