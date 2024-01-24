@@ -83,6 +83,7 @@ const Review = () => {
   
     return 0;
   };
+  
   useEffect(() => {
     const fetchData = async (templateId, setFunction, type) => {
       try {
@@ -96,7 +97,7 @@ const Review = () => {
            
         const templatePrice = parseFloat(response.data.templates.price);
       const duration = calculateDuration(startDate, endDate, type);
-      const totalPrice = (10 + (0.15 * duration)).toFixed(2); // Updated totalPrice calculation
+      const totalPrice = (10 + (templatePrice * duration)+(2 * duration)).toFixed(2); // Updated totalPrice calculation
 
       console.log('Template Price:', templatePrice);
       console.log('Duration:', duration);
@@ -161,7 +162,7 @@ const Review = () => {
         "message": message
       },
       "events": events,
-      "price": 30,
+      "price": plannerData.price,
       "pages": pagesID,
       "addOns": addOnsData.map((addOn) => addOn.id)
     })
@@ -175,7 +176,7 @@ const Review = () => {
           "message": message
         },
         "events": events,
-        "price": 30,
+        "price": plannerData.price,
         "pages": pagesID,
         "addOns": addOnsData.map((addOn) => addOn.id)
       });
@@ -194,13 +195,14 @@ const Review = () => {
            message,
          },
          events,
-         price: 30,
+         price: plannerData.price,
          pages: pagesID,
          addOns: addOnsData.map((addOn) => addOn.id),
+         
        };
  
        localStorage.setItem('submittedPlanner', JSON.stringify(plannerInfo));
- 
+       toast.success('Success! 🌟 Your planner submitted . Add it to your cart now and let the planning brilliance continue! ')
        console.log('Success:', response);
      } catch (error) {
        console.error('Error:', error);
@@ -319,7 +321,7 @@ const Review = () => {
         <p className="arrow-review" onClick={toggleAdditionalInfo}>&gt;</p>
       
         </div>
-        <p className="infor-review">{`$${plannerData.price || '0.00'}`}</p>
+        <p className="infor-review-price">{`$${plannerData.price || '0.00'}`}</p>
         <div className="submit-cart-bts">
         <button
         className='buttons-review'

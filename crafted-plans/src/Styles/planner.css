@@ -582,10 +582,20 @@
     margin: 0;
     text-align: center;
 }
+.infor-review-price{
+    color: #50415A;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    list-style: none;
+    margin: 0;
+    text-align: center;
+}
 .addons-review{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
 }
 .arrow-review{
     color: #917B9F;
@@ -593,6 +603,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    cursor: pointer;
 }
 .submit-cart-bts{
     display: flex;
