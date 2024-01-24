@@ -35,7 +35,7 @@ const Review = () => {
   const startDate = localStorage.getItem('selectedPlannerStartDate');
   const endDate = localStorage.getItem('selectedPlannerEndDate');
   const events = JSON.parse(localStorage.getItem('events'));
-  const pagesID = localStorage.getItem('dailyPlanner') ? 'dailyPlanner' : 'weeklyPlanner';
+  const pagesID = localStorage.getItem('dailyPlanner') ? localStorage.getItem('dailyPlanner') : localStorage.getItem('weeklyPlanner');
   const templateNames = Object.keys(localStorage);
   // console.log(templateNames) 
   const addOnsData = templateNames
@@ -51,7 +51,8 @@ const Review = () => {
     && key !== 'token'
     && key !== 'id'
     && key !== 'Ids'
-    && key !== 'weeklyPlanner') 
+    && key !== 'weeklyPlanner'
+    && key !== 'submittedPlanner') 
     .map((name) => ({ name, id: localStorage.getItem(name) })); 
     // console.log(addOnsData)
 
@@ -70,11 +71,11 @@ const Review = () => {
     console.log('calculateDuration - startMoment:', startMoment.format());
     console.log('calculateDuration - endMoment:', endMoment.format());
     console.log('calculateDuration - pagesID:', pagesID); // Add this line
-    if (pagesID === 'weeklyPlanner') {
+    if (pagesID === localStorage.getItem('weeklyPlanner')) {
       const daysDifference = endMoment.diff(startMoment, 'days');
       console.log('Weekly Planner - Days Difference:', daysDifference);
-      return daysDifference + 1; // Add 1 to include both the start and end dates
-    } else if (pagesID === 'dailyPlanner') {
+      return (daysDifference + 1)/7; 
+    } else if (pagesID === localStorage.getItem('dailyPlanner')) {
       const daysDifference = endMoment.diff(startMoment, 'days');
       console.log('Daily Planner - Days Difference:', daysDifference);
       return daysDifference + 1; // Add 1 to include both the start and end dates
@@ -95,7 +96,7 @@ const Review = () => {
            
         const templatePrice = parseFloat(response.data.templates.price);
       const duration = calculateDuration(startDate, endDate, type);
-      const totalPrice = (templatePrice + (0.15 * duration)).toFixed(2); // Updated totalPrice calculation
+      const totalPrice = (10 + (0.15 * duration)).toFixed(2); // Updated totalPrice calculation
 
       console.log('Template Price:', templatePrice);
       console.log('Duration:', duration);
@@ -146,10 +147,24 @@ const Review = () => {
   };
   useEffect(()=>{
     getAllAddOns()
-  });
+  },[]);
 
   
   const handleSubmitPlanner = async () => {
+    console.log(addOnsData)
+    console.log({
+      "cover": coverID,
+      "personalInformation": {
+        "fullName": fullName,
+        "email": email,
+        "phone": phoneNumber,
+        "message": message
+      },
+      "events": events,
+      "price": 30,
+      "pages": pagesID,
+      "addOns": addOnsData.map((addOn) => addOn.id)
+    })
     try {
       const response = await axios.post('http://localhost:5000/planners/addPlanner', {
         "cover": coverID,

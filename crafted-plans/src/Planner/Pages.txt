@@ -18,7 +18,7 @@ const Pages = () => {
   // Fetch Pages by category
   const [pages, setPages] = useState([]);
   const category = "pages";
-  // const url = process.env.REACT_APP_API_URL;
+
   const getAllPages = () => {
       axios.post(`http://localhost:5000/templates/getTemplateByCategory`, {category})
         .then((response) => {

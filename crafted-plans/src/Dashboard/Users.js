@@ -7,7 +7,7 @@ const UserTable = () => {
   const [users, setUsers] = useState([]);
 
   const getAllUsers = () => {
-    axios.get('http://localhost:5000/users/getAll')
+    axios.get(`http://localhost:5000/users/getAll`)
       .then((response) => {
         setUsers(response.data.users);
       })

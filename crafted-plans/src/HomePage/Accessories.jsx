@@ -10,7 +10,6 @@ const NotePads = () => {
         const [accessories, setAccessories] = useState([]);
 
         const category = "accessories";
-        // const url = process.env.REACT_APP_API_URL;
         const getAllaccessories = () => {
             axios.post(`http://localhost:5000/products/getProductByCategory`, {category})
               .then((response) => {

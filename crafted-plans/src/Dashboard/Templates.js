@@ -91,7 +91,7 @@ const Templates = () => {
       formData.append('images', images[i]);
     }
     axios
-      .post('http://localhost:5000/templates/addTemplate', formData)
+      .post(`http://localhost:5000/templates/addTemplate`, formData)
       .then((response) => {
         console.log(response.data);
         setAddProductIsModalOpen(false);

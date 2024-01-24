@@ -8,7 +8,7 @@ import { getUserRole } from './GetData';
 
 const fetchProducts = async () => {
   try {
-    const response = await axios.get('http://localhost:5000/products/getAll');
+    const response = await axios.get(`http://localhost:5000/products/getAll`);
     return response.data.products;
   } catch (error) {
     console.error('Error fetching products:', error);
@@ -40,7 +40,7 @@ const Cart = () => {
     const fetchData = async () => {
       const fetchedProducts = await fetchProducts();
       setProducts(fetchedProducts);
-      setIds(localStorage.getItem('Ids').split(','));
+      localStorage.getItem('Ids') && setIds(localStorage.getItem('Ids').split(','));
 
       const storedPlannerInfo = JSON.parse(localStorage.getItem('submittedPlanner'));
       setPlannerInfo(storedPlannerInfo);
@@ -82,13 +82,13 @@ const Cart = () => {
     try {
       // Prepare the order data
       const orderData = {
-        userId: getUserID(), // assuming getUserID() returns the user ID
+        userID: getUserID(), // assuming getUserID() returns the user ID
          planners: plannerInfo,
         products: Ids,
         status: false, // you can set the initial status as needed
         address,
       };
-
+      console.log(orderData)
       const billingDetails = {
         fullName,
         email,
@@ -96,7 +96,7 @@ const Cart = () => {
         address,
       };
 
-      const response = await axios.post('http://localhost:5000/orders/add', {
+      const response = await axios.post(`http://localhost:5000/orders/add`, {
         ...orderData,
         ...billingDetails,
       });

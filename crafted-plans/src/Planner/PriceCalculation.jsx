@@ -8,8 +8,8 @@ const PriceCalculation = ({ selectedCover, startDate, endDate, selectedAddOns })
   useEffect(() => {
     // Calculate the total price based on the selected cover, dates, and add-ons
 
-    if (selectedCover) {
-      // Add price of the selected cover
+    if (selectedCover && selectedCover.category === 'cover') {
+      // Add price of the selected cover if it belongs to the 'cover' category
       totalPrice += selectedCover.price || 0;
     }
 

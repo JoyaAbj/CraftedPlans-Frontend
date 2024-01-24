@@ -11,10 +11,10 @@ const Orders = () => {
   const [templateImages, setTemplateImages] = useState({});
 
   const getAllOrders = () => {
-    axios.get(`http://localhost:5000/orders/getOrdersByUserId/${id}`)
+    axios.get(`http://localhost:5000/orders/getAll`)
       .then((response) => {
-        console.log(response.data.orders);
-        setOrders(response.data.orders);
+        console.log(response.data.allOrders);
+        setOrders(response.data.allOrders);
       })
       .catch((error) => {
         console.error(error);
@@ -66,11 +66,11 @@ const Orders = () => {
 
                   {/* Planners */}
                   <td className='white-tr'>
-                   <p>{order.planner}</p>
+                   <p>{order.planners}</p>
                   </td>
 
                   {/* User */}
-                  <td className='white-tr'>{order.userID}</td>
+                  <td className='white-tr'>{order.userID?.fullName}</td>
 
                   {/* Status */}
                   <td className='white-tr'>{order.status ? 'Completed' : 'Pending'}</td>

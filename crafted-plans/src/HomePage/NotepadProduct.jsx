@@ -9,7 +9,7 @@ import { toast } from "react-hot-toast";
 const NotepadProduct = () => {
     const { Id } = useParams();
     const navigate = useNavigate();
-    const [quantity, setQuantity] = useState(1);
+    // const [quantity, setQuantity] = useState(1);
     const [notePad, setNotePad] = useState({
       image: [],
       price: 0,
@@ -21,15 +21,7 @@ const NotepadProduct = () => {
   }); 
   const [selectedImageIndex,setSelectedImageIndex] = useState(0);
 
-  const handleIncrease = () => {
-    setQuantity(quantity + 1);
-  };
-
-  const handleDecrease = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
+ 
   const getNotePadById = () => {
     axios.get(`http://localhost:5000/products/getProductById/${Id}`)
     .then((response)=> {
@@ -102,16 +94,8 @@ const NotepadProduct = () => {
             <p className="product-desc-product">
               {notePad.description}
             </p>
+            <p className='product-quantity-product'>  Quantity: {notePad.quantity}</p>
             <div className="qty-cart">
-            <div className="quantity-product">
-            <div className="btns-quantity">
-            <button className='product-increase'
-            onClick={handleDecrease}>-</button>
-            <p className='product-quantity-product'>{quantity}</p>
-            <button className='product-decrease'
-             onClick={handleIncrease}>+</button>
-            </div>
-            </div>
             <button 
             className='product-add-to-cart'
             onClick={handleAddToCart}>

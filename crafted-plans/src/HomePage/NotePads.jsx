@@ -8,7 +8,6 @@ import axios from 'axios';
 const NotePads = () => {
     const [notePads, setNotePads] = useState([]);
     const category = "notepads";
-    // const url = process.env.REACT_APP_API_URL;
     const getAllNotePads = () => {
         axios.post(`http://localhost:5000/products/getProductByCategory`, {category})
           .then((response) => {

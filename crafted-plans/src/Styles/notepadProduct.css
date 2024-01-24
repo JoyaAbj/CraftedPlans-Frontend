@@ -56,13 +56,9 @@
     text-align: justify;
 }
 .quantity-product{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 10px;
     border: 1px solid #917B9F;
     border-radius: 10px;
-    width: 400px;
+    width: 200px;
 }
 .product-quantity-product{
     color: #000;
