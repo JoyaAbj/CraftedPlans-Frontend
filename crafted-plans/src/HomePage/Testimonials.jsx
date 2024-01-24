@@ -50,7 +50,7 @@ const Reviews = () => {
   return (
     <div style={{ ...componentStyle, ...carouselItemStyle }}>
       <Carousel>
-        {reviews.map((review, i) => (
+      {reviews.slice(-4).map((review, i) => (
           <Carousel.Item key={i}>
             <div className='review-titles'>
               <img className='reviewstitle' src='/Images/quotes.png' alt="quotes" />
