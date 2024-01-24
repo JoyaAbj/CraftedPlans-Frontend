@@ -1,0 +1,168 @@
+.review-body{
+    background: #F2E6E8;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    font-size: 20px;
+}
+.review-card{
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.80);
+    box-shadow: 6px 7px 6px 0px rgba(0, 0, 0, 0.34);
+    backdrop-filter: blur(0px);
+    width: 80%;
+    height: 65%;
+}
+.review-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1%;
+    height: 100%;
+}
+.review-form textarea{
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.82);
+    background: #FFF;
+    box-shadow: 5px 8px 4px 0px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(0px);
+    resize: none;
+    width: 60%;
+    height: 27%;
+    font-size: 23px;
+    padding: 5px;
+    margin-top: 3%;
+}
+.hr{
+    border:2px solid #917B9F;
+    width: 80%;
+}
+.two-in-onee{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.span1{
+    font-size: 55px;
+    color:grey;
+}
+.span2{
+    font-size: 55px;
+    color:#917B9F;
+}
+.review-form span:hover{
+    font-size: 55px;
+    color:#917B9F;
+    cursor: pointer;
+}
+.review-form button{
+    margin-top: 1%;
+    border-radius: 10px;
+    background: #917B9F;
+    font-size: 22px;
+    width: 10%;
+    height: 10%;
+    color: white;
+    border: none;
+}
+.review-form button:hover{
+    cursor: pointer;
+    background: white;
+    color: #917B9F;
+}
+.review-form input{
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.82);
+    background: #FFF;
+    box-shadow: 5px 8px 4px 0px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(0px);
+    width: 20%;
+    height: 7%;
+    font-size: 17px;
+    padding: 10px;
+    position: absolute;
+    left: 20%;
+    top:49%
+}
+
+@media screen and (min-width:767px) and (max-width:1023px){
+    .review-card{
+        height: 55%;
+    }
+    .review-form button{
+        width: 15%;
+        height: 10%;
+        margin-top: 7%;
+    }
+    .review-form input{
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.82);
+        background: #FFF;
+        box-shadow: 5px 8px 4px 0px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(0px);
+        width: 32%;
+        height: 7%;
+        font-size: 17px;
+        padding: 10px;
+        position: fixed;
+        left: 20%;
+        top:44%
+    }
+    .review-form textarea{
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.82);
+        background: #FFF;
+        box-shadow: 5px 8px 4px 0px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(0px);
+        resize: none;
+        width: 60%;
+        height: 27%;
+        font-size: 23px;
+        padding: 5px;
+        margin-top: 10%;
+    }
+}
+
+@media screen and (max-width: 766px){
+    .review-body{
+        font-size: 13px;
+    }
+    .review-form button{
+        width: 30%;
+        height: 10%;
+        margin-top: 7%;
+    }
+    .review-form input{
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.82);
+        background: #FFF;
+        box-shadow: 5px 8px 4px 0px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(0px);
+        width: 47%;
+        height: 7%;
+        font-size: 13px;
+        padding: 10px;
+        position: fixed;
+        left: 20%;
+        top:41%
+    }
+    .review-form textarea{
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.82);
+        background: #FFF;
+        box-shadow: 5px 8px 4px 0px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(0px);
+        resize: none;
+        width: 60%;
+        height: 27%;
+        font-size: 23px;
+        padding: 5px;
+        margin-top: 10%;
+    }
+}
