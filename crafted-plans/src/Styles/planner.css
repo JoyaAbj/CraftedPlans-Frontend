@@ -625,5 +625,30 @@
     line-height: normal;
 }
 
-
-
+ /*Tablet*/
+ @media screen and (min-width:767px) and (max-width:1023px){
+    .cover-card-cover{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0px;
+    }
+    .name-cover{
+        font-size: 25px;
+        /* width: 100px; */
+    }
+    .image-cover{
+        margin: 10px;
+    }
+    .sidebar{
+        margin: 25px;
+    }       
+    .img-cover{
+        width: 200px;
+    } 
+    .modal-content{
+        width: 750px;
+    }
+ }
+  
+  /*Phone*/
+  @media (max-width: 766px){
+  }
