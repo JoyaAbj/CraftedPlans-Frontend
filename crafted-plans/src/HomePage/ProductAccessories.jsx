@@ -82,6 +82,7 @@ const NotepadProduct = () => {
     if (!localStorage.getItem("Ids")) {
       localStorage.setItem("Ids", Id);
       navigate("/cart");
+      toast.success("Added item to your cart")
     } else {
       if (localStorage.getItem("Ids").split(",").includes(Id)) {
         toast.error("Already in your cart");

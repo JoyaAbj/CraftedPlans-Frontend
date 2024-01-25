@@ -69,6 +69,7 @@
     height: 50px;
     margin: 5px;
     width: 600px;
+    resize: none;
 
 }
 .submit-btn-contact{

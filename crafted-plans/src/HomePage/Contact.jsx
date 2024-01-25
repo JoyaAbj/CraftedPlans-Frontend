@@ -5,13 +5,14 @@ import '../Styles/contact.css';
 import FAQ from './FAQ';
 import emailjs from '@emailjs/browser';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 
 const Contact = () => {
   const form = useRef();
 
   const sendEmail = (e) => {
     e.preventDefault();
-
+    toast.success("Mail sent successfully")
     emailjs.sendForm(
       'service_liskoa8',
       'template_bqmuj8e', 
@@ -117,7 +118,7 @@ const Contact = () => {
           <div className="block-contact">
             <img src="/Images/phone.png" alt="phone" className="contact-icon" />
             <p className="info-contact">
-            +961 71 123 456
+            +961 71 606 968
             </p>
           </div>
           <div className="block-contact">

@@ -63,8 +63,13 @@ const Cart = () => {
     }
   }, [plannerInfo]);
   const handleRemoveItem = (id) => {
-    if (Ids.length!==0) 
-    setIds(Ids.filter((Id) => Id !== id));
+    if (Ids.length !== 0) {
+      const updatedIds = Ids.filter((cartId) => cartId !== id);
+      setIds(updatedIds);
+  
+      // Update local storage
+      localStorage.setItem('Ids', updatedIds.join(',')); // Convert array to string
+    }
   };
   const handleSubtotal = () => {
     const plannerPrice = plannerInfo ? parseFloat(plannerInfo.price) : 0;
@@ -102,7 +107,11 @@ const Cart = () => {
       });
 
       console.log(response.data);
-
+      setIds([]);
+      setPlannerInfo(null);
+      setAddress('');
+      localStorage.removeItem('Ids');
+      localStorage.removeItem('submittedPlanner');
       navigate('/addReview'); 
     } catch (error) {
       console.error('Error submitting order:', error);
