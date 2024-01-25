@@ -20,21 +20,10 @@ const Orders = () => {
         console.error(error);
       });
   };
-  const cover = "65a505654b3cf288d134d93f";
-  const fetchTemplateImages = () => {
-    axios.post('http://localhost:5000/planners/getPlannerByCover', {cover})
-      .then((response)=>{
-        console.log(response.data)
-      })
-    .catch ((error)=>{
-      console.error('Error fetching template images:', error);
-    });
-    };
   
 
   useEffect(() => {
     getAllOrders(activeOrder);
-    fetchTemplateImages();
   }, [activeOrder]);
 
   return (
@@ -66,7 +55,11 @@ const Orders = () => {
 
                   {/* Planners */}
                   <td className='white-tr'>
-                   <p>{order.planners}</p>
+                  {order.planners && order.planners.map((planner, k) => (
+                      <div key={k}>
+                        <p>{planner.cover}</p>
+                      </div>
+                    ))}
                   </td>
 
                   {/* User */}
