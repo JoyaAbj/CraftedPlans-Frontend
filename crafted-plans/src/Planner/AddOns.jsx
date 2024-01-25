@@ -10,7 +10,7 @@ const AddOns = () => {
 
   // Fetch AddOns
   const getAllAddOns = () => {
-    axios.post(`http://localhost:5000/templates/getTemplateByCategory`, { category: "addOns" })
+    axios.post(`https://crafted-plans.onrender.com/templates/getTemplateByCategory`, { category: "addOns" })
       .then((response) => {
         setAddOns(response.data.templates);
         console.log(response.data.templates);

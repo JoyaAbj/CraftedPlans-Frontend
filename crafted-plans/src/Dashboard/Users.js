@@ -7,7 +7,7 @@ const UserTable = () => {
   const [users, setUsers] = useState([]);
 
   const getAllUsers = () => {
-    axios.get(`http://localhost:5000/users/getAll`)
+    axios.get(`https://crafted-plans.onrender.com/users/getAll`)
       .then((response) => {
         setUsers(response.data.users);
       })
@@ -21,7 +21,7 @@ const UserTable = () => {
   }, []);
   const handleRemoveUser = (id) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
-      axios.delete(`http://localhost:5000/users/deleteById/${id}`)
+      axios.delete(`https://crafted-plans.onrender.com/users/deleteById/${id}`)
         .then((response) => {
           setUsers(users.filter(user => user._id !== id));
           toast.success("User deleted successfully");

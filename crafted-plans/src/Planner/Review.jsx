@@ -87,7 +87,7 @@ const Review = () => {
   useEffect(() => {
     const fetchData = async (templateId, setFunction, type) => {
       try {
-        const response = await axios.get(`http://localhost:5000/templates/getTemplateById/${templateId}`);
+        const response = await axios.get(`https://crafted-plans.onrender.com/templates/getTemplateById/${templateId}`);
 
         if (response.data.templates && response.data.templates.image) {
           const imageUrls = response.data.templates.image;
@@ -122,7 +122,7 @@ const Review = () => {
   }, [coverID, pagesID]);
 
   const getAllAddOns = () => {
-    axios.get(`http://localhost:5000/templates/getAll`)
+    axios.get(`https://crafted-plans.onrender.com/templates/getAll`)
     .then((response)=>{
 
       function findSelectedTemplate(array1, array2) {
@@ -167,7 +167,7 @@ const Review = () => {
       "addOns": addOnsData.map((addOn) => addOn.id)
     })
     try {
-      const response = await axios.post('http://localhost:5000/planners/addPlanner', {
+      const response = await axios.post(`https://crafted-plans.onrender.com/planners/addPlanner`, {
         "cover": coverID,
         "personalInformation": {
           "fullName": fullName,

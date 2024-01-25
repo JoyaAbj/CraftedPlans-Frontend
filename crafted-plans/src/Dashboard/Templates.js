@@ -35,7 +35,7 @@ const Templates = () => {
 
   const getAllTemplatesByCategory = (category) => {
     axios
-      .post(`http://localhost:5000/templates/getTemplateByCategory`, { category })
+      .post(`https://crafted-plans.onrender.com/templates/getTemplateByCategory`, { category })
       .then((response) => {
         setTemplates(response.data.templates);
       })
@@ -54,7 +54,7 @@ const Templates = () => {
 
     if (confirmDelete) {
       axios
-        .delete(`http://localhost:5000/templates/deleteTemplate/${id}`)
+        .delete(`https://crafted-plans.onrender.com/templates/deleteTemplate/${id}`)
         .then((response) => {
           console.log(`Template with ID ${id} deleted successfully`);
           getAllTemplatesByCategory(activeCategory);
@@ -78,7 +78,7 @@ const Templates = () => {
       formData.append('images', images[i]);
     }
     axios
-      .post(`http://localhost:5000/templates/addTemplate`, formData)
+      .post(`https://crafted-plans.onrender.com/templates/addTemplate`, formData)
       .then((response) => {
         console.log(response.data);
         setAddProductIsModalOpen(false);

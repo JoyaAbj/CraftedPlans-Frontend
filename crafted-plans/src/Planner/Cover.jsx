@@ -20,7 +20,7 @@ const Cover = () => {
   const category = "cover";
 
   const getAllCovers = () => {
-    axios.post(`http://localhost:5000/templates/getTemplateByCategory`, { category })
+    axios.post(`https://crafted-plans.onrender.com/templates/getTemplateByCategory`, { category })
       .then((response) => {
         setCover(response.data.templates);
         // setIsLoading(true);

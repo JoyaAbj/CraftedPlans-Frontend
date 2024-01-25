@@ -11,7 +11,7 @@ const Orders = () => {
   const [templateImages, setTemplateImages] = useState({});
 
   const getAllOrders = () => {
-    axios.get(`http://localhost:5000/orders/getAll`)
+    axios.get(`https://crafted-plans.onrender.com/orders/getAll`)
       .then((response) => {
         console.log(response.data.allOrders);
         setOrders(response.data.allOrders);

@@ -11,7 +11,7 @@ const NotePads = () => {
 
         const category = "accessories";
         const getAllaccessories = () => {
-            axios.post(`http://localhost:5000/products/getProductByCategory`, {category})
+            axios.post(`https://crafted-plans.onrender.com/products/getProductByCategory`, {category})
               .then((response) => {
                 setAccessories(response.data.products);
                 console.log(response.data.products)

@@ -9,7 +9,7 @@ const Pages = () => {
   const [largeImage, setLargeImage] = useState('');
 
   const getAllPages = () => {
-    axios.post(`http://localhost:5000/templates/getTemplateByCategory`, { category })
+    axios.post(`https://crafted-plans.onrender.com/templates/getTemplateByCategory`, { category })
       .then((response) => {
         setPages(response.data.templates);
         console.log(response.data.templates);

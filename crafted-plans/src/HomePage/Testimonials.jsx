@@ -33,7 +33,7 @@ const Reviews = () => {
   };
 
   const getAllReviews = () => {
-    axios.get('http://localhost:5000/reviews/getAll')
+    axios.get(`https://crafted-plans.onrender.com/reviews/getAll`)
       .then((response) => {
         console.log(response.data.get);
         setReviews(response.data.get);

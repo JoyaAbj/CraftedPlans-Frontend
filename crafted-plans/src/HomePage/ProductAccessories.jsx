@@ -65,7 +65,7 @@ const NotepadProduct = () => {
     }
   };
   const getAccessorieById = () => {
-    axios.get(`http://localhost:5000/products/getProductById/${Id}`)
+    axios.get(`https://crafted-plans.onrender.com/products/getProductById/${Id}`)
     .then((response)=> {
       console.log(response.data.products)
       setAccessorie(response.data.products);

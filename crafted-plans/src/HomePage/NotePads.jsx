@@ -9,7 +9,7 @@ const NotePads = () => {
     const [notePads, setNotePads] = useState([]);
     const category = "notepads";
     const getAllNotePads = () => {
-        axios.post(`http://localhost:5000/products/getProductByCategory`, {category})
+        axios.post(`https://crafted-plans.onrender.com/products/getProductByCategory`, {category})
           .then((response) => {
             setNotePads(response.data.products);
             // console.log(response.data.products)

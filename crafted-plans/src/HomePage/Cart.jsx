@@ -8,7 +8,7 @@ import { getUserRole } from './GetData';
 
 const fetchProducts = async () => {
   try {
-    const response = await axios.get(`http://localhost:5000/products/getAll`);
+    const response = await axios.get(`https://crafted-plans.onrender.com/products/getAll`);
     return response.data.products;
   } catch (error) {
     console.error('Error fetching products:', error);
@@ -51,7 +51,7 @@ const Cart = () => {
   useEffect(() => {
     const fetchCoverTemplate = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/templates/getTemplateById/${plannerInfo?.cover}`);
+        const response = await axios.get(`https://crafted-plans.onrender.com/templates/getTemplateById/${plannerInfo?.cover}`);
         setCoverTemplate(response.data.templates);
       } catch (error) {
         console.error('Error fetching cover template:', error);
@@ -83,7 +83,7 @@ const Cart = () => {
       // Prepare the order data
       const orderData = {
         userID: getUserID(), // assuming getUserID() returns the user ID
-         planners: plannerInfo,
+        planners: plannerInfo,
         products: Ids,
         status: false, // you can set the initial status as needed
         address,
@@ -96,7 +96,7 @@ const Cart = () => {
         address,
       };
 
-      const response = await axios.post(`http://localhost:5000/orders/add`, {
+      const response = await axios.post(`https://crafted-plans.onrender.com/orders/add`, {
         ...orderData,
         ...billingDetails,
       });
@@ -124,8 +124,6 @@ const Cart = () => {
             </tr>
           </thead>
           <tbody>
-             {/* Display planner info if available */}
-             {/* Display planner info if available */}
              {plannerInfo && coverTemplate && (
                 <tr key="planner">
                   <td className="cart-details-order">
@@ -205,33 +203,7 @@ const Cart = () => {
                   <hr className="billing-line" />
                 </div>
                 <div className="billing-form">
-                <label className="billing-label">
-            <input 
-              type="text" 
-              placeholder='Full Name'
-              className="billing-input" 
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-            />
-          </label>
-          <label className="billing-label">
-            <input 
-              type="text" 
-              placeholder='Email'
-              className="billing-input" 
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
-          <label className="billing-label">
-            <input 
-              type="text" 
-              placeholder='Phone Number'
-              className="billing-input" 
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-            />
-          </label>
+                
           <label className="billing-label">
             <textarea 
               placeholder="Address" 

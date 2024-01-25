@@ -22,7 +22,7 @@ const AddReview = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await axios.post(`http://localhost:5000/reviews/add`, {
+      const response = await axios.post(`https://crafted-plans.onrender.com/reviews/add`, {
         fullName,
         comment,
         rating: stars, // Make sure to send the 'rating' instead of 'stars'

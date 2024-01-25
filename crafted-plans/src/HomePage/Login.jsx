@@ -62,7 +62,7 @@ const Login = () => {
       role:"customer"
     };
     axios
-    .post(`http://localhost:5000/users/register`, newUser)
+    .post(`https://crafted-plans.onrender.com/users/register`, newUser)
     .then((response) => {
       const token = response.data.token;
       const id = response.data.id;
@@ -89,7 +89,7 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     axios
-      .post(`http://localhost:5000/users/login`, { email, password })
+      .post(`https://crafted-plans.onrender.com/users/login`, { email, password })
       .then((response) => {
         const token = response.data.token;
         const id = response.data.id;

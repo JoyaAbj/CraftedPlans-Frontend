@@ -23,7 +23,7 @@ const NotepadProduct = () => {
 
  
   const getNotePadById = () => {
-    axios.get(`http://localhost:5000/products/getProductById/${Id}`)
+    axios.get(`https://crafted-plans.onrender.com/products/getProductById/${Id}`)
     .then((response)=> {
       console.log('omar ', response.data.products)
       console.log('omar2 ', response.data.products.image[0])

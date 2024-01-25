@@ -39,7 +39,7 @@ const Products = () => {
     for (let i = 0; i < images.length; i++) {
       formData.append('images', images[i]);
     }
-    axios.post(`http://localhost:5000/products/addProduct`, formData)
+    axios.post(`https://crafted-plans.onrender.com/products/addProduct`, formData)
       .then(response => {
         console.log(response.data);
         setAddProductsIsModalOpen(false);
@@ -64,7 +64,7 @@ const Products = () => {
     const confirmDelete = window.confirm('Are you sure you want to delete this product?')
 
     if (confirmDelete){
-      axios.delete(`http://localhost:5000/products/deleteProduct/${id}`)
+      axios.delete(`https://crafted-plans.onrender.com/products/deleteProduct/${id}`)
       .then((response)=>{
         console.log(`Template with ID ${id} deleted successfully`);
         getAllProductsByCategory(activeCategory);
@@ -78,7 +78,7 @@ const Products = () => {
   };
 
   const getAllProductsByCategory = (category) => {
-    axios.post(`http://localhost:5000/products/getProductByCategory`, { category })
+    axios.post(`https://crafted-plans.onrender.com/products/getProductByCategory`, { category })
       .then((response) => {
         setProducts(response.data.products);
         console.log(response.data.products);
